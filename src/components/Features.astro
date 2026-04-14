@@ -1,0 +1,101 @@
+---
+const features = [
+  {
+    icon: '🔍',
+    title: 'Semantic search',
+    description: 'Finds what you mean, not just what you typed. Hybrid vector + keyword search with recency weighting.',
+  },
+  {
+    icon: '⭐',
+    title: 'Core Memories',
+    description: 'Pin your most important knowledge. Always surfaced first across every client.',
+  },
+  {
+    icon: '🔗',
+    title: 'Multi-client',
+    description: 'Claude Desktop, Claude Code, Cursor — any MCP client, simultaneously. No conflicts.',
+  },
+  {
+    icon: '⚡',
+    title: 'Local embeddings',
+    description: 'CoreML on Apple Neural Engine. No API keys, no cost, millisecond inference.',
+  },
+  {
+    icon: '📌',
+    title: 'Always running',
+    description: 'Menu bar app with one-click capture. Global hotkey for instant search.',
+  },
+  {
+    icon: '🔒',
+    title: 'Your data',
+    description: 'SQLite file on your Mac. Export anytime as markdown or JSON. No cloud. No telemetry.',
+  },
+];
+---
+
+<section id="features" class="section">
+  <div class="container">
+    <h2 class="section-title">Everything your AI needs to remember</h2>
+    <div class="feature-grid">
+      {features.map((feature) => (
+        <div class="feature-card">
+          <div class="feature-icon">{feature.icon}</div>
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    letter-spacing: -0.01em;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .feature-card {
+    padding: var(--space-lg);
+    border-radius: 12px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .feature-card h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .feature-card p {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
