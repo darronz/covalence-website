@@ -42,23 +42,32 @@
 
   .step {
     padding: var(--space-lg);
+    padding-top: var(--space-xl);
     border-radius: 12px;
     background-color: var(--bg-surface);
     border: 1px solid var(--border);
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
   }
 
   .step-number {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: var(--accent);
-    color: white;
-    font-weight: 700;
-    font-size: 0.875rem;
-    margin-bottom: var(--space-md);
+    position: absolute;
+    top: -0.25rem;
+    right: 0.75rem;
+    font-size: 7rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(240, 80, 106, 0.18) 0%,
+      rgba(167, 139, 250, 0.06) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    pointer-events: none;
+    user-select: none;
   }
 
   .step h3 {

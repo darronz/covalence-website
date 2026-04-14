@@ -5,9 +5,9 @@
   --bg-surface: #120e1a;
   --text-primary: #e8e6ed;
   --text-secondary: #908899;
-  --accent: #e8983a;
-  --accent-hover: #f0ad4e;
-  --accent-glow: rgba(232, 152, 58, 0.15);
+  --accent: #f0506a;
+  --accent-hover: #f56e82;
+  --accent-glow: rgba(240, 80, 106, 0.2);
   --accent-subtle: #a78bfa;
   --accent-subtle-hover: #c4b5fd;
   --border: #241e32;
@@ -39,7 +39,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -50,6 +50,11 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(ellipse 900px 700px at 15% 8%, rgba(167, 139, 250, 0.12), transparent),
+    radial-gradient(ellipse 700px 900px at 85% 35%, rgba(232, 112, 122, 0.08), transparent),
+    radial-gradient(ellipse 1000px 600px at 50% 70%, rgba(139, 92, 246, 0.08), transparent),
+    radial-gradient(ellipse 600px 800px at 10% 90%, rgba(232, 112, 122, 0.06), transparent);
 }
 
 a {
@@ -120,11 +125,12 @@ code, pre {
 
 .btn-primary {
   background-color: var(--accent);
-  color: white;
+  color: #1a0e00;
 }
 
 .btn-primary:hover {
   background-color: var(--accent-hover);
+  color: #1a0e00;
   box-shadow: 0 0 20px var(--accent-glow);
 }
 
