@@ -27,10 +27,33 @@
     padding-top: calc(var(--nav-height) + var(--space-2xl));
     padding-bottom: var(--space-2xl);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Atmospheric glow — warm light emerging from darkness */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(232, 152, 58, 0.08) 0%,
+      rgba(167, 139, 250, 0.04) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
   }
 
   .hero-inner {
     max-width: 720px;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-icon {
@@ -40,7 +63,10 @@
   .hero-icon img {
     margin: 0 auto;
     border-radius: 16px;
-    box-shadow: 0 0 60px var(--accent-glow), 0 0 120px rgba(99, 102, 241, 0.08);
+    box-shadow:
+      0 0 60px rgba(232, 152, 58, 0.2),
+      0 0 120px rgba(232, 152, 58, 0.08),
+      0 0 200px rgba(167, 139, 250, 0.05);
   }
 
   .hero-headline {

@@ -25,6 +25,25 @@
   .download-section {
     text-align: center;
     border-top: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .download-section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 300px;
+    background: radial-gradient(
+      ellipse at center bottom,
+      rgba(232, 152, 58, 0.06) 0%,
+      rgba(167, 139, 250, 0.03) 50%,
+      transparent 70%
+    );
+    pointer-events: none;
   }
 
   .download-inner h2 {
