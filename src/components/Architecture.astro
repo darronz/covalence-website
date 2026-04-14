@@ -1,0 +1,97 @@
+<section class="section">
+  <div class="container arch-inner">
+    <h2 class="section-title">Under the hood</h2>
+    <div class="arch-grid">
+      <div class="arch-stack">
+        <h3>The stack</h3>
+        <ul>
+          <li><strong>Database:</strong> SQLite + sqlite-vec — single file, embedded, battle-tested</li>
+          <li><strong>Embeddings:</strong> CoreML on Apple Neural Engine — on-device, instant, free</li>
+          <li><strong>Search:</strong> Hybrid vector + FTS5 keyword, merged via Reciprocal Rank Fusion</li>
+          <li><strong>Protocol:</strong> MCP (stdio) — the standard for AI tool integration</li>
+          <li><strong>UI:</strong> Native SwiftUI — belongs on your Mac</li>
+        </ul>
+      </div>
+      <div class="arch-privacy">
+        <h3>Privacy by architecture</h3>
+        <p class="privacy-statement">
+          Your data never leaves your machine. No accounts. No telemetry. No cloud. Runs entirely on-device.
+        </p>
+        <p class="privacy-detail">
+          Every component — the database, the embedding model, the search engine — runs locally.
+          There are no network calls, no API keys, no external dependencies.
+          Your memories are a single SQLite file on your Mac that you own, back up, and export whenever you want.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    letter-spacing: -0.01em;
+  }
+
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .arch-stack h3,
+  .arch-privacy h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+  }
+
+  .arch-stack ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .arch-stack li {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    padding-left: var(--space-md);
+    position: relative;
+  }
+
+  .arch-stack li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .arch-stack li strong {
+    color: var(--text-primary);
+  }
+
+  .privacy-statement {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+  }
+
+  .privacy-detail {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .arch-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
