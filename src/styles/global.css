@@ -107,6 +107,14 @@ code, pre {
   box-shadow: 0 0 20px var(--accent-glow);
 }
 
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  letter-spacing: -0.01em;
+}
+
 /* === Font Loading === */
 @font-face {
   font-family: 'Inter';
