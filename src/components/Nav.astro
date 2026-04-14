@@ -1,7 +1,9 @@
 <nav class="nav" aria-label="Main navigation">
   <div class="container nav-inner">
     <a href="/" class="nav-logo">
-      <img src="/icon.png" alt="Covalence" width="28" height="28" />
+      <svg class="nav-logo-icon" width="28" height="28" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <path d="M 70 25 C 62 5, 11 7, 8 54 C 8 78, 31 91, 47 84 C 64 78, 67 61, 83 56 C 97 51, 107 61, 107 69 C 108 77, 103 84, 93 86 C 85 87, 79 82, 78 78" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
       <span>Covalence</span>
     </a>
     <div class="nav-links">
@@ -46,8 +48,8 @@
     color: var(--text-primary);
   }
 
-  .nav-logo img {
-    border-radius: 6px;
+  .nav-logo-icon {
+    color: var(--accent);
   }
 
   .nav-links {
