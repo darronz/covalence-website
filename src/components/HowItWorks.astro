@@ -1,0 +1,114 @@
+<section id="how-it-works" class="section">
+  <div class="container">
+    <h2 class="section-title">Two copy-pastes. That's it.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Install</h3>
+        <p>Download the app. It lives in your menu bar.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Connect</h3>
+        <p>Paste the MCP config into your AI client.</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>Claude Desktop — config.json</span>
+          </div>
+          <pre><code>{`{
+  "mcpServers": {
+    "covalence": {
+      "command": "/Applications/Covalence.app/Contents/MacOS/cov-mcp"
+    }
+  }
+}`}</code></pre>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Done</h3>
+        <p>Your AI remembers. No accounts, no API keys, no cloud.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    letter-spacing: -0.01em;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .step {
+    padding: var(--space-lg);
+    border-radius: 12px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+  }
+
+  .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .step h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .step p {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+  }
+
+  .code-block {
+    margin-top: var(--space-md);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background-color: var(--bg-primary);
+  }
+
+  .code-header {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .code-block pre {
+    padding: var(--space-md);
+    overflow-x: auto;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  .code-block code {
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
