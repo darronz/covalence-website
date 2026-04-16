@@ -1,16 +1,11 @@
 <section id="how-it-works" class="section">
   <div class="container">
     <h2 class="section-title">Two copy-pastes. That's it.</h2>
+    <p class="section-subtitle">Connect your AI client to Covalence's MCP server, then tell it how to use memory.</p>
     <div class="steps">
       <div class="step">
-        <div class="step-number">1</div>
-        <h3>Install</h3>
-        <p>Download the app. It lives in your menu bar.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
         <h3>Connect</h3>
-        <p>Paste the MCP config into your AI client.</p>
+        <p>Add the MCP server to your AI client's config. Covalence generates the snippet for you.</p>
         <div class="code-block">
           <div class="code-header">
             <span>Claude Desktop — config.json</span>
@@ -25,49 +20,47 @@
         </div>
       </div>
       <div class="step">
-        <div class="step-number">3</div>
-        <h3>Done</h3>
-        <p>Your AI remembers. No accounts, no API keys, no cloud.</p>
+        <h3>Instruct</h3>
+        <p>Paste the behavioral prompt so your AI knows when to store and search memories.</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>Claude Desktop — Project instructions</span>
+          </div>
+          <pre class="wrap"><code>{`You have access to Covalence, a persistent
+memory layer. Search memory at the start
+of conversations. Store important decisions,
+context, and preferences. Use retrieved
+context naturally …`}</code></pre>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
+  .section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: -1.5rem;
+    margin-bottom: var(--space-xl);
+  }
+
   .steps {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-lg);
   }
 
   .step {
     padding: var(--space-lg);
-    padding-top: var(--space-xl);
     border-radius: 12px;
     background-color: var(--bg-surface);
     border: 1px solid var(--border);
     min-width: 0;
-    position: relative;
     overflow: hidden;
-  }
-
-  .step-number {
-    position: absolute;
-    top: -0.25rem;
-    right: 0.75rem;
-    font-size: 7rem;
-    font-weight: 800;
-    line-height: 1;
-    background: linear-gradient(
-      180deg,
-      rgba(240, 80, 106, 0.18) 0%,
-      rgba(167, 139, 250, 0.06) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    pointer-events: none;
-    user-select: none;
+    display: flex;
+    flex-direction: column;
   }
 
   .step h3 {
@@ -79,14 +72,17 @@
   .step p {
     color: var(--text-secondary);
     font-size: 0.9375rem;
+    margin-bottom: var(--space-md);
   }
 
   .code-block {
-    margin-top: var(--space-md);
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border);
     background-color: var(--bg-primary);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .code-header {
@@ -98,9 +94,14 @@
 
   .code-block pre {
     padding: var(--space-md);
-    overflow-x: auto;
+    overflow: hidden;
     font-size: 0.8125rem;
     line-height: 1.6;
+    flex: 1;
+  }
+
+  .code-block pre.wrap {
+    white-space: pre-wrap;
   }
 
   .code-block code {
