@@ -1,7 +1,7 @@
 :root[data-theme='dark'] {
-  --sl-color-accent-low: rgba(240, 80, 106, 0.15);
+  --sl-color-accent-low: #08060d;
   --sl-color-accent: #f0506a;
-  --sl-color-accent-high: #f56e82;
+  --sl-color-accent-high: #f0506a;
   --sl-color-gray-1: #e8e6ed;
   --sl-color-gray-2: #908899;
   --sl-color-gray-3: #524860;
