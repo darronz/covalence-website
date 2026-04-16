@@ -1,0 +1,17 @@
+:root[data-theme='dark'] {
+  --sl-color-accent-low: rgba(240, 80, 106, 0.15);
+  --sl-color-accent: #f0506a;
+  --sl-color-accent-high: #f56e82;
+  --sl-color-gray-1: #e8e6ed;
+  --sl-color-gray-2: #908899;
+  --sl-color-gray-3: #524860;
+  --sl-color-gray-4: #362d47;
+  --sl-color-gray-5: #241e32;
+  --sl-color-gray-6: #120e1a;
+  --sl-color-black: #08060d;
+}
+
+:root {
+  --sl-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+}
