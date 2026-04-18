@@ -1,0 +1,40 @@
+name: new-release
+on:
+  repository_dispatch:
+    types: [new-release]
+
+permissions:
+  contents: write
+
+jobs:
+  update-release-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: true
+
+      - name: Write latest-release.json
+        env:
+          PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+        run: |
+          mkdir -p src/data
+          printf '%s\n' "$PAYLOAD" | jq '.' > src/data/latest-release.json
+
+      - name: Merge into releases.json
+        env:
+          PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+        run: |
+          if [ ! -f src/data/releases.json ]; then
+            echo '[]' > src/data/releases.json
+          fi
+          jq --argjson new "$PAYLOAD" '
+            [ $new ] + map(select(.version != $new.version))
+          ' src/data/releases.json > src/data/releases.json.tmp
+          mv src/data/releases.json.tmp src/data/releases.json
+
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore(release): ${{ github.event.client_payload.tag }}"
+          file_pattern: src/data/latest-release.json src/data/releases.json
