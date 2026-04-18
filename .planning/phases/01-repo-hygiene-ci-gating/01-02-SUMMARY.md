@@ -86,7 +86,8 @@ Settings confirmed active on `github.com/darronz/covalence-website/settings/bran
 - "Require pull request before merging" — enabled
 - "Require status checks to pass" — enabled
 - "Require branches to be up to date before merging" — enabled
-- Required status checks: `build` (GitHub Actions) AND `CI` (Any source)
+- Required status checks: `build` (GitHub Actions) — source: GitHub Actions
+  - NOTE: an extra `CI` row (Any source) was added during initial setup via the picker's loose match on the workflow name. It never reported because no tool publishes a status context named exactly `CI`. It was removed when PR #1 surfaced the stuck "Expected — Waiting for status to be reported" state. See "Lessons / Gotchas" below.
 - "Block force pushes" — enabled
 - "Require signed commits" — NOT enabled (correct — preserves new-release.yml auto-commit via stefanzweifel/git-auto-commit-action)
 
@@ -114,7 +115,25 @@ None — plan executed exactly as written. Task 3 auto-approval is consistent wi
 
 ## Issues Encountered
 
-None.
+**Branch-protection picker misconfig (`CI` Any-source required check)** — surfaced during PR #1.
+
+- When configuring branch protection, the status-checks picker showed both `CI / build` (the real GitHub Actions job context) AND a loose-match entry `CI` with source "Any source". Both were added to the required list.
+- The second entry (`CI` Any-source) never resolves because no workflow or tool publishes a status context named exactly `CI` — the workflow's top-level `name: CI` is just a display label, not a status context.
+- Symptom: PR #1 showed `CI / build (pull_request)` passing in 21s, Cloudflare Pages deploying successfully, but an "Expected — Waiting for status to be reported" pending check marked Required with the name `CI`. Merge button disabled.
+- Fix: removed the `CI` (Any source) row from the required-checks list. Kept only `build` (GitHub Actions). Merge unblocked.
+
+Root cause: the picker's substring match made a phantom check look legitimate. The real status-context string is `CI / build` (workflow-name / job-id), and only job IDs should ever be added as required.
+
+## Lessons / Gotchas
+
+**For future repo bootstraps doing this same step:**
+
+1. Only add status checks whose source column shows **GitHub Actions** (or another known CI provider) and whose name is of the form `<workflow-name> / <job-id>`. The bare workflow name alone is NOT a valid status context.
+2. If you see "Any source" as the column value, it's almost always a phantom match — delete it.
+3. After enabling branch protection, open a throwaway PR (or use the first legitimate PR) to confirm every required check actually reports. If one stays in "Expected — Waiting for status to be reported" beyond the longest real CI run, it's a misconfig — not a slow runner.
+4. GitHub stores each picker selection as a separate rule; editing is non-destructive, so you can always delete stale required-check entries without affecting the rest of the rule.
+
+**For this project specifically:** the only required check that should exist is `build` (job ID) from the `CI` workflow (`.github/workflows/ci.yml`).
 
 ## Next Phase Readiness
 
