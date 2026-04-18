@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 ## Current Position
 
 Phase: 1 of 4 (Repo Hygiene & CI Gating)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-04-18 — Roadmap created (17 requirements mapped across 4 phases)
+Plan: 0 of 2 in current phase
+Status: Ready to execute
+Last activity: 2026-04-18 — Phase 1 planned (2 plans, 1 wave); verification passed
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -27,7 +27,7 @@ Progress: [░░░░░░░░░░] 0%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Repo Hygiene & CI Gating | 0/TBD | — | — |
+| 1. Repo Hygiene & CI Gating | 0/2 | — | — |
 | 2. Releases Page | 0/TBD | — | — |
 | 3. Content Depth & SEO | 0/TBD | — | — |
 | 4. Accessibility Pass | 0/TBD | — | — |
