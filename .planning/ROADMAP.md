@@ -27,7 +27,11 @@ This milestone takes the Covalence website from "recently split out of the app m
   3. A PR whose `astro build` fails cannot be merged into `main` because the build workflow is configured as a required status check on the `main` branch.
   4. Opening a new PR auto-fills a template asking "what changed, why, and screenshots for UI changes"; opening a new issue offers at minimum a bug report and a content/typo report template.
   5. `CONTRIBUTING.md` tells a new contributor how to branch, what commit message style to use, how the PR workflow works, and where docs vs. marketing content live.
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Author README.md, CONTRIBUTING.md, PR template, and issue templates (REPO-01..04)
+- [ ] 01-02-PLAN.md — Add ci.yml build-gate workflow and enable required-status-check on main (CI-01, CI-02)
 
 Notes:
 - Low-risk foundation work. No production-site behavior changes.
@@ -94,7 +98,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Repo Hygiene & CI Gating | 0/TBD | Not started | - |
+| 1. Repo Hygiene & CI Gating | 0/2   | Not started | -         |
 | 2. Releases Page | 0/TBD | Not started | - |
 | 3. Content Depth & SEO | 0/TBD | Not started | - |
 | 4. Accessibility Pass | 0/TBD | Not started | - |
