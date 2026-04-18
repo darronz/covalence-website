@@ -1,12 +1,12 @@
 [
   {
-    "version": "1.3.2",
-    "tag": "v1.3.2",
-    "released_at": "2026-04-16T12:00:00Z",
-    "notes_markdown": "Seed release metadata committed during Phase 12 website-repository-split. This file is overwritten by the new-release dispatch handler starting with the first Phase 14 pipeline release.",
-    "download_url": "https://covalence.app/releases/Covalence-1.3.2.dmg",
+    "delta_urls": [],
     "download_size_bytes": 273678336,
+    "download_url": "https://covalence.app/releases/Covalence-1.3.2.dmg",
+    "notes_markdown": "Plan 12-03 post-commit idempotent workflow test. Payload identical to seed; no state change expected.",
+    "released_at": "2026-04-16T12:00:00Z",
     "sha256": "seeded-in-phase-12",
-    "delta_urls": []
+    "tag": "v1.3.2",
+    "version": "1.3.2"
   }
 ]
