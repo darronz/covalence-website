@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 627" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#f0506a" stop-opacity="0.18"/>
+      <stop offset="50%" stop-color="#a78bfa" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#08060d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stroke-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0506a"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="627" fill="#08060d"/>
+  <!-- Ambient glow -->
+  <rect width="1200" height="627" fill="url(#glow)"/>
+  <!-- Co swirl — centered, scaled from 120x120 viewBox -->
+  <g transform="translate(370, 68) scale(3.8)">
+    <path
+      d="M 70 25 C 62 5, 11 7, 8 54 C 8 78, 31 91, 47 84 C 64 78, 67 61, 83 56 C 97 51, 107 61, 107 69 C 108 77, 103 84, 93 86 C 85 87, 79 82, 78 78"
+      stroke="url(#stroke-grad)"
+      stroke-width="9"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+  <!-- "Covalence" text -->
+  <text x="600" y="520" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="42" font-weight="600" fill="#e8e6ed" letter-spacing="0.02em">Covalence</text>
+  <!-- Tagline -->
+  <text x="600" y="565" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="20" fill="#908899">Your AI's long-term memory</text>
+</svg>
