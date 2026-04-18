@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Bug in the Covalence macOS app
+    url: https://github.com/darronz/covalence/issues
+    about: For bugs in the Covalence app itself (not the website), please file at the main app repo.
