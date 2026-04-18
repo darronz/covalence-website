@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-04-18)
 
 **Core value:** When a new Covalence release is tagged in the app repo, this site rebuilds itself with the correct version, download, and release notes — with zero manual intervention — and visitors land on a page that explains what Covalence is clearly enough to decide whether to install it.
-**Current focus:** Phase 1 — Repo Hygiene & CI Gating
+**Current focus:** Phase 2 — Releases Page (Phase 1 complete)
 
 ## Current Position
 
-Phase: 1 of 4 (Repo Hygiene & CI Gating)
-Plan: 0 of 2 in current phase
-Status: Ready to execute
-Last activity: 2026-04-18 — Phase 1 planned (2 plans, 1 wave); verification passed
+Phase: 2 of 4 (Releases Page) — next up
+Plan: 2 of 2 complete in Phase 1
+Status: Phase 1 complete (awaiting verifier)
+Last activity: 2026-04-18 — Phase 1 executed (4 commits Plan 01-01, 3 commits Plan 01-02, branch protection confirmed)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██░░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
+- Total plans completed: 2
 - Average duration: —
 - Total execution time: —
 
@@ -27,7 +27,7 @@ Progress: [░░░░░░░░░░] 0%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Repo Hygiene & CI Gating | 0/2 | — | — |
+| 1. Repo Hygiene & CI Gating | 2/2 | — | — |
 | 2. Releases Page | 0/TBD | — | — |
 | 3. Content Depth & SEO | 0/TBD | — | — |
 | 4. Accessibility Pass | 0/TBD | — | — |
