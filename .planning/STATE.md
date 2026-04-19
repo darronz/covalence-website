@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 Phase: 2 of 4 (Releases Page) — next up
 Plan: 2 of 2 complete in Phase 1
 Status: Phase 1 complete (awaiting verifier)
-Last activity: 2026-04-18 — Phase 1 executed (4 commits Plan 01-01, 3 commits Plan 01-02, branch protection confirmed)
+Last activity: 2026-04-19 — Completed quick task 260419-wks: Fix broken homepage anchor links in primary nav
 
 Progress: [██░░░░░░░░] 25%
 
@@ -59,6 +59,12 @@ None yet.
 - Site is live in production on `covalence.app` — any phase that touches routing, metadata, or the DMG download path must be verified against a Cloudflare Pages preview deploy before merging to `main`.
 - Required-status-check configuration for CI-02 is a manual GitHub UI step (branch protection rules). Plan 1 should document this explicitly so it doesn't get skipped.
 - Starlight is pre-1.0 (`^0.38.3`) and Astro is `^6.1.6` — CI gate from Phase 1 is the containment strategy for surprise breakage in those deps.
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260419-wks | Fix broken homepage anchor links in primary nav | 2026-04-19 | 31f0452 | [260419-wks-fix-broken-homepage-anchor-links-in-prim](./quick/260419-wks-fix-broken-homepage-anchor-links-in-prim/) |
 
 ## Deferred Items
 
