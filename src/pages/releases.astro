@@ -1,0 +1,520 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import releasesData from '../data/releases.json';
+import { marked } from 'marked';
+
+marked.setOptions({ gfm: true });
+
+const REQUIRED = ['version', 'tag', 'released_at', 'download_url', 'notes_markdown'];
+const SHA_RE = /^[0-9a-f]{64}$/;
+
+const releases = releasesData
+  .filter((r) => {
+    const missing = REQUIRED.filter((k) => !r[k]);
+    if (missing.length > 0) {
+      console.warn(`[releases] skipping entry (missing ${missing.join(', ')}):`, r.tag ?? r.version ?? '(unknown)');
+      return false;
+    }
+    return true;
+  })
+  .map((r) => {
+    let notesHtml = '';
+    try {
+      notesHtml = marked.parse(r.notes_markdown);
+    } catch (err) {
+      console.warn(`[releases] marked.parse failed for ${r.tag}:`, err);
+      notesHtml = '<p class="release-notes-error">Notes unavailable for this release.</p>';
+    }
+    const dateFormatted = new Intl.DateTimeFormat('en', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).format(new Date(r.released_at));
+    const shaIsHex = typeof r.sha256 === 'string' && SHA_RE.test(r.sha256);
+    return { ...r, notesHtml, dateFormatted, shaIsHex };
+  });
+
+const [featured, ...rest] = releases;
+---
+
+<Base
+  title="Releases — Covalence"
+  description="All public releases of Covalence with release notes and macOS downloads."
+>
+  <Nav />
+  <main class="releases-page">
+    <div class="container">
+      <header class="page-header">
+        <p class="eyebrow">Release history</p>
+        <h1>Releases</h1>
+        <p class="lede">Every public release of Covalence, in reverse chronological order.</p>
+      </header>
+
+      {featured && (
+        <section class="featured" aria-labelledby="featured-version">
+          <p class="featured-label">Latest release</p>
+          <article class="release-card release-card-featured" aria-labelledby="featured-version">
+            <header class="release-card-header">
+              <h2 id="featured-version" class="release-version">{featured.tag}</h2>
+              <time class="release-date" datetime={featured.released_at}>{featured.dateFormatted}</time>
+            </header>
+            <div class="release-notes">
+              <Fragment set:html={featured.notesHtml} />
+            </div>
+            <footer class="release-card-footer">
+              <a href={featured.download_url} class="release-download">Download DMG →</a>
+              {featured.sha256 && (
+                <details class="release-verify">
+                  <summary>Verify download</summary>
+                  <div class="release-verify-body">
+                    <code class="release-sha">{featured.sha256}</code>
+                    {featured.shaIsHex && (
+                      <button
+                        type="button"
+                        class="release-copy"
+                        data-copy-sha={featured.sha256}
+                        aria-label={`Copy SHA-256 checksum for Covalence ${featured.version}`}
+                      >
+                        Copy
+                      </button>
+                    )}
+                  </div>
+                </details>
+              )}
+            </footer>
+          </article>
+        </section>
+      )}
+
+      {rest.length > 0 && (
+        <section class="history" aria-labelledby="history-heading">
+          <h2 id="history-heading" class="history-heading">Previous releases</h2>
+          <ol class="release-list">
+            {rest.map((r) => (
+              <li>
+                <article class="release-card" aria-labelledby={`version-${r.version}`}>
+                  <header class="release-card-header">
+                    <h3 id={`version-${r.version}`} class="release-version">{r.tag}</h3>
+                    <time class="release-date" datetime={r.released_at}>{r.dateFormatted}</time>
+                  </header>
+                  <div class="release-notes">
+                    <Fragment set:html={r.notesHtml} />
+                  </div>
+                  <footer class="release-card-footer">
+                    <a href={r.download_url} class="release-download">Download DMG →</a>
+                    {r.sha256 && (
+                      <details class="release-verify">
+                        <summary>Verify download</summary>
+                        <div class="release-verify-body">
+                          <code class="release-sha">{r.sha256}</code>
+                          {r.shaIsHex && (
+                            <button
+                              type="button"
+                              class="release-copy"
+                              data-copy-sha={r.sha256}
+                              aria-label={`Copy SHA-256 checksum for Covalence ${r.version}`}
+                            >
+                              Copy
+                            </button>
+                          )}
+                        </div>
+                      </details>
+                    )}
+                  </footer>
+                </article>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {releases.length === 0 && (
+        <p class="releases-empty">No releases to show yet — check back soon.</p>
+      )}
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<script is:inline>
+  document.addEventListener('click', async (event) => {
+    const btn = event.target.closest('button[data-copy-sha]');
+    if (!btn) return;
+    const sha = btn.getAttribute('data-copy-sha');
+    if (!sha) return;
+    const original = btn.textContent;
+    try {
+      await navigator.clipboard.writeText(sha);
+      btn.textContent = 'Copied';
+      btn.classList.add('is-copied');
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.classList.remove('is-copied');
+      }, 1500);
+    } catch (err) {
+      console.warn('Clipboard write failed:', err);
+      btn.textContent = 'Copy failed';
+      setTimeout(() => {
+        btn.textContent = original;
+      }, 2000);
+    }
+  });
+</script>
+
+<style>
+  .releases-page {
+    padding-top: calc(var(--nav-height) + var(--space-xl));
+    padding-bottom: var(--space-2xl);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .lede {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  .featured {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .featured-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .history {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-xl);
+  }
+
+  .history-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .release-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  /* === Release card === */
+  .release-card {
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: var(--bg-surface);
+  }
+
+  .release-card-featured {
+    border-top: 2px solid var(--accent);
+    padding: calc(var(--space-lg) * 1.2);
+  }
+
+  .release-card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .release-version {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .release-card-featured .release-version {
+    font-size: 2rem;
+  }
+
+  .release-date {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+  }
+
+  .release-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border);
+  }
+
+  .release-download {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--accent-subtle);
+  }
+
+  .release-download:hover {
+    color: var(--accent-subtle-hover);
+  }
+
+  .release-verify {
+    font-size: 0.875rem;
+  }
+
+  .release-verify summary {
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+    list-style: revert;
+  }
+
+  .release-verify summary:hover {
+    color: var(--text-primary);
+  }
+
+  .release-verify-body {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+    padding: var(--space-sm);
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+
+  .release-sha {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .release-copy {
+    flex-shrink: 0;
+    padding: 0.25rem 0.625rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent-subtle);
+    background-color: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .release-copy:hover {
+    color: var(--accent-subtle-hover);
+    border-color: var(--accent-subtle);
+  }
+
+  .release-copy.is-copied {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .releases-empty {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: var(--space-2xl) 0;
+  }
+
+  /* === Release notes (markdown injected via set:html — must use :global()) === */
+  .release-notes :global(h1) {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: var(--space-md) 0 var(--space-sm);
+  }
+
+  .release-notes :global(h2) {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin: var(--space-md) 0 var(--space-sm);
+  }
+
+  .release-notes :global(h3) {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: var(--space-md) 0 var(--space-xs);
+  }
+
+  .release-notes :global(h1:first-child),
+  .release-notes :global(h2:first-child),
+  .release-notes :global(h3:first-child) {
+    margin-top: 0;
+  }
+
+  .release-notes :global(p) {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .release-notes :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .release-notes :global(ul),
+  .release-notes :global(ol) {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    padding-left: 1.25rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .release-notes :global(li) {
+    margin-bottom: 0.25rem;
+  }
+
+  .release-notes :global(li > p) {
+    margin-bottom: 0.25rem;
+  }
+
+  .release-notes :global(a) {
+    color: var(--accent-subtle);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .release-notes :global(a:hover) {
+    color: var(--accent-subtle-hover);
+  }
+
+  .release-notes :global(strong) {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .release-notes :global(em) {
+    font-style: italic;
+  }
+
+  .release-notes :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    padding: 0.0625rem 0.3125rem;
+    background-color: rgba(240, 80, 106, 0.08);
+    border-radius: 4px;
+  }
+
+  .release-notes :global(pre) {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    padding: calc(var(--space-md) * 0.75) var(--space-md);
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: var(--space-sm);
+    line-height: 1.5;
+  }
+
+  .release-notes :global(pre code) {
+    padding: 0;
+    background-color: transparent;
+    font-size: inherit;
+  }
+
+  .release-notes :global(blockquote) {
+    border-left: 3px solid var(--accent);
+    padding-left: var(--space-md);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .release-notes :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: var(--space-md) 0;
+  }
+
+  .release-notes :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .release-notes :global(th),
+  .release-notes :global(td) {
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .release-notes :global(.release-notes-error) {
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  /* === Focus === */
+  .release-download:focus-visible,
+  .release-verify summary:focus-visible,
+  .release-copy:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2.25rem;
+    }
+
+    .release-card-featured .release-version {
+      font-size: 1.5rem;
+    }
+
+    .release-card,
+    .release-card-featured {
+      padding: var(--space-md);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .release-card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+  }
+</style>
