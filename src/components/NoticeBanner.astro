@@ -1,0 +1,127 @@
+---
+// P0 notice — v1.3.5 required re-download for v1.3.2–1.3.4 users whose
+// app crashes at launch (dyld cannot find libswiftCompatibilitySpan.dylib
+// on Macs without Xcode). Auto-update can't reach them; they must manually
+// re-download.
+//
+// Remove this component from Base.astro when:
+//   (a) download analytics show 1.3.2–1.3.4 traffic <5% of installs, OR
+//   (b) v1.3.6+ has shipped and stragglers have migrated.
+// Target removal date: 2026-05-15.
+import latestRelease from '../data/latest-release.json';
+---
+
+<div class="notice" id="p0-notice" aria-live="polite">
+  <div class="container notice-inner">
+    <p class="notice-text">
+      <strong>v{latestRelease.version} is a required re-download.</strong>
+      If Covalence 1.3.2, 1.3.3, or 1.3.4 crashes immediately when you open it,
+      auto-update can't rescue the crash — grab the fixed build manually.
+    </p>
+    <div class="notice-actions">
+      <a href={latestRelease.download_url} class="notice-cta">Download v{latestRelease.version} →</a>
+      <button type="button" class="notice-dismiss" aria-label="Dismiss notice" data-dismiss>×</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'covalence:notice-dismissed-p0-1.3.5';
+    var root = document.documentElement;
+    var banner = document.getElementById('p0-notice');
+    if (!banner) return;
+    if (sessionStorage.getItem(KEY) === '1') {
+      root.dataset.noticeDismissed = 'true';
+      return;
+    }
+    var btn = banner.querySelector('[data-dismiss]');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        sessionStorage.setItem(KEY, '1');
+        root.dataset.noticeDismissed = 'true';
+      });
+    }
+  })();
+</script>
+
+<style is:global>
+  :root { --notice-height: 44px; }
+  :root[data-notice-dismissed="true"] { --notice-height: 0px; }
+  body { padding-top: var(--notice-height); }
+  .nav { top: var(--notice-height) !important; }
+  @media (max-width: 640px) {
+    :root { --notice-height: 68px; }
+  }
+</style>
+
+<style>
+  .notice {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 101;
+    height: var(--notice-height);
+    background: linear-gradient(90deg,
+      rgba(240, 80, 106, 0.18) 0%,
+      rgba(167, 139, 250, 0.10) 100%);
+    border-bottom: 1px solid var(--accent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+  }
+  :root[data-notice-dismissed="true"] .notice { display: none; }
+
+  .notice-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    height: 100%;
+  }
+
+  .notice-text {
+    font-size: 0.8125rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin: 0;
+  }
+  .notice-text strong { color: var(--accent); }
+
+  .notice-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-shrink: 0;
+  }
+
+  .notice-cta {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .notice-cta:hover { color: var(--accent-hover); }
+
+  .notice-dismiss {
+    background: transparent;
+    border: 0;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0 var(--space-xs);
+    cursor: pointer;
+  }
+  .notice-dismiss:hover { color: var(--text-primary); }
+
+  @media (max-width: 640px) {
+    .notice-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2px;
+      padding-top: var(--space-xs);
+      padding-bottom: var(--space-xs);
+    }
+    .notice-text { font-size: 0.75rem; }
+  }
+</style>
