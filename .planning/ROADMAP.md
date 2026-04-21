@@ -67,15 +67,16 @@ Notes:
   3. The primary nav includes a "Blog" link pointing at `/posts/` on both desktop and mobile drawer; the footer includes a small RSS link.
   4. `https://covalence.app/posts/rss.xml` returns a valid RSS 2.0 feed containing every published post with full rendered HTML in `<content:encoded>`, and `Base.astro` advertises the feed via `<link rel="alternate" type="application/rss+xml">` on every page.
   5. The landing page shows a "Latest writing" band between the Architecture and Footer sections with the two most recent posts, or renders nothing if the collection is empty — no "coming soon" placeholder.
-**Plans**: 6 plans (5 original + 1 gap-closure for Surface E regression)
+**Plans**: 7 plans (5 original + 2 gap-closure: theme-selector fix, docs content fix)
 
 Plans:
 - [x] 02.1-01-PLAN.md — Foundations: install astro-expressive-code + @astrojs/rss, wire Expressive Code before Starlight, register posts content collection, create src/content/posts/ directory
 - [x] 02.1-02-PLAN.md — Components + prose CSS: PostList.astro, PostLayout.astro, src/styles/posts.css
 - [x] 02.1-03-PLAN.md — Routes: /posts/ index page, /posts/[...slug]/ dynamic route with per-post SEO, /posts/rss.xml feed endpoint
 - [x] 02.1-04-PLAN.md — Site integration: Nav Blog link (desktop + drawer), Footer RSS link, Base.astro <link rel="alternate"> + head-extra slot, Starlight head injection for /docs/* alternate rel, landing-page "Latest writing" band
-- [ ] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk before merge) — BLOCKED on Surface E regression 2026-04-21, re-runs after 02.1-06 ships
+- [ ] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk before merge) — BLOCKED pending Wave 7 ship, re-runs on refreshed preview
 - [x] 02.1-06-PLAN.md — Gap closure: diagnose /docs/* code-block regression against 5 hypotheses (H1-H5), apply minimal astro.config.mjs fix, re-verify via npm run build + CF Pages preview rebuild _(H5 CONFIRMED — standalone EC silently replaced Starlight's bundled EC; remediation: remove standalone, Starlight's bundled EC now owns /docs/* and /posts/*; branch pushed `0c3cc0d..4d258b0`)_
+- [ ] 02.1-07-PLAN.md — Gap closure (content): de-indent fenced code blocks in `src/content/docs/docs/getting-started.md` by converting them to Starlight's `<Code>` component inside `<TabItem>` — eliminates pre-existing indented-code-block rendering on that page (issue predates Phase 2.1; byte-identical output on production b1bfd58 confirms)
 
 Notes:
 - Inserted between Phase 2 and Phase 3 so Phase 3's SEO work (sitemap, canonical, OG) covers `/posts/*` from day one rather than requiring a later reopening of SEO scope.

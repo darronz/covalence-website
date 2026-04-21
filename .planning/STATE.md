@@ -9,10 +9,10 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — Wave 6 gap-closure executed; awaiting Wave 5 checkpoint re-run on refreshed CF Pages preview
-Plan: 5/6 (Waves 1–4 landed; Wave 6 gap-closure landed on `gsd/phase-2.1-blog@4d258b0`; Wave 5 still blocked pending browser-level re-verification)
+Phase: 2.1 of 4+ (Blog, INSERTED) — Wave 6 landed; Wave 7 content-fix drafted after preview inspection revealed Surface E symptom was pre-existing production issue (not a Phase 2.1 regression)
+Plan: 5/7 (Waves 1–4 landed; Wave 6 landed on `gsd/phase-2.1-blog@4d258b0`; Wave 7 plan 02.1-07 drafted to fix indented fences in `src/content/docs/docs/getting-started.md`; Wave 5 still blocked pending both fixes on refreshed preview)
 Status: Gap-closure plan 02.1-06 executed cleanly. H5 confirmed via Task 1 diagnostic matrix (H2/H5 tested in place, each fully reverted between experiments): the standalone `astro-expressive-code` integration silently replaced Starlight's bundled EC; the emitted CSS shipped `[data-theme='night-owl'/'night-owl-light']` selectors that never matched Starlight's actual `<html data-theme="dark">` attribute — producing correct EC markup with zero syntax colouring (exactly the Wave 5 blocker's signature). Remediation: Option H5-A — standalone integration removed from `astro.config.mjs`, Starlight's bundled EC now owns both `/docs/*` and `/posts/*`. EC CSS hash flipped y57yt→v4551 and theme selectors now read `[data-theme='dark'/'light']` matching the HTML. All Wave 4 invariants preserved (RSS alternate rel count=1 on `/docs/getting-started/` and `/posts/index.html`; `posts/rss.xml` well-formed; marketing chrome on `/posts/`). Throwaway-post test confirmed `/posts/*` code fences render with EC chrome via Starlight's bundled pipeline (3 EC markup occurrences on a 2-line JS fence). Branch pushed to origin (`0c3cc0d..4d258b0`) so CF Pages will auto-rebuild the preview.
-Last activity: 2026-04-21 — Plan 02.1-06 complete. Route: `/gsd-execute-phase 2.1 --gaps-only` then re-run Wave 5 checkpoint in a browser against the refreshed preview.
+Last activity: 2026-04-21 — Plan 02.1-07 drafted (curl-diffed preview vs production `/docs/getting-started/` byte-identical; Surface E symptom predates Phase 2.1 — fenced code blocks indented 4 spaces inside `<TabItem>` get parsed as CommonMark indented-code-blocks). Route: `/gsd-execute-phase 2.1 --gaps-only` to pick up 02.1-07, then re-run Wave 5 on refreshed preview.
 
 Progress: [█████████░] 83% (2 phases + 5 of 6 blog plans shipped)
 
