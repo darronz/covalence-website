@@ -9,10 +9,10 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — BLOCKED on preview verification
-Plan: 4/5 (Waves 1–4 landed on main locally; Wave 5 checkpoint returned `blocked`)
-Status: Waves 1–4 on local `main` and pushed to branch `gsd/phase-2.1-blog` for CF Pages preview (main NOT pushed — production untouched). Wave 5 reviewer walked the 7 surfaces; 6 passed (A, B, D, F, G plus N/A for C) and Surface E regressed — `/docs/*` code blocks render as plain monospace with no syntax colouring. This is exactly the standalone-Expressive-Code vs Starlight-Expressive-Code collision BRIEF.md line 102 flagged. Gap closure required before merge. See `.planning/phases/2.1-blog/02.1-05-SUMMARY.md` for the full 5-hypothesis diagnosis starting point.
-Last activity: 2026-04-21 — Wave 5 checkpoint returned `blocked: Surface E regression (/docs/* plain monospace)`. Route: `/gsd-plan-phase 2.1 --gaps`.
+Phase: 2.1 of 4+ (Blog, INSERTED) — gap-closure plan drafted, ready to execute
+Plan: 4/6 (Waves 1–4 landed; Wave 5 blocked on Surface E; Wave 6 gap-closure plan drafted + verified)
+Status: Gap-closure plan 02.1-06-PLAN.md written and verified on iteration 2 (first pass hit 1 warning + 3 info items; surgical revision fixed all 4). Plan frontmatter `gap_closure: true` so `/gsd-execute-phase 2.1 --gaps-only` will pick it up. Three tasks: Task 1 diagnoses H1–H5 against `astro.config.mjs` with guardrail that no file changes persist; Task 2 applies the minimal fix keyed to Task 1's verdict (6 remediation options matching the 5 hypotheses); Task 3 verifies via `npm run build` + dist grep + branch push for CF Pages rebuild. Wave 4 RSS alternate-rel invariants explicitly protected; Wave 1 night-owl theme decision preserved.
+Last activity: 2026-04-21 — Plan 02.1-06 verified passed on iteration 2. Route: `/gsd-execute-phase 2.1 --gaps-only`.
 
 Progress: [████████░░] 72% (2 phases + 4 of 5 blog plans shipped)
 
@@ -29,7 +29,7 @@ Progress: [████████░░] 72% (2 phases + 4 of 5 blog plans shi
 |-------|-------|-------|----------|
 | 1. Repo Hygiene & CI Gating | 2/2 | — | — |
 | 2. Releases Page | shipped outside GSD | — | — |
-| 2.1 Blog (INSERTED) | 4/5 | ~13 min | ~3.25 min |
+| 2.1 Blog (INSERTED) | 4/6 | ~13 min | ~3.25 min |
 | 3. Content Depth & SEO | 0/TBD | — | — |
 | 4. Accessibility Pass | 0/TBD | — | — |
 
