@@ -67,6 +67,14 @@ Notes:
   3. The primary nav includes a "Blog" link pointing at `/posts/` on both desktop and mobile drawer; the footer includes a small RSS link.
   4. `https://covalence.app/posts/rss.xml` returns a valid RSS 2.0 feed containing every published post with full rendered HTML in `<content:encoded>`, and `Base.astro` advertises the feed via `<link rel="alternate" type="application/rss+xml">` on every page.
   5. The landing page shows a "Latest writing" band between the Architecture and Footer sections with the two most recent posts, or renders nothing if the collection is empty — no "coming soon" placeholder.
+**Plans**: 5 plans
+
+Plans:
+- [ ] 02.1-01-PLAN.md — Foundations: install astro-expressive-code + @astrojs/rss, wire Expressive Code before Starlight, register posts content collection, create src/content/posts/ directory
+- [ ] 02.1-02-PLAN.md — Components + prose CSS: PostList.astro, PostLayout.astro, src/styles/posts.css
+- [ ] 02.1-03-PLAN.md — Routes: /posts/ index page, /posts/[...slug]/ dynamic route with per-post SEO, /posts/rss.xml feed endpoint
+- [ ] 02.1-04-PLAN.md — Site integration: Nav Blog link (desktop + drawer), Footer RSS link, Base.astro <link rel="alternate"> + head-extra slot, landing-page "Latest writing" band
+- [ ] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk before merge)
 
 Notes:
 - Inserted between Phase 2 and Phase 3 so Phase 3's SEO work (sitemap, canonical, OG) covers `/posts/*` from day one rather than requiring a later reopening of SEO scope.
@@ -121,7 +129,7 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Repo Hygiene & CI Gating | 2/2   | Complete    | 2026-04-18 |
 | 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
-| 2.1 Blog (INSERTED) | 0/TBD | Not planned | - |
+| 2.1 Blog (INSERTED) | 0/5 | Planned | - |
 | 3. Content Depth & SEO | 0/TBD | Not started | - |
 | 4. Accessibility Pass | 0/TBD | Not started | - |
 
