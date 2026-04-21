@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 ## Current Position
 
 Phase: 2.1 of 4+ (Blog, INSERTED) — executing
-Plan: 3/5 (Wave 3 complete; Wave 4 next)
-Status: Wave 3 (routes + feed) landed on main — /posts/ index page, /posts/[...slug]/ dynamic route with per-post SEO head tags (via forward-reference Fragment slot="head-extra"), /posts/rss.xml feed endpoint with full-body HTML in <content:encoded>; build green, /docs/* Expressive Code intact. Sequential executor mode.
-Last activity: 2026-04-21 — Plan 02.1-03 complete (3 commits on main: e770e99 → 2c38cdf → 40f881e)
+Plan: 4/5 (Wave 4 complete; Wave 5 next — CF Pages preview-deploy checkpoint)
+Status: Wave 4 (site integration) landed on main — Nav gained Blog link (desktop + drawer), Footer gained RSS link, Base.astro now emits site-wide <link rel="alternate"> AND exposes <slot name="head-extra" /> that activates Wave 3's per-post SEO metas, landing page gained the showLatestWriting-gated "Latest writing" band. One Rule 2 deviation (astro.config.mjs) added matching alternate-rel injection via Starlight's head config option so /docs/* also carries feed discovery. Build green; /docs/* Expressive Code intact. Sequential executor mode.
+Last activity: 2026-04-21 — Plan 02.1-04 complete (5 commits on main: ac8f206 → 1304dae → 72e1749 → 547b07a → 368d9a3)
 
-Progress: [███████░░░] 62% (2 phases + 3 of 5 blog plans shipped)
+Progress: [████████░░] 72% (2 phases + 4 of 5 blog plans shipped)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: ~3.3 min (Phase 2.1 Plans 01 + 02 + 03 measured)
-- Total execution time: ~10 min (Plans 02.1-01 + 02.1-02 + 02.1-03; Phase 1 / Phase 2 durations not captured)
+- Total plans completed: 6
+- Average duration: ~3.25 min (Phase 2.1 Plans 01 + 02 + 03 + 04 measured)
+- Total execution time: ~13 min (Plans 02.1-01 + 02.1-02 + 02.1-03 + 02.1-04; Phase 1 / Phase 2 durations not captured)
 
 **By Phase:**
 
@@ -29,13 +29,13 @@ Progress: [███████░░░] 62% (2 phases + 3 of 5 blog plans shi
 |-------|-------|-------|----------|
 | 1. Repo Hygiene & CI Gating | 2/2 | — | — |
 | 2. Releases Page | shipped outside GSD | — | — |
-| 2.1 Blog (INSERTED) | 3/5 | ~10 min | ~3.3 min |
+| 2.1 Blog (INSERTED) | 4/5 | ~13 min | ~3.25 min |
 | 3. Content Depth & SEO | 0/TBD | — | — |
 | 4. Accessibility Pass | 0/TBD | — | — |
 
 **Recent Trend:**
-- Last 5 plans: 02.1-01 (~5 min, 1 deviation auto-fixed), 02.1-02 (~2 min, 0 deviations), 02.1-03 (~3 min, 0 deviations)
-- Trend: Waves 2 and 3 landed clean on first build-pass with no deviations — plans specified files at full-file precision; `head-extra` slot fallback pre-documented in Plan 03 Task 2 was not needed (Astro silently drops orphan named-slot children, as hoped).
+- Last 5 plans: 02.1-01 (~5 min, 1 deviation auto-fixed), 02.1-02 (~2 min, 0 deviations), 02.1-03 (~3 min, 0 deviations), 02.1-04 (~3 min, 1 Rule 2 deviation auto-fixed — Starlight head injection for /docs/* alternate rel)
+- Trend: Plans consistently land in 2-5 min with at most one deviation. Plan 04's deviation was a plan-level gap (Base.astro does not reach Starlight /docs/* routes) that the task-level acceptance spec caught and Rule 2 handled automatically — exactly the intended safety net.
 
 *Updated after each plan completion*
 
@@ -60,6 +60,9 @@ Recent decisions affecting current work:
 - 02.1-03: Canonical URLs and og:image use `new URL(path, Astro.site)` — never `Astro.url.pathname`. Preview hosts therefore emit production-canonical URLs in both canonical tags and the RSS feed. `new URL()` also throws at build time on malformed `og_image` values (T-02.1-10 mitigation).
 - 02.1-03: RSS body HTML via `marked.parse(post.body)` (not Astro container API) to reuse the existing `releases.astro` pipeline. `marked` is not sanitising — accepted risk per threat model T-02.1-12 for a single-committer repo; revisit with `sanitize-html`/`DOMPurify` only if the project opens to external contributors.
 - 02.1-03: URL slug is `post.id` directly (no filename-to-slug stripping in v1). The v1 schema explicitly lacks a `slug` field, so the date-prefixed filename flows through to the URL. Deferred: add schema `slug` field or strip-regex if the first real post's URL feels date-heavy.
+- 02.1-04: Base.astro head tags do NOT reach Starlight's /docs/* routes — Starlight uses its own page shell. Any site-wide head tag (starting with Plan 04's `<link rel="alternate">`) must be mirrored in `starlight({ head: [{tag, attrs}] })` in `astro.config.mjs`. Today's one tag doesn't justify a shared head-config module; revisit in Phase 3 if SEO work produces more than one such tag.
+- 02.1-04: Landing-page A/B toggles ride a literal `const <flag> = true` at the top of the page frontmatter, not an env var or config file. Discoverable, editable without JS knowledge, and compile-time dead-code-eliminates the band when false. Pattern: `const showLatestWriting = true;` → `{flag && <section>…}`.
+- 02.1-04: When counting HTML occurrences in minified Astro output, use `grep -oE 'pattern' file | wc -l` NOT `grep -c`. Multiple anchors can sit on one line; `grep -c` reports lines, not occurrences. Flagged for Plan 05's verification scripts.
 
 ### Roadmap Evolution
 
@@ -93,5 +96,5 @@ Items acknowledged and carried forward from initialization:
 ## Session Continuity
 
 Last session: 2026-04-21
-Stopped at: Plan 02.1-03 complete (Wave 3: /posts/ index page, /posts/[...slug] dynamic route with per-post SEO, /posts/rss.xml feed endpoint); Wave 4 ready to execute
-Resume file: `.planning/phases/2.1-blog/02.1-04-PLAN.md` (Wave 4: Nav Blog link, Footer RSS link, Base.astro head-extra slot + <link rel="alternate">, landing-page "Latest writing" band)
+Stopped at: Plan 02.1-04 complete (Wave 4: Nav Blog link, Footer RSS link, Base.astro <link rel="alternate"> + head-extra slot, Starlight head injection for /docs/*, landing-page showLatestWriting-gated "Latest writing" band); Wave 5 ready to execute
+Resume file: `.planning/phases/2.1-blog/02.1-05-PLAN.md` (Wave 5: CF Pages preview-deploy verification checkpoint — manual; validates Expressive Code / Starlight coexistence on a real preview host before merging to production)
