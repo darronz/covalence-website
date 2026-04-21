@@ -18,13 +18,16 @@ Visible at https://covalence.app/docs/getting-started/ under the "Connect Your A
 
 ## Solution
 
-Replace the ChatGPT `<TabItem>` body with accurate setup guidance:
+**Direction (decided 2026-04-21):** Add an explanatory note, not setup steps. ChatGPT supports MCP via **remote** connectors; Covalence currently ships as a **local** macOS binary, so ChatGPT is not compatible today. Planned network/remote MCP functionality in Covalence will make ChatGPT work — the note should be forward-looking, not dismissive.
 
-1. Confirm the current ChatGPT MCP connector story against https://developers.openai.com/api/docs/mcp (which surfaces: developer-mode MCP connectors in ChatGPT, remote MCP server support, auth requirements). Note the gap: Covalence is a **local** MCP server (`/Applications/Covalence.app/Contents/MacOS/cov-mcp`), and ChatGPT's connector model typically expects a remote/HTTPS endpoint.
-2. Decide the accurate framing — one of:
-   - **If a local transport is viable:** document the exact ChatGPT configuration steps alongside the Claude Desktop / Cursor / OpenCode tabs.
-   - **If only remote MCP is supported today:** say so explicitly ("ChatGPT supports MCP via remote connectors; Covalence currently ships as a local binary, so ChatGPT is not yet a supported client — [link to roadmap/issue]") rather than the current blanket "does not support MCP" claim.
-3. Update the tab content accordingly and keep the tone consistent with the other client tabs (concise, command-first).
-4. Verify with `npm run build` + `astro preview` that the tab still renders and the link lands correctly.
+Steps:
+
+1. Replace the ChatGPT `<TabItem>` body (`src/content/docs/docs/getting-started.md:62-64`) with a short, accurate note. Suggested shape:
+   - One sentence: ChatGPT supports MCP via remote connectors (link to https://developers.openai.com/api/docs/mcp).
+   - One sentence: Covalence currently ships as a local macOS binary, so it isn't yet reachable by ChatGPT's connector model.
+   - One sentence: Remote/network transport is on the Covalence roadmap — ChatGPT support will land with that.
+2. Before writing the copy, re-read https://developers.openai.com/api/docs/mcp to confirm the remote-only framing is still accurate at time of fix (OpenAI's MCP surface is moving; avoid re-introducing a stale claim).
+3. Keep the tone consistent with the other client tabs (concise, matter-of-fact).
+4. Verify with `npm run build` + `astro preview` that the tab still renders and the external link resolves.
 
 Route through `/gsd-quick` since this is a scoped doc correction.
