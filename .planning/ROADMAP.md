@@ -70,7 +70,7 @@ Notes:
 **Plans**: 5 plans
 
 Plans:
-- [ ] 02.1-01-PLAN.md — Foundations: install astro-expressive-code + @astrojs/rss, wire Expressive Code before Starlight, register posts content collection, create src/content/posts/ directory
+- [x] 02.1-01-PLAN.md — Foundations: install astro-expressive-code + @astrojs/rss, wire Expressive Code before Starlight, register posts content collection, create src/content/posts/ directory
 - [ ] 02.1-02-PLAN.md — Components + prose CSS: PostList.astro, PostLayout.astro, src/styles/posts.css
 - [ ] 02.1-03-PLAN.md — Routes: /posts/ index page, /posts/[...slug]/ dynamic route with per-post SEO, /posts/rss.xml feed endpoint
 - [ ] 02.1-04-PLAN.md — Site integration: Nav Blog link (desktop + drawer), Footer RSS link, Base.astro <link rel="alternate"> + head-extra slot, landing-page "Latest writing" band
@@ -129,7 +129,7 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Repo Hygiene & CI Gating | 2/2   | Complete    | 2026-04-18 |
 | 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
-| 2.1 Blog (INSERTED) | 0/5 | Planned | - |
+| 2.1 Blog (INSERTED) | 1/5 | In progress | - |
 | 3. Content Depth & SEO | 0/TBD | Not started | - |
 | 4. Accessibility Pass | 0/TBD | Not started | - |
 
