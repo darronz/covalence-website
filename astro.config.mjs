@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import expressiveCode from 'astro-expressive-code';
 
 export default defineConfig({
   site: 'https://covalence.app',
@@ -9,7 +8,6 @@ export default defineConfig({
     assets: '_assets',
   },
   integrations: [
-    expressiveCode({ themes: ['night-owl', 'night-owl-light'] }),
     starlight({
       title: 'Covalence',
       description: 'Persistent memory for any AI client — local, private, zero configuration.',
