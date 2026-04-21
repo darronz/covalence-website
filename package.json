@@ -12,8 +12,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.18",
     "@astrojs/starlight": "^0.38.3",
     "astro": "^6.1.6",
+    "astro-expressive-code": "^0.41.7",
     "marked": "^18.0.2"
   },
   "devDependencies": {
