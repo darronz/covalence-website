@@ -6,15 +6,114 @@
       </svg>
       <span>Covalence</span>
     </a>
-    <div class="nav-links">
+
+    <div class="nav-links" data-nav-desktop>
       <a href="/#how-it-works">How It Works</a>
       <a href="/#features">Features</a>
       <a href="/releases/">Releases</a>
       <a href="/docs/">Docs</a>
+    </div>
+
+    <div class="nav-actions">
       <a href="https://covalence.app/releases/Covalence-latest.dmg" class="btn btn-primary btn-sm">Download</a>
+      <button
+        type="button"
+        class="nav-menu-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-nav-toggle
+      >
+        <svg class="nav-menu-icon nav-menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="nav-menu-icon nav-menu-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-drawer" id="mobile-menu" hidden>
+    <div class="container">
+      <ul class="nav-drawer-links">
+        <li><a href="/#how-it-works">How It Works</a></li>
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/releases/">Releases</a></li>
+        <li><a href="/docs/">Docs</a></li>
+      </ul>
     </div>
   </div>
 </nav>
+
+<script is:inline>
+  (function () {
+    var toggle = document.querySelector('[data-nav-toggle]');
+    var drawer = document.getElementById('mobile-menu');
+    if (!toggle || !drawer) return;
+
+    var closeTimer;
+
+    function openMenu() {
+      clearTimeout(closeTimer);
+      drawer.hidden = false;
+      // One frame gap so the transition actually fires.
+      requestAnimationFrame(function () {
+        drawer.classList.add('nav-drawer-open');
+      });
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+      toggle.classList.add('is-open');
+      document.addEventListener('keydown', onKeydown);
+      document.addEventListener('click', onOutsideClick, true);
+    }
+
+    function closeMenu() {
+      drawer.classList.remove('nav-drawer-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      toggle.classList.remove('is-open');
+      document.removeEventListener('keydown', onKeydown);
+      document.removeEventListener('click', onOutsideClick, true);
+      // Match CSS transition duration (180ms) before hiding from AT / layout.
+      closeTimer = setTimeout(function () {
+        if (toggle.getAttribute('aria-expanded') === 'false') {
+          drawer.hidden = true;
+        }
+      }, 200);
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') closeMenu();
+    }
+
+    function onOutsideClick(e) {
+      if (!drawer.contains(e.target) && !toggle.contains(e.target)) {
+        closeMenu();
+      }
+    }
+
+    toggle.addEventListener('click', function () {
+      if (toggle.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    drawer.addEventListener('click', function (e) {
+      if (e.target && e.target.tagName === 'A') closeMenu();
+    });
+
+    // Close if the viewport grows back to desktop so we don't leave a
+    // stranded drawer visible next to the now-visible desktop links.
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 900 && toggle.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      }
+    });
+  })();
+</script>
 
 <style>
   .nav {
@@ -23,7 +122,6 @@
     left: 0;
     right: 0;
     z-index: 100;
-    height: var(--nav-height);
     background-color: rgba(8, 6, 13, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -34,7 +132,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
+    gap: var(--space-md);
+    height: var(--nav-height);
   }
 
   .nav-logo {
@@ -44,15 +143,10 @@
     color: var(--text-primary);
     font-weight: 600;
     font-size: 1.125rem;
+    flex-shrink: 0;
   }
-
-  .nav-logo:hover {
-    color: var(--text-primary);
-  }
-
-  .nav-logo-icon {
-    color: var(--accent);
-  }
+  .nav-logo:hover { color: var(--text-primary); }
+  .nav-logo-icon { color: var(--accent); }
 
   .nav-links {
     display: flex;
@@ -65,13 +159,17 @@
     font-size: 0.875rem;
     font-weight: 500;
   }
+  .nav-links a:hover { color: var(--text-primary); }
 
-  .nav-links a:hover {
-    color: var(--text-primary);
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-shrink: 0;
   }
 
-  .nav-links a.btn-primary,
-  .nav-links a.btn-primary:hover {
+  .nav-actions a.btn-primary,
+  .nav-actions a.btn-primary:hover {
     color: #1a0e00;
     font-weight: 600;
   }
@@ -81,9 +179,67 @@
     font-size: 0.875rem;
   }
 
-  @media (max-width: 640px) {
-    .nav-links a:not(.btn) {
-      display: none;
-    }
+  /* Hamburger button — hidden on desktop, visible once links collapse. */
+  .nav-menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    padding: 6px 8px;
+    cursor: pointer;
+    transition: border-color 120ms ease;
+  }
+  .nav-menu-toggle:hover { border-color: var(--accent-subtle); }
+
+  /* Show either the hamburger OR the close-X based on open state. */
+  .nav-menu-icon-close { display: none; }
+  .nav-menu-toggle.is-open .nav-menu-icon-open { display: none; }
+  .nav-menu-toggle.is-open .nav-menu-icon-close { display: block; }
+
+  /* Drawer — mounts below the nav row when open. */
+  .nav-drawer {
+    border-top: 1px solid var(--border);
+    background-color: rgba(8, 6, 13, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 180ms ease, transform 180ms ease;
+    overflow: hidden;
+  }
+  .nav-drawer.nav-drawer-open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-drawer-links {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-sm) 0 var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .nav-drawer-links a {
+    display: block;
+    padding: 14px 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-drawer-links li:last-child a { border-bottom: 0; }
+  .nav-drawer-links a:hover { color: var(--accent); }
+
+  /* Collapse text links + reveal hamburger below 900px. */
+  @media (max-width: 899px) {
+    .nav-links { display: none; }
+    .nav-menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  }
+
+  /* Very narrow: drop the Download text in favour of a shorter label to
+     keep the header from cramping. */
+  @media (max-width: 380px) {
+    .nav-actions .btn-sm { padding: 0.5rem 0.75rem; }
   }
 </style>
