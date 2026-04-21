@@ -14,6 +14,17 @@ export default defineConfig({
       title: 'Covalence',
       description: 'Persistent memory for any AI client — local, private, zero configuration.',
       customCss: ['./src/styles/starlight.css'],
+      head: [
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'alternate',
+            type: 'application/rss+xml',
+            title: 'Covalence Blog',
+            href: '/posts/rss.xml',
+          },
+        },
+      ],
       social: [],
       sidebar: [
         { label: 'Getting Started', slug: 'docs/getting-started' },
