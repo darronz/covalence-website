@@ -73,7 +73,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-None yet.
+- [2026-04-21-fix-chatgpt-mcp-support-docs](./todos/pending/2026-04-21-fix-chatgpt-mcp-support-docs.md) — Fix incorrect ChatGPT MCP support claim in getting-started docs (`docs`)
 
 ### Blockers/Concerns
 
