@@ -75,13 +75,13 @@ Plans:
 - [x] 02.1-03-PLAN.md — Routes: /posts/ index page, /posts/[...slug]/ dynamic route with per-post SEO, /posts/rss.xml feed endpoint
 - [x] 02.1-04-PLAN.md — Site integration: Nav Blog link (desktop + drawer), Footer RSS link, Base.astro <link rel="alternate"> + head-extra slot, Starlight head injection for /docs/* alternate rel, landing-page "Latest writing" band
 - [ ] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk before merge) — BLOCKED on Surface E regression 2026-04-21, re-runs after 02.1-06 ships
-- [ ] 02.1-06-PLAN.md — Gap closure: diagnose /docs/* code-block regression against 5 hypotheses (H1-H5), apply minimal astro.config.mjs fix, re-verify via npm run build + CF Pages preview rebuild
+- [x] 02.1-06-PLAN.md — Gap closure: diagnose /docs/* code-block regression against 5 hypotheses (H1-H5), apply minimal astro.config.mjs fix, re-verify via npm run build + CF Pages preview rebuild _(H5 CONFIRMED — standalone EC silently replaced Starlight's bundled EC; remediation: remove standalone, Starlight's bundled EC now owns /docs/* and /posts/*; branch pushed `0c3cc0d..4d258b0`)_
 
 Notes:
 - Inserted between Phase 2 and Phase 3 so Phase 3's SEO work (sitemap, canonical, OG) covers `/posts/*` from day one rather than requiring a later reopening of SEO scope.
 - Design already agreed via brainstorming session (2026-04-21) — captured in `.planning/phases/2.1-blog/BRIEF.md`.
 - Architecture: custom Astro content collection at `src/content/posts/`, bespoke `.astro` routes at `/posts/` and `/posts/[...slug]/`, not a Starlight section.
-- Expressive Code installed as a standalone integration (`astro-expressive-code`); Starlight auto-defers to it so both `/docs/*` and `/posts/*` share one config.
+- Expressive Code: Starlight's bundled EC pipeline owns both `/docs/*` and `/posts/*` in a single config. The standalone `astro-expressive-code` integration was tried in Waves 1-5 but had to be removed in Wave 6 (commit `4d258b0`) because it silently replaced Starlight's EC with an incompatible theme selector set; Starlight's bundled EC now drives both surfaces with its native `starlight-dark`/`starlight-light` aliases (internally mapped to Night-Owl variants).
 - YAGNI list locked for v1: no tags, no pagination, no reading time, no draft flag, no per-post generated OG images, no MDX, no author pages, no in-post search, no related-posts.
 - First real post is an explainer of the Project Context Sync feature (v1.3 milestone in the app repo) — informs what the prose styling actually needs to handle.
 **UI hint**: yes
@@ -130,7 +130,7 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Repo Hygiene & CI Gating | 2/2   | Complete    | 2026-04-18 |
 | 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
-| 2.1 Blog (INSERTED) | 3/5 | In progress | - |
+| 2.1 Blog (INSERTED) | 5/6 | In progress (Wave 5 awaiting browser re-verify on refreshed CF preview) | - |
 | 3. Content Depth & SEO | 0/TBD | Not started | - |
 | 4. Accessibility Pass | 0/TBD | Not started | - |
 

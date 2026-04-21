@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — gap-closure plan drafted, ready to execute
-Plan: 4/6 (Waves 1–4 landed; Wave 5 blocked on Surface E; Wave 6 gap-closure plan drafted + verified)
-Status: Gap-closure plan 02.1-06-PLAN.md written and verified on iteration 2 (first pass hit 1 warning + 3 info items; surgical revision fixed all 4). Plan frontmatter `gap_closure: true` so `/gsd-execute-phase 2.1 --gaps-only` will pick it up. Three tasks: Task 1 diagnoses H1–H5 against `astro.config.mjs` with guardrail that no file changes persist; Task 2 applies the minimal fix keyed to Task 1's verdict (6 remediation options matching the 5 hypotheses); Task 3 verifies via `npm run build` + dist grep + branch push for CF Pages rebuild. Wave 4 RSS alternate-rel invariants explicitly protected; Wave 1 night-owl theme decision preserved.
-Last activity: 2026-04-21 — Plan 02.1-06 verified passed on iteration 2. Route: `/gsd-execute-phase 2.1 --gaps-only`.
+Phase: 2.1 of 4+ (Blog, INSERTED) — Wave 6 gap-closure executed; awaiting Wave 5 checkpoint re-run on refreshed CF Pages preview
+Plan: 5/6 (Waves 1–4 landed; Wave 6 gap-closure landed on `gsd/phase-2.1-blog@4d258b0`; Wave 5 still blocked pending browser-level re-verification)
+Status: Gap-closure plan 02.1-06 executed cleanly. H5 confirmed via Task 1 diagnostic matrix (H2/H5 tested in place, each fully reverted between experiments): the standalone `astro-expressive-code` integration silently replaced Starlight's bundled EC; the emitted CSS shipped `[data-theme='night-owl'/'night-owl-light']` selectors that never matched Starlight's actual `<html data-theme="dark">` attribute — producing correct EC markup with zero syntax colouring (exactly the Wave 5 blocker's signature). Remediation: Option H5-A — standalone integration removed from `astro.config.mjs`, Starlight's bundled EC now owns both `/docs/*` and `/posts/*`. EC CSS hash flipped y57yt→v4551 and theme selectors now read `[data-theme='dark'/'light']` matching the HTML. All Wave 4 invariants preserved (RSS alternate rel count=1 on `/docs/getting-started/` and `/posts/index.html`; `posts/rss.xml` well-formed; marketing chrome on `/posts/`). Throwaway-post test confirmed `/posts/*` code fences render with EC chrome via Starlight's bundled pipeline (3 EC markup occurrences on a 2-line JS fence). Branch pushed to origin (`0c3cc0d..4d258b0`) so CF Pages will auto-rebuild the preview.
+Last activity: 2026-04-21 — Plan 02.1-06 complete. Route: `/gsd-execute-phase 2.1 --gaps-only` then re-run Wave 5 checkpoint in a browser against the refreshed preview.
 
-Progress: [████████░░] 72% (2 phases + 4 of 5 blog plans shipped)
+Progress: [█████████░] 83% (2 phases + 5 of 6 blog plans shipped)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: ~3.25 min (Phase 2.1 Plans 01 + 02 + 03 + 04 measured)
-- Total execution time: ~13 min (Plans 02.1-01 + 02.1-02 + 02.1-03 + 02.1-04; Phase 1 / Phase 2 durations not captured)
+- Total plans completed: 7
+- Average duration: ~4.6 min (Phase 2.1 Plans 01 + 02 + 03 + 04 + 06 measured)
+- Total execution time: ~23 min (Plans 02.1-01 + 02.1-02 + 02.1-03 + 02.1-04 + 02.1-06; Phase 1 / Phase 2 durations not captured)
 
 **By Phase:**
 
@@ -29,13 +29,13 @@ Progress: [████████░░] 72% (2 phases + 4 of 5 blog plans shi
 |-------|-------|-------|----------|
 | 1. Repo Hygiene & CI Gating | 2/2 | — | — |
 | 2. Releases Page | shipped outside GSD | — | — |
-| 2.1 Blog (INSERTED) | 4/6 | ~13 min | ~3.25 min |
+| 2.1 Blog (INSERTED) | 5/6 | ~23 min | ~4.6 min |
 | 3. Content Depth & SEO | 0/TBD | — | — |
 | 4. Accessibility Pass | 0/TBD | — | — |
 
 **Recent Trend:**
-- Last 5 plans: 02.1-01 (~5 min, 1 deviation auto-fixed), 02.1-02 (~2 min, 0 deviations), 02.1-03 (~3 min, 0 deviations), 02.1-04 (~3 min, 1 Rule 2 deviation auto-fixed — Starlight head injection for /docs/* alternate rel)
-- Trend: Plans consistently land in 2-5 min with at most one deviation. Plan 04's deviation was a plan-level gap (Base.astro does not reach Starlight /docs/* routes) that the task-level acceptance spec caught and Rule 2 handled automatically — exactly the intended safety net.
+- Last 5 plans: 02.1-01 (~5 min, 1 deviation auto-fixed), 02.1-02 (~2 min, 0 deviations), 02.1-03 (~3 min, 0 deviations), 02.1-04 (~3 min, 1 Rule 2 deviation auto-fixed — Starlight head injection for /docs/* alternate rel), 02.1-06 (~10 min gap-closure, 0 deviations — H5 confirmed, Wave 1 decision reversed)
+- Trend: Plans consistently land in 2-5 min with at most one deviation. Plan 04's deviation was a plan-level gap (Base.astro does not reach Starlight /docs/* routes) that the task-level acceptance spec caught and Rule 2 handled automatically — exactly the intended safety net. Plan 06 was longer-than-average (~10 min) because Task 1's disciplined H1-H5 experiment-revert cycle + the throwaway-post test cost minutes but prevented a blanket revert of Wave 4 / Wave 1 work.
 
 *Updated after each plan completion*
 
@@ -63,6 +63,9 @@ Recent decisions affecting current work:
 - 02.1-04: Base.astro head tags do NOT reach Starlight's /docs/* routes — Starlight uses its own page shell. Any site-wide head tag (starting with Plan 04's `<link rel="alternate">`) must be mirrored in `starlight({ head: [{tag, attrs}] })` in `astro.config.mjs`. Today's one tag doesn't justify a shared head-config module; revisit in Phase 3 if SEO work produces more than one such tag.
 - 02.1-04: Landing-page A/B toggles ride a literal `const <flag> = true` at the top of the page frontmatter, not an env var or config file. Discoverable, editable without JS knowledge, and compile-time dead-code-eliminates the band when false. Pattern: `const showLatestWriting = true;` → `{flag && <section>…}`.
 - 02.1-04: When counting HTML occurrences in minified Astro output, use `grep -oE 'pattern' file | wc -l` NOT `grep -c`. Multiple anchors can sit on one line; `grep -c` reports lines, not occurrences. Flagged for Plan 05's verification scripts.
+- 02.1-06: **REVERSAL of 02.1-01 pattern** — Standalone `astro-expressive-code` does NOT coexist with Starlight's bundled EC; it silently REPLACES Starlight's EC configuration. A single user-level `astroExpressiveCode()` registration wins, and Starlight's `customConfigPreprocessors` never take effect. With the standalone removed, Starlight's bundled EC owns both `/docs/*` and `/posts/*`. The standalone integration is REMOVED from `astro.config.mjs` in Wave 6.
+- 02.1-06: EC-styling smoke tests must check generated `dist/_assets/ec.<hash>.css` theme selectors match the HTML's `data-theme` attribute — not just grep for `class="expressive-code"` markup. The markup-only check was present from Plan 01 onward and was insufficient because it couldn't distinguish "pipeline ran" from "pipeline ran with the wrong theme aliases". This is now the required smoke-check for any future EC config change.
+- 02.1-06: Wave 1 decision `themes: ['night-owl', 'night-owl-light']` reversed with the standalone integration's removal. Starlight's native starlight-dark/starlight-light aliases now drive both surfaces (internally mapping to Night Owl variants) — delivering the BRIEF's original "visually match /docs/*" acceptance criterion.
 
 ### Roadmap Evolution
 
@@ -74,7 +77,7 @@ None yet.
 
 ### Blockers/Concerns
 
-- **ACTIVE (2026-04-21): Phase 2.1 Surface E regression.** `/docs/*` code blocks render as plain monospace (no syntax colouring) on CF Pages preview of `gsd/phase-2.1-blog`, despite local `npm run build` producing `expressive-code`/`ec-line` markup on the same content. BRIEF.md line 102's collision risk materialised — starting hypotheses logged in `02.1-05-SUMMARY.md`. Main NOT pushed; production unaffected. Next: `/gsd-plan-phase 2.1 --gaps`.
+- **CODE FIX LANDED (2026-04-21): Phase 2.1 Surface E regression.** H5 confirmed by Wave 6 diagnostic: the standalone `astro-expressive-code` integration silently replaced Starlight's bundled EC, producing correct EC markup but CSS theme selectors that never matched Starlight's `data-theme="dark"` HTML attribute. Fix landed on `gsd/phase-2.1-blog@4d258b0` — standalone integration removed; Starlight's bundled EC now drives both surfaces with matching theme selectors. Local `npm run build` + all grep invariants green; branch pushed to origin for CF Pages auto-rebuild. **REMAINING STEP:** browser-level re-verification of the refreshed preview by re-running the 02.1-05 checkpoint.
 - Site is live in production on `covalence.app` — any phase that touches routing, metadata, or the DMG download path must be verified against a Cloudflare Pages preview deploy before merging to `main`.
 - Required-status-check configuration for CI-02 is a manual GitHub UI step (branch protection rules). Plan 1 should document this explicitly so it doesn't get skipped.
 - Starlight is pre-1.0 (`^0.38.3`) and Astro is `^6.1.6` — CI gate from Phase 1 is the containment strategy for surprise breakage in those deps.
@@ -97,5 +100,5 @@ Items acknowledged and carried forward from initialization:
 ## Session Continuity
 
 Last session: 2026-04-21
-Stopped at: Plan 02.1-04 complete (Wave 4: Nav Blog link, Footer RSS link, Base.astro <link rel="alternate"> + head-extra slot, Starlight head injection for /docs/*, landing-page showLatestWriting-gated "Latest writing" band); Wave 5 ready to execute
-Resume file: `.planning/phases/2.1-blog/02.1-05-PLAN.md` (Wave 5: CF Pages preview-deploy verification checkpoint — manual; validates Expressive Code / Starlight coexistence on a real preview host before merging to production)
+Stopped at: Plan 02.1-06 complete (Wave 6 gap-closure: H5 confirmed — standalone `astro-expressive-code` replaced Starlight's bundled EC; fix removes the standalone integration from `astro.config.mjs`. `4d258b0` pushed to `origin/gsd/phase-2.1-blog`). Wave 5 checkpoint ready to re-run on the refreshed CF Pages preview.
+Resume file: `.planning/phases/2.1-blog/02.1-05-PLAN.md` (Wave 5 re-run: browser-level verification of the CF Pages preview on `gsd/phase-2.1-blog@4d258b0` — confirm `/docs/getting-started/` code blocks now render with visible Night-Owl syntax colouring, and re-walk the 7-surface checklist)
