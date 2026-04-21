@@ -11,7 +11,8 @@ This milestone takes the Covalence website from "recently split out of the app m
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
 - [x] **Phase 1: Repo Hygiene & CI Gating** - Make the repo self-explanatory and put `astro build` in front of every PR merge to `main`
-- [ ] **Phase 2: Releases Page** - Ship `/releases` reading `releases.json` at build time (implements upstream DOC-09)
+- [x] **Phase 2: Releases Page** - Ship `/releases` reading `releases.json` at build time (implements upstream DOC-09) — shipped outside GSD flow in `d2496eb` (PR #5)
+- [ ] **Phase 2.1: Blog** (INSERTED) - Ship `/posts/` content collection with Expressive-Code-styled code blocks, RSS, and a "Latest writing" band on the landing page
 - [ ] **Phase 3: Content Depth & SEO** - Expand the "Under the hood" section and close SEO / social-sharing metadata gaps
 - [ ] **Phase 4: Accessibility Pass** - Custom components meet WCAG AA and pass an automated a11y scan
 
@@ -56,6 +57,26 @@ Notes:
 - Seed data is already live (`76d273e`), so there is no upstream blocker.
 **UI hint**: yes
 
+### Phase 2.1: Blog (INSERTED)
+**Goal**: Visitors can read long-form writing from Covalence at `/posts/` — styled consistently with the marketing site, with Starlight-grade code blocks via Expressive Code, an RSS feed, and the two most recent posts surfaced on the landing page.
+**Depends on**: Phase 2 (Releases pattern established; SEO work in Phase 3 then covers `/posts/*` at the same time as `/releases`)
+**Requirements**: — (urgent insertion; scope captured in phase `BRIEF.md`, requirements formalised during spec/plan)
+**Success Criteria** (what must be TRUE):
+  1. Visiting `https://covalence.app/posts/` renders a reverse-chronological list of published posts (title, date, description, link) using marketing-site typography — not Starlight docs chrome.
+  2. Visiting `https://covalence.app/posts/<slug>/` renders the post body with Expressive-Code-styled code blocks (syntax highlighting, copy button, frames) that visually match `/docs/*` code blocks.
+  3. The primary nav includes a "Blog" link pointing at `/posts/` on both desktop and mobile drawer; the footer includes a small RSS link.
+  4. `https://covalence.app/posts/rss.xml` returns a valid RSS 2.0 feed containing every published post with full rendered HTML in `<content:encoded>`, and `Base.astro` advertises the feed via `<link rel="alternate" type="application/rss+xml">` on every page.
+  5. The landing page shows a "Latest writing" band between the Architecture and Footer sections with the two most recent posts, or renders nothing if the collection is empty — no "coming soon" placeholder.
+
+Notes:
+- Inserted between Phase 2 and Phase 3 so Phase 3's SEO work (sitemap, canonical, OG) covers `/posts/*` from day one rather than requiring a later reopening of SEO scope.
+- Design already agreed via brainstorming session (2026-04-21) — captured in `.planning/phases/2.1-blog/BRIEF.md`.
+- Architecture: custom Astro content collection at `src/content/posts/`, bespoke `.astro` routes at `/posts/` and `/posts/[...slug]/`, not a Starlight section.
+- Expressive Code installed as a standalone integration (`astro-expressive-code`); Starlight auto-defers to it so both `/docs/*` and `/posts/*` share one config.
+- YAGNI list locked for v1: no tags, no pagination, no reading time, no draft flag, no per-post generated OG images, no MDX, no author pages, no in-post search, no related-posts.
+- First real post is an explainer of the Project Context Sync feature (v1.3 milestone in the app repo) — informs what the prose styling actually needs to handle.
+**UI hint**: yes
+
 ### Phase 3: Content Depth & SEO
 **Goal**: A technical reader can evaluate Covalence's retrieval stack without leaving the site, and every public page is cleanly indexable and shareable on social.
 **Depends on**: Phase 2 (so `/releases` is included in sitemap and has canonical/OG metadata from the start)
@@ -94,12 +115,13 @@ Notes:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4
+Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Repo Hygiene & CI Gating | 2/2   | Complete    | 2026-04-18 |
-| 2. Releases Page | 0/TBD | Not started | - |
+| 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
+| 2.1 Blog (INSERTED) | 0/TBD | Not planned | - |
 | 3. Content Depth & SEO | 0/TBD | Not started | - |
 | 4. Accessibility Pass | 0/TBD | Not started | - |
 

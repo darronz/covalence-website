@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-04-18)
 
 **Core value:** When a new Covalence release is tagged in the app repo, this site rebuilds itself with the correct version, download, and release notes — with zero manual intervention — and visitors land on a page that explains what Covalence is clearly enough to decide whether to install it.
-**Current focus:** Phase 2 — Releases Page (Phase 1 complete)
+**Current focus:** Phase 2.1 — Blog (Phase 2 Releases Page shipped outside GSD flow)
 
 ## Current Position
 
-Phase: 2 of 4 (Releases Page) — next up
-Plan: 2 of 2 complete in Phase 1
-Status: Phase 1 complete (awaiting verifier)
-Last activity: 2026-04-19 — Completed quick task 260419-wks: Fix broken homepage anchor links in primary nav
+Phase: 2.1 of 4+ (Blog, INSERTED) — next up
+Plan: 0 (phase inserted 2026-04-21, not yet planned)
+Status: Phase 2 shipped outside GSD in `d2496eb` (PR #5) — needs retroactive audit/cleanup before Phase 3
+Last activity: 2026-04-21 — Phase 2.1 inserted with design already agreed (`.planning/phases/2.1-blog/BRIEF.md`)
 
-Progress: [██░░░░░░░░] 25%
+Progress: [████░░░░░░] 40% (2 of ~5 effective phases shipped)
 
 ## Performance Metrics
 
@@ -49,6 +49,10 @@ Recent decisions affecting current work:
 - Init: Coarse granularity (4 phases for 17 requirements)
 - Init: No tests in v1 — acceptance is "build passes on CI + manual verification"
 - Init: `repository_dispatch` payload shape is locked (cross-repo contract with app repo)
+
+### Roadmap Evolution
+
+- Phase 2.1 inserted after Phase 2: Blog — `/posts/` content collection, Expressive-Code-styled code blocks, RSS, "Latest writing" band on landing page (URGENT) — 2026-04-21
 
 ### Pending Todos
 
