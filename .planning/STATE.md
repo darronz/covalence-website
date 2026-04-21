@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 ## Current Position
 
 Phase: 2.1 of 4+ (Blog, INSERTED) — executing
-Plan: 2/5 (Wave 2 complete; Wave 3 next)
-Status: Wave 2 (components + prose CSS) landed on main — PostList + PostLayout components + hand-authored posts.css (scoped .prose), build green. Sequential executor mode.
-Last activity: 2026-04-21 — Plan 02.1-02 complete (3 commits on main: 4f52ee1 → b0094e4 → 4f3e889)
+Plan: 3/5 (Wave 3 complete; Wave 4 next)
+Status: Wave 3 (routes + feed) landed on main — /posts/ index page, /posts/[...slug]/ dynamic route with per-post SEO head tags (via forward-reference Fragment slot="head-extra"), /posts/rss.xml feed endpoint with full-body HTML in <content:encoded>; build green, /docs/* Expressive Code intact. Sequential executor mode.
+Last activity: 2026-04-21 — Plan 02.1-03 complete (3 commits on main: e770e99 → 2c38cdf → 40f881e)
 
-Progress: [██████░░░░] 56% (2 phases + 2 of 5 blog plans shipped)
+Progress: [███████░░░] 62% (2 phases + 3 of 5 blog plans shipped)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: ~3.5 min (Phase 2.1 Plans 01 + 02 measured)
-- Total execution time: ~7 min (Plans 02.1-01 + 02.1-02; Phase 1 / Phase 2 durations not captured)
+- Total plans completed: 5
+- Average duration: ~3.3 min (Phase 2.1 Plans 01 + 02 + 03 measured)
+- Total execution time: ~10 min (Plans 02.1-01 + 02.1-02 + 02.1-03; Phase 1 / Phase 2 durations not captured)
 
 **By Phase:**
 
@@ -29,13 +29,13 @@ Progress: [██████░░░░] 56% (2 phases + 2 of 5 blog plans shi
 |-------|-------|-------|----------|
 | 1. Repo Hygiene & CI Gating | 2/2 | — | — |
 | 2. Releases Page | shipped outside GSD | — | — |
-| 2.1 Blog (INSERTED) | 2/5 | ~7 min | ~3.5 min |
+| 2.1 Blog (INSERTED) | 3/5 | ~10 min | ~3.3 min |
 | 3. Content Depth & SEO | 0/TBD | — | — |
 | 4. Accessibility Pass | 0/TBD | — | — |
 
 **Recent Trend:**
-- Last 5 plans: 02.1-01 (~5 min, 1 deviation auto-fixed), 02.1-02 (~2 min, 0 deviations)
-- Trend: Wave 2 landed clean on first build-pass with no deviations — plan specified the three files at full-file precision
+- Last 5 plans: 02.1-01 (~5 min, 1 deviation auto-fixed), 02.1-02 (~2 min, 0 deviations), 02.1-03 (~3 min, 0 deviations)
+- Trend: Waves 2 and 3 landed clean on first build-pass with no deviations — plans specified files at full-file precision; `head-extra` slot fallback pre-documented in Plan 03 Task 2 was not needed (Astro silently drops orphan named-slot children, as hoped).
 
 *Updated after each plan completion*
 
@@ -56,6 +56,10 @@ Recent decisions affecting current work:
 - 02.1-02: PostLayout owns only a `<main class="post-page">` region — no Base/Nav/Footer import. Plan 03's [...slug].astro wraps it inside the full Base/Nav/Footer shell, leaving SEO-meta emission at the route level.
 - 02.1-02: posts.css is imported by PostLayout.astro (exclusively), scoping 120 lines of prose CSS to /posts/* only — marketing landing and /docs/* pay no CSS cost for it.
 - 02.1-02: British locale ('en-GB') is the blog convention for date formatting in both PostList and PostLayout. /releases/* stays on 'en' (predates the voice constraint) — treat as two separate surfaces, not an inconsistency to sweep.
+- 02.1-03: Per-post SEO head tags emitted via `<Fragment slot="head-extra">` in `[...slug].astro` even though Base.astro does not yet declare that slot (Plan 04 adds it). Astro silently drops orphan named-slot children, so the route compiles today and tags light up automatically when Plan 04 ships — no fallback needed. Empirically verified: build exits 0 with the Fragment present.
+- 02.1-03: Canonical URLs and og:image use `new URL(path, Astro.site)` — never `Astro.url.pathname`. Preview hosts therefore emit production-canonical URLs in both canonical tags and the RSS feed. `new URL()` also throws at build time on malformed `og_image` values (T-02.1-10 mitigation).
+- 02.1-03: RSS body HTML via `marked.parse(post.body)` (not Astro container API) to reuse the existing `releases.astro` pipeline. `marked` is not sanitising — accepted risk per threat model T-02.1-12 for a single-committer repo; revisit with `sanitize-html`/`DOMPurify` only if the project opens to external contributors.
+- 02.1-03: URL slug is `post.id` directly (no filename-to-slug stripping in v1). The v1 schema explicitly lacks a `slug` field, so the date-prefixed filename flows through to the URL. Deferred: add schema `slug` field or strip-regex if the first real post's URL feels date-heavy.
 
 ### Roadmap Evolution
 
@@ -89,5 +93,5 @@ Items acknowledged and carried forward from initialization:
 ## Session Continuity
 
 Last session: 2026-04-21
-Stopped at: Plan 02.1-02 complete (Wave 2: PostList.astro, PostLayout.astro, posts.css); Wave 3 ready to execute
-Resume file: `.planning/phases/2.1-blog/02.1-03-PLAN.md` (Wave 3: /posts/ index page, /posts/[...slug] dynamic route, /posts/rss.xml feed endpoint)
+Stopped at: Plan 02.1-03 complete (Wave 3: /posts/ index page, /posts/[...slug] dynamic route with per-post SEO, /posts/rss.xml feed endpoint); Wave 4 ready to execute
+Resume file: `.planning/phases/2.1-blog/02.1-04-PLAN.md` (Wave 4: Nav Blog link, Footer RSS link, Base.astro head-extra slot + <link rel="alternate">, landing-page "Latest writing" band)
