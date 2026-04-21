@@ -9,10 +9,10 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — next up
-Plan: 0 (phase inserted 2026-04-21, not yet planned)
-Status: Phase 2 shipped outside GSD in `d2496eb` (PR #5) — needs retroactive audit/cleanup before Phase 3
-Last activity: 2026-04-21 — Phase 2.1 inserted with design already agreed (`.planning/phases/2.1-blog/BRIEF.md`)
+Phase: 2.1 of 4+ (Blog, INSERTED) — ready to execute
+Plan: 0/5 (5 plans across 5 sequential waves)
+Status: Phase 2.1 planned 2026-04-21 — 0 blockers, 4 warnings (soft/accepted tradeoffs). Ready for `/gsd-execute-phase 2.1`.
+Last activity: 2026-04-21 — Phase 2.1 planned (CONTEXT + PATTERNS + 5 PLAN.md files committed in `847a538`)
 
 Progress: [████░░░░░░] 40% (2 of ~5 effective phases shipped)
 
@@ -28,7 +28,8 @@ Progress: [████░░░░░░] 40% (2 of ~5 effective phases shipped
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Repo Hygiene & CI Gating | 2/2 | — | — |
-| 2. Releases Page | 0/TBD | — | — |
+| 2. Releases Page | shipped outside GSD | — | — |
+| 2.1 Blog (INSERTED) | 0/5 | — | — |
 | 3. Content Depth & SEO | 0/TBD | — | — |
 | 4. Accessibility Pass | 0/TBD | — | — |
 
@@ -81,6 +82,6 @@ Items acknowledged and carried forward from initialization:
 
 ## Session Continuity
 
-Last session: 2026-04-18
-Stopped at: Roadmap + STATE initialized; ready to plan Phase 1
-Resume file: None
+Last session: 2026-04-21
+Stopped at: Phase 2.1 planned — 5 plans in 5 waves; ready for `/gsd-execute-phase 2.1`
+Resume file: `.planning/phases/2.1-blog/02.1-01-PLAN.md` (Wave 1: deps + config + collection)
