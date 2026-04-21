@@ -9,7 +9,7 @@ export default defineConfig({
     assets: '_assets',
   },
   integrations: [
-    expressiveCode({ themes: ['starlight-dark', 'starlight-light'] }),
+    expressiveCode({ themes: ['night-owl', 'night-owl-light'] }),
     starlight({
       title: 'Covalence',
       description: 'Persistent memory for any AI client — local, private, zero configuration.',
