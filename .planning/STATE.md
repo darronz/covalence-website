@@ -9,10 +9,10 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — executing
-Plan: 4/5 (Wave 4 complete; Wave 5 next — CF Pages preview-deploy checkpoint)
-Status: Wave 4 (site integration) landed on main — Nav gained Blog link (desktop + drawer), Footer gained RSS link, Base.astro now emits site-wide <link rel="alternate"> AND exposes <slot name="head-extra" /> that activates Wave 3's per-post SEO metas, landing page gained the showLatestWriting-gated "Latest writing" band. One Rule 2 deviation (astro.config.mjs) added matching alternate-rel injection via Starlight's head config option so /docs/* also carries feed discovery. Build green; /docs/* Expressive Code intact. Sequential executor mode.
-Last activity: 2026-04-21 — Plan 02.1-04 complete (5 commits on main: ac8f206 → 1304dae → 72e1749 → 547b07a → 368d9a3)
+Phase: 2.1 of 4+ (Blog, INSERTED) — BLOCKED on preview verification
+Plan: 4/5 (Waves 1–4 landed on main locally; Wave 5 checkpoint returned `blocked`)
+Status: Waves 1–4 on local `main` and pushed to branch `gsd/phase-2.1-blog` for CF Pages preview (main NOT pushed — production untouched). Wave 5 reviewer walked the 7 surfaces; 6 passed (A, B, D, F, G plus N/A for C) and Surface E regressed — `/docs/*` code blocks render as plain monospace with no syntax colouring. This is exactly the standalone-Expressive-Code vs Starlight-Expressive-Code collision BRIEF.md line 102 flagged. Gap closure required before merge. See `.planning/phases/2.1-blog/02.1-05-SUMMARY.md` for the full 5-hypothesis diagnosis starting point.
+Last activity: 2026-04-21 — Wave 5 checkpoint returned `blocked: Surface E regression (/docs/* plain monospace)`. Route: `/gsd-plan-phase 2.1 --gaps`.
 
 Progress: [████████░░] 72% (2 phases + 4 of 5 blog plans shipped)
 
@@ -74,6 +74,7 @@ None yet.
 
 ### Blockers/Concerns
 
+- **ACTIVE (2026-04-21): Phase 2.1 Surface E regression.** `/docs/*` code blocks render as plain monospace (no syntax colouring) on CF Pages preview of `gsd/phase-2.1-blog`, despite local `npm run build` producing `expressive-code`/`ec-line` markup on the same content. BRIEF.md line 102's collision risk materialised — starting hypotheses logged in `02.1-05-SUMMARY.md`. Main NOT pushed; production unaffected. Next: `/gsd-plan-phase 2.1 --gaps`.
 - Site is live in production on `covalence.app` — any phase that touches routing, metadata, or the DMG download path must be verified against a Cloudflare Pages preview deploy before merging to `main`.
 - Required-status-check configuration for CI-02 is a manual GitHub UI step (branch protection rules). Plan 1 should document this explicitly so it doesn't get skipped.
 - Starlight is pre-1.0 (`^0.38.3`) and Astro is `^6.1.6` — CI gate from Phase 1 is the containment strategy for surprise breakage in those deps.
