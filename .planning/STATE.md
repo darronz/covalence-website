@@ -9,10 +9,10 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — ready to execute
-Plan: 0/5 (5 plans across 5 sequential waves)
-Status: Phase 2.1 planned 2026-04-21 — 0 blockers, 4 warnings (soft/accepted tradeoffs). Ready for `/gsd-execute-phase 2.1`.
-Last activity: 2026-04-21 — Phase 2.1 planned (CONTEXT + PATTERNS + 5 PLAN.md files committed in `847a538`)
+Phase: 2.1 of 4+ (Blog, INSERTED) — executing
+Plan: 0/5 (Wave 1 starting — 5 sequential waves)
+Status: Phase 2.1 execution started 2026-04-21. Sequential executor mode (one plan per wave).
+Last activity: 2026-04-21 — Phase 2.1 execution started via `/gsd-execute-phase 2.1`
 
 Progress: [████░░░░░░] 40% (2 of ~5 effective phases shipped)
 
