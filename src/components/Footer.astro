@@ -1,3 +1,8 @@
+---
+import { getCollection } from 'astro:content';
+const hasPosts = (await getCollection('posts')).length > 0;
+---
+
 <section id="download" class="section download-section">
   <div class="container download-inner">
     <h2>Built on macOS, for macOS</h2>
@@ -17,7 +22,7 @@
     <div class="footer-links">
       <a href="/releases/">Releases</a>
       <a href="/releases/Covalence-latest.dmg">Latest Release</a>
-      <a href="/posts/rss.xml">RSS</a>
+      {hasPosts && <a href="/posts/rss.xml">RSS</a>}
     </div>
     <p class="footer-copy">&copy; 2026 Covalence</p>
   </div>

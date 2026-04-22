@@ -1,3 +1,8 @@
+---
+import { getCollection } from 'astro:content';
+const hasPosts = (await getCollection('posts')).length > 0;
+---
+
 <nav class="nav" aria-label="Main navigation">
   <div class="container nav-inner">
     <a href="/" class="nav-logo">
@@ -11,7 +16,7 @@
       <a href="/#how-it-works">How It Works</a>
       <a href="/#features">Features</a>
       <a href="/releases/">Releases</a>
-      <a href="/posts/">Blog</a>
+      {hasPosts && <a href="/posts/">Blog</a>}
       <a href="/docs/">Docs</a>
     </div>
 
@@ -41,7 +46,7 @@
         <li><a href="/#how-it-works">How It Works</a></li>
         <li><a href="/#features">Features</a></li>
         <li><a href="/releases/">Releases</a></li>
-        <li><a href="/posts/">Blog</a></li>
+        {hasPosts && <li><a href="/posts/">Blog</a></li>}
         <li><a href="/docs/">Docs</a></li>
       </ul>
     </div>
