@@ -77,7 +77,7 @@ Plans:
 - [ ] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk + content rewrite before merge) — ready to re-run on refreshed preview now that Waves 6 + 7 have landed
 - [x] 02.1-06-PLAN.md — Gap closure: diagnose /docs/* code-block regression against 5 hypotheses (H1-H5), apply minimal astro.config.mjs fix, re-verify via npm run build + CF Pages preview rebuild _(H5 CONFIRMED — standalone EC silently replaced Starlight's bundled EC; remediation: remove standalone, Starlight's bundled EC now owns /docs/* and /posts/*; branch pushed `0c3cc0d..4d258b0`)_
 - [x] 02.1-07-PLAN.md — Gap closure (content): drop broken `<Tabs>`/`<TabItem>` JSX and the stray `import { Tabs, TabItem }` literal from `src/content/docs/docs/getting-started.md`; rewrite Connect-Your-AI-Client as five linear H3 sub-sections (Claude Desktop / Claude Code / Cursor / OpenCode / ChatGPT) with column-1 fenced code blocks — eliminates pre-existing indented-code-block rendering on that page and delivers Expressive Code syntax colouring for all four code blocks _(landed on `gsd/phase-2.1-blog@f37c81a`)_
-- [ ] 02.1-08-PLAN.md — Gap closure (UX polish): hide Blog nav link (desktop + drawer) and Footer RSS link when `getCollection('posts').length === 0`; Nav.astro and Footer.astro gain frontmatter + `{hasPosts && ...}` wrappers. Invisible metadata (`<link rel="alternate">` head tags) stays unconditional
+- [x] 02.1-08-PLAN.md — Gap closure (UX polish): hide Blog nav link (desktop + drawer) and Footer RSS link when `getCollection('posts').length === 0`; Nav.astro and Footer.astro gain frontmatter + `{hasPosts && ...}` wrappers. Invisible metadata (`<link rel="alternate">` head tags) stays unconditional _(landed on `gsd/phase-2.1-blog@2ab5ca2`)_
 
 Notes:
 - Inserted between Phase 2 and Phase 3 so Phase 3's SEO work (sitemap, canonical, OG) covers `/posts/*` from day one rather than requiring a later reopening of SEO scope.
@@ -132,7 +132,7 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Repo Hygiene & CI Gating | 2/2   | Complete    | 2026-04-18 |
 | 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
-| 2.1 Blog (INSERTED) | 6/7 | In progress (Wave 5 ready to re-run on refreshed CF preview after Waves 6+7 landed) | - |
+| 2.1 Blog (INSERTED) | 7/8 | In progress (Wave 5 final re-run ready on refreshed CF preview after Waves 6+7+8 landed) | - |
 | 3. Content Depth & SEO | 0/TBD | Not started | - |
 | 4. Accessibility Pass | 0/TBD | Not started | - |
 
