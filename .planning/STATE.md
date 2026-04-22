@@ -9,8 +9,8 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — Wave 7 landed; Phase 2.1 content is complete; Wave 5 browser-level checkpoint pending re-run on the refreshed preview
-Plan: 6/7 (Waves 1–4 landed; Wave 6 landed on `gsd/phase-2.1-blog@4d258b0`; Wave 7 landed on `gsd/phase-2.1-blog@f37c81a`; Wave 5 still pending — it's the browser-level preview-deploy checkpoint, re-runs on refreshed CF Pages preview)
+Phase: 2.1 of 4+ (Blog, INSERTED) — Wave 8 gap-closure drafted (empty-state gating for Blog nav + Footer RSS); Wave 5 browser re-run pending after Wave 8 ships
+Plan: 6/8 (Waves 1–4 + 6 + 7 landed; Wave 8 plan 02.1-08 drafted in response to Wave 5 reviewer's `approved with caveat` — Blog is empty, hide visible entry-points until first post lands; Wave 5 still pending the final browser check)
 Status: Wave 7 gap-closure plan 02.1-07 executed cleanly. `src/content/docs/docs/getting-started.md` rewritten — `<Tabs>`/`<TabItem>` dropped, the stray `import { Tabs, TabItem }` literal prose-line removed, and the five per-client setup blocks are now linear H3 sub-sections (Claude Desktop / Claude Code / Cursor / OpenCode / ChatGPT) with column-1 fenced code blocks. Post-fix metrics on `/docs/getting-started/`: leaked_fences 0 (baseline 0 — Plan 06 had silently fixed this already), ec_lines 8 → 16 (EC now processes the previously-indented content as full-width ec-lines), ec_wrappers 4 (unchanged). Wave 4 invariants preserved (RSS alternate rel count=1 on `/docs/getting-started/` and `/posts/index.html`); no regression on sibling `/docs/*` pages. Branch pushed to origin (`7ff888e..f37c81a`) so CF Pages will auto-rebuild the preview for the 02.1-05 re-run.
 Last activity: 2026-04-22 — Plan 02.1-07 complete on `gsd/phase-2.1-blog@f37c81a`. Route: re-run 02.1-05 checkpoint in a browser against the refreshed CF Pages preview — confirm `/docs/getting-started/` renders five H3 sub-sections with all four code blocks showing Starlight-themed syntax colouring, copy buttons, and frame chrome.
 

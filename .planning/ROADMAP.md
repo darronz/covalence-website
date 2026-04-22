@@ -67,7 +67,7 @@ Notes:
   3. The primary nav includes a "Blog" link pointing at `/posts/` on both desktop and mobile drawer; the footer includes a small RSS link.
   4. `https://covalence.app/posts/rss.xml` returns a valid RSS 2.0 feed containing every published post with full rendered HTML in `<content:encoded>`, and `Base.astro` advertises the feed via `<link rel="alternate" type="application/rss+xml">` on every page.
   5. The landing page shows a "Latest writing" band between the Architecture and Footer sections with the two most recent posts, or renders nothing if the collection is empty — no "coming soon" placeholder.
-**Plans**: 7 plans (5 original + 2 gap-closure: theme-selector fix, docs content fix)
+**Plans**: 8 plans (5 original + 3 gap-closure: theme-selector fix, docs content fix, empty-state nav/footer gating)
 
 Plans:
 - [x] 02.1-01-PLAN.md — Foundations: install astro-expressive-code + @astrojs/rss, wire Expressive Code before Starlight, register posts content collection, create src/content/posts/ directory
@@ -77,6 +77,7 @@ Plans:
 - [ ] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk + content rewrite before merge) — ready to re-run on refreshed preview now that Waves 6 + 7 have landed
 - [x] 02.1-06-PLAN.md — Gap closure: diagnose /docs/* code-block regression against 5 hypotheses (H1-H5), apply minimal astro.config.mjs fix, re-verify via npm run build + CF Pages preview rebuild _(H5 CONFIRMED — standalone EC silently replaced Starlight's bundled EC; remediation: remove standalone, Starlight's bundled EC now owns /docs/* and /posts/*; branch pushed `0c3cc0d..4d258b0`)_
 - [x] 02.1-07-PLAN.md — Gap closure (content): drop broken `<Tabs>`/`<TabItem>` JSX and the stray `import { Tabs, TabItem }` literal from `src/content/docs/docs/getting-started.md`; rewrite Connect-Your-AI-Client as five linear H3 sub-sections (Claude Desktop / Claude Code / Cursor / OpenCode / ChatGPT) with column-1 fenced code blocks — eliminates pre-existing indented-code-block rendering on that page and delivers Expressive Code syntax colouring for all four code blocks _(landed on `gsd/phase-2.1-blog@f37c81a`)_
+- [ ] 02.1-08-PLAN.md — Gap closure (UX polish): hide Blog nav link (desktop + drawer) and Footer RSS link when `getCollection('posts').length === 0`; Nav.astro and Footer.astro gain frontmatter + `{hasPosts && ...}` wrappers. Invisible metadata (`<link rel="alternate">` head tags) stays unconditional
 
 Notes:
 - Inserted between Phase 2 and Phase 3 so Phase 3's SEO work (sitemap, canonical, OG) covers `/posts/*` from day one rather than requiring a later reopening of SEO scope.
