@@ -98,12 +98,21 @@ Notes:
   3. `https://covalence.app/sitemap-index.xml` (or equivalent) resolves and lists every public route, including `/`, `/releases`, and every `/docs/*` page.
   4. Viewing the HTML of any public page shows a `<link rel="canonical">` pointing at the correct absolute URL on `covalence.app`.
   5. Pasting the home page URL and the docs root URL into a social-card debugger (Twitter/X, Facebook, LinkedIn, or the equivalent meta-tag inspector) renders a title, description, and an image — not a blank card.
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — SEO metadata baseline: public/robots.txt + astro.config.mjs Starlight head delta (og:image×3 + twitter:image) + new sidebar entry + Features.astro line 21 voice correction (SEO-01, SEO-03, SEO-04)
+- [ ] 03-02-PLAN.md — Under the Hood docs page: src/content/docs/docs/under-the-hood.md with 5-topic retrieval-stack explainer + inline SVG diagram + concrete numbers sourced from ../covalence/ (CONT-01)
+- [ ] 03-03-PLAN.md — Architecture.astro arch-stack rewrite: 2-3 paragraph teaser + "Full technical deep-dive" CTA to /docs/under-the-hood/; arch-privacy column byte-identical (CONT-01)
+- [ ] 03-04-PLAN.md — Phase 3 verification checkpoint: fresh npm run build + consolidated grep matrix across dist/ for all 5 Success Criteria + CF Pages preview social-card debugger human gate (all requirements)
 
 Notes:
 - Starlight already emits some of this for docs pages; gaps are concentrated on the marketing surfaces (`/`, `/releases`) and the missing `robots.txt`. See CONCERNS.md "Known Bugs" for specifics.
-- CONT-01 may land as a dedicated `/docs/under-the-hood` page or as an expanded `Architecture.astro` section — plan-phase decides.
+- CONT-01 lands as BOTH a dedicated `/docs/under-the-hood` page (Plan 03-02) AND an expanded `Architecture.astro` teaser (Plan 03-03) — CONTEXT decision D-01 + D-02.
 - No test infrastructure will be added here. Acceptance is "build passes on CI (from Phase 1) + manual verification that robots.txt/sitemap/canonical/OG tags render on the built `dist/`."
+- Plan 01 owns all `astro.config.mjs` edits (both head array and sidebar array) so Plans 01 + 02 can run in Wave 1 in parallel; Plan 03 waits for Plan 02 (CTA target); Plan 04 waits for all three.
+- Diagram mechanism: inline SVG hand-authored in the .md file (zero Astro integrations) per RESEARCH.md §Recommended Diagram Mechanism — defensive choice after the Phase 2.1 Plan 06 standalone-EC incident.
+- Head-tag mirror uses delta-only approach (4 tags: og:image + width + height + twitter:image) per RESEARCH.md §Head Tag Mirror option 2c — Starlight already auto-emits canonical, og:title/type/url/description, twitter:card, and description, so a full mirror is redundant.
 **UI hint**: yes
 
 ### Phase 4: Accessibility Pass
@@ -133,7 +142,7 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4
 | 1. Repo Hygiene & CI Gating | 2/2   | Complete    | 2026-04-18 |
 | 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
 | 2.1 Blog (INSERTED) | 7/8 | In progress (Wave 5 final re-run ready on refreshed CF preview after Waves 6+7+8 landed) | - |
-| 3. Content Depth & SEO | 0/TBD | Not started | - |
+| 3. Content Depth & SEO | 0/4 | Planned (4 plans across 3 waves) | - |
 | 4. Accessibility Pass | 0/TBD | Not started | - |
 
 ---
