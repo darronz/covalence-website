@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 Phase: 2.1 of 4+ (Blog, INSERTED) — **MERGED** 2026-04-22 via PR #11 (merge commit `3dc00fb`); CF Pages deploying to covalence.app
 Plan: 8/8 (Waves 1–4 landed; Wave 5 checkpoint APPROVED 2026-04-22 after three cycles that drove Waves 6/7/8 gap-closure; Waves 6/7/8 all green; phase-level code review + verifier running)
 Status: **Phase 2.1 Blog complete.** Wave 5 browser checkpoint approved on `gsd/phase-2.1-blog@eea2179`. Journey: Cycle 1 blocked on Surface E → Wave 6 (H5 confirmed, standalone EC removed); Cycle 2 blocked on /docs/getting-started/ content → Wave 7 (drop broken Tabs JSX, linear H3 sub-sections); Cycle 3 approved-with-caveat on empty-blog UX → Wave 8 (hasPosts gates on Nav + Footer anchors); Cycle 4 APPROVED. All Wave 4 invariants (`<link rel="alternate">` on /posts/* and /docs/*) survived; Wave 6 invariant (EC on /docs/*) survived; Wave 7 invariant (linear docs content) survived. `main` remained untouched throughout (`f3bffd3`) — all phase work isolated on `gsd/phase-2.1-blog`. Phase-level code review (02.1-REVIEW.md) and goal verification (02.1-VERIFICATION.md) running in parallel to produce retrospective artifacts.
-Last activity: 2026-04-22 — Phase 2.1 MERGED to main via PR #11 (https://github.com/darronz/covalence-website/pull/11). Merge commit `3dc00fb` on `origin/main`; CF Pages auto-build triggered. Local feature branch `gsd/phase-2.1-blog` deleted (remote auto-deleted by GitHub on merge). Next: `/gsd-progress` or `/gsd-discuss-phase 3` to kick off Phase 3 (Content Depth & SEO). Three small follow-ups remain queued (WR-01 `og_image` tightening, IN-02 dead `astro-expressive-code` dep, ChatGPT MCP claim todo `2026-04-21-fix-chatgpt-mcp-support-docs.md`).
+Last activity: 2026-04-22 — Quick task `260422-wks-phase-2.1-cleanups` shipped: all three queued Phase 2.1 follow-ups closed in 3 atomic commits on `main` (`00d02d1` WR-01 same-origin og_image guard, `b17d172` IN-02 remove dead astro-expressive-code dep, `229d4b7` ChatGPT MCP claim fix + todo moved to completed/). Local `main` now 4 commits ahead of origin; CF Pages will auto-deploy on push. Next: push to origin then `/gsd-progress` or `/gsd-discuss-phase 3` to kick off Phase 3 (Content Depth & SEO).
 
 Progress: [████████████] 100% of Phase 2.1 (3 phases complete — 2 + 2.1 shipped; Phase 3 up next; Phase 4 after)
 
@@ -78,7 +78,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [2026-04-21-fix-chatgpt-mcp-support-docs](./todos/pending/2026-04-21-fix-chatgpt-mcp-support-docs.md) — Fix incorrect ChatGPT MCP support claim in getting-started docs (`docs`)
+_(None — 2026-04-21-fix-chatgpt-mcp-support-docs closed 2026-04-22 via quick task 260422-wks-phase-2.1-cleanups, commit `229d4b7`)_
 
 ### Blockers/Concerns
 
@@ -94,6 +94,7 @@ Recent decisions affecting current work:
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260419-wks | Fix broken homepage anchor links in primary nav | 2026-04-19 | 31f0452 | [260419-wks-fix-broken-homepage-anchor-links-in-prim](./quick/260419-wks-fix-broken-homepage-anchor-links-in-prim/) |
+| 260422-wks | Phase 2.1 cleanup follow-ups (WR-01 og_image guard, IN-02 dead dep removal, ChatGPT MCP claim fix) | 2026-04-22 | 00d02d1 · b17d172 · 229d4b7 | [260422-wks-phase-2.1-cleanups](./quick/260422-wks-phase-2.1-cleanups/) |
 
 ## Deferred Items
 
