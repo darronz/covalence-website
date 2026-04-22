@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-04-18)
 
 **Core value:** When a new Covalence release is tagged in the app repo, this site rebuilds itself with the correct version, download, and release notes — with zero manual intervention — and visitors land on a page that explains what Covalence is clearly enough to decide whether to install it.
-**Current focus:** Phase 2.1 — Blog (Phase 2 Releases Page shipped outside GSD flow)
+**Current focus:** Phase 3 — Content Depth & SEO (Phase 2.1 Blog merged 2026-04-22)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — **COMPLETE** 2026-04-22; ready to merge `gsd/phase-2.1-blog` → `main`
+Phase: 2.1 of 4+ (Blog, INSERTED) — **MERGED** 2026-04-22 via PR #11 (merge commit `3dc00fb`); CF Pages deploying to covalence.app
 Plan: 8/8 (Waves 1–4 landed; Wave 5 checkpoint APPROVED 2026-04-22 after three cycles that drove Waves 6/7/8 gap-closure; Waves 6/7/8 all green; phase-level code review + verifier running)
 Status: **Phase 2.1 Blog complete.** Wave 5 browser checkpoint approved on `gsd/phase-2.1-blog@eea2179`. Journey: Cycle 1 blocked on Surface E → Wave 6 (H5 confirmed, standalone EC removed); Cycle 2 blocked on /docs/getting-started/ content → Wave 7 (drop broken Tabs JSX, linear H3 sub-sections); Cycle 3 approved-with-caveat on empty-blog UX → Wave 8 (hasPosts gates on Nav + Footer anchors); Cycle 4 APPROVED. All Wave 4 invariants (`<link rel="alternate">` on /posts/* and /docs/*) survived; Wave 6 invariant (EC on /docs/*) survived; Wave 7 invariant (linear docs content) survived. `main` remained untouched throughout (`f3bffd3`) — all phase work isolated on `gsd/phase-2.1-blog`. Phase-level code review (02.1-REVIEW.md) and goal verification (02.1-VERIFICATION.md) running in parallel to produce retrospective artifacts.
-Last activity: 2026-04-22 — Phase 2.1 SHIPPED via `/gsd-ship 2.1`. PR #11 opened: https://github.com/darronz/covalence-website/pull/11 — 44 files, 39 commits, mergeable. CF Pages will deploy to covalence.app on merge. Next: review + merge PR, then `/gsd-progress` for routing to Phase 3.
+Last activity: 2026-04-22 — Phase 2.1 MERGED to main via PR #11 (https://github.com/darronz/covalence-website/pull/11). Merge commit `3dc00fb` on `origin/main`; CF Pages auto-build triggered. Local feature branch `gsd/phase-2.1-blog` deleted (remote auto-deleted by GitHub on merge). Next: `/gsd-progress` or `/gsd-discuss-phase 3` to kick off Phase 3 (Content Depth & SEO). Three small follow-ups remain queued (WR-01 `og_image` tightening, IN-02 dead `astro-expressive-code` dep, ChatGPT MCP claim todo `2026-04-21-fix-chatgpt-mcp-support-docs.md`).
 
 Progress: [████████████] 100% of Phase 2.1 (3 phases complete — 2 + 2.1 shipped; Phase 3 up next; Phase 4 after)
 
