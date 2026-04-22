@@ -1,0 +1,88 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+  limit?: number;
+}
+
+const { posts, limit } = Astro.props;
+const items = typeof limit === 'number' ? posts.slice(0, limit) : posts;
+
+const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+{items.length > 0 && (
+  <ol class="post-list">
+    {items.map((post) => (
+      <li class="post-item">
+        <article>
+          <h2 class="post-item-title">
+            <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+          </h2>
+          <time class="post-item-date" datetime={post.data.pub_date.toISOString()}>
+            {dateFormatter.format(post.data.pub_date)}
+          </time>
+          <p class="post-item-description">{post.data.description}</p>
+        </article>
+      </li>
+    ))}
+  </ol>
+)}
+
+<style>
+  .post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .post-item {
+    padding: var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: var(--bg-surface);
+  }
+
+  .post-item-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--space-xs);
+  }
+
+  .post-item-title a {
+    color: var(--text-primary);
+  }
+
+  .post-item-title a:hover {
+    color: var(--accent-subtle);
+  }
+
+  .post-item-date {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .post-item-description {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .post-item {
+      padding: var(--space-md);
+    }
+  }
+</style>

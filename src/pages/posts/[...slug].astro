@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PostLayout from '../../components/PostLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const canonicalURL = new URL(`/posts/${post.id}/`, Astro.site);
+const ogImageURL = post.data.og_image
+  ? new URL(post.data.og_image, Astro.site)
+  : new URL('/og-image.png', Astro.site);
+const publishedISO = post.data.pub_date.toISOString();
+const author = post.data.author ?? 'Darron Schall';
+---
+
+<Base title={`${post.data.title} — Covalence`} description={post.data.description}>
+  <Fragment slot="head-extra">
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content={publishedISO} />
+    <meta property="article:author" content={author} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <link rel="canonical" href={canonicalURL} />
+  </Fragment>
+  <Nav />
+  <PostLayout post={post}>
+    <Content />
+  </PostLayout>
+  <Footer />
+</Base>

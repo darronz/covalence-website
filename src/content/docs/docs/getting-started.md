@@ -3,8 +3,6 @@ title: Getting Started
 description: Connect Covalence to Claude Desktop, Claude Code, or Cursor in under a minute.
 ---
 
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-
 Connect Covalence to your AI client by adding it as an MCP server. Once connected, your AI gains persistent memory that persists across sessions.
 
 ## Prerequisites
@@ -14,55 +12,57 @@ Connect Covalence to your AI client by adding it as an MCP server. Once connecte
 
 ## Connect Your AI Client
 
-<Tabs>
-  <TabItem label="Claude Desktop">
-    Add the following to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+### Claude Desktop
 
-    ```json
-    {
-      "mcpServers": {
-        "covalence": {
-          "command": "/Applications/Covalence.app/Contents/MacOS/cov-mcp"
-        }
-      }
+Add the following to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "covalence": {
+      "command": "/Applications/Covalence.app/Contents/MacOS/cov-mcp"
     }
-    ```
+  }
+}
+```
 
-    Then restart Claude Desktop.
-  </TabItem>
-  <TabItem label="Claude Code">
-    Run this command in your terminal:
+Then restart Claude Desktop.
 
-    ```bash
-    claude mcp add covalence /Applications/Covalence.app/Contents/MacOS/cov-mcp
-    ```
+### Claude Code
 
-    Claude Code picks up the new server immediately — no restart needed.
-  </TabItem>
-  <TabItem label="Cursor">
-    Open **Cursor Settings > MCP Servers** and add the same JSON as Claude Desktop:
+Run this command in your terminal:
 
-    ```json
-    {
-      "mcpServers": {
-        "covalence": {
-          "command": "/Applications/Covalence.app/Contents/MacOS/cov-mcp"
-        }
-      }
+```bash
+claude mcp add covalence /Applications/Covalence.app/Contents/MacOS/cov-mcp
+```
+
+Claude Code picks up the new server immediately — no restart needed.
+
+### Cursor
+
+Open **Cursor Settings > MCP Servers** and add the same JSON as Claude Desktop:
+
+```json
+{
+  "mcpServers": {
+    "covalence": {
+      "command": "/Applications/Covalence.app/Contents/MacOS/cov-mcp"
     }
-    ```
-  </TabItem>
-  <TabItem label="OpenCode">
-    Run this command in your terminal:
+  }
+}
+```
 
-    ```bash
-    opencode mcp add covalence /Applications/Covalence.app/Contents/MacOS/cov-mcp
-    ```
-  </TabItem>
-  <TabItem label="ChatGPT">
-    ChatGPT does not currently support the MCP protocol. Watch for updates from OpenAI.
-  </TabItem>
-</Tabs>
+### OpenCode
+
+Run this command in your terminal:
+
+```bash
+opencode mcp add covalence /Applications/Covalence.app/Contents/MacOS/cov-mcp
+```
+
+### ChatGPT
+
+ChatGPT does not currently support the MCP protocol. Watch for updates from OpenAI.
 
 ## Add the AI Instruction
 

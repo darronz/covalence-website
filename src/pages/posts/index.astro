@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import PostList from '../../components/PostList.astro';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.pub_date.valueOf() - a.data.pub_date.valueOf()
+);
+---
+
+<Base
+  title="Blog — Covalence"
+  description="Long-form writing on Covalence — local-first memory, MCP, and the engineering behind it."
+>
+  <Nav />
+  <main class="posts-page">
+    <div class="container">
+      <header class="page-header">
+        <p class="eyebrow">Writing</p>
+        <h1>Blog</h1>
+        <p class="lede">Deep-dives, feature explainers, and engineering notes.</p>
+      </header>
+
+      <PostList posts={posts} />
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .posts-page {
+    padding-top: calc(var(--nav-height) + var(--space-xl));
+    padding-bottom: var(--space-2xl);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .lede {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2.25rem;
+    }
+  }
+</style>
