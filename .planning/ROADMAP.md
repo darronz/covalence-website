@@ -74,9 +74,9 @@ Plans:
 - [x] 02.1-02-PLAN.md — Components + prose CSS: PostList.astro, PostLayout.astro, src/styles/posts.css
 - [x] 02.1-03-PLAN.md — Routes: /posts/ index page, /posts/[...slug]/ dynamic route with per-post SEO, /posts/rss.xml feed endpoint
 - [x] 02.1-04-PLAN.md — Site integration: Nav Blog link (desktop + drawer), Footer RSS link, Base.astro <link rel="alternate"> + head-extra slot, Starlight head injection for /docs/* alternate rel, landing-page "Latest writing" band
-- [ ] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk before merge) — BLOCKED pending Wave 7 ship, re-runs on refreshed preview
+- [ ] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk + content rewrite before merge) — ready to re-run on refreshed preview now that Waves 6 + 7 have landed
 - [x] 02.1-06-PLAN.md — Gap closure: diagnose /docs/* code-block regression against 5 hypotheses (H1-H5), apply minimal astro.config.mjs fix, re-verify via npm run build + CF Pages preview rebuild _(H5 CONFIRMED — standalone EC silently replaced Starlight's bundled EC; remediation: remove standalone, Starlight's bundled EC now owns /docs/* and /posts/*; branch pushed `0c3cc0d..4d258b0`)_
-- [ ] 02.1-07-PLAN.md — Gap closure (content): de-indent fenced code blocks in `src/content/docs/docs/getting-started.md` by converting them to Starlight's `<Code>` component inside `<TabItem>` — eliminates pre-existing indented-code-block rendering on that page (issue predates Phase 2.1; byte-identical output on production b1bfd58 confirms)
+- [x] 02.1-07-PLAN.md — Gap closure (content): drop broken `<Tabs>`/`<TabItem>` JSX and the stray `import { Tabs, TabItem }` literal from `src/content/docs/docs/getting-started.md`; rewrite Connect-Your-AI-Client as five linear H3 sub-sections (Claude Desktop / Claude Code / Cursor / OpenCode / ChatGPT) with column-1 fenced code blocks — eliminates pre-existing indented-code-block rendering on that page and delivers Expressive Code syntax colouring for all four code blocks _(landed on `gsd/phase-2.1-blog@f37c81a`)_
 
 Notes:
 - Inserted between Phase 2 and Phase 3 so Phase 3's SEO work (sitemap, canonical, OG) covers `/posts/*` from day one rather than requiring a later reopening of SEO scope.
@@ -131,7 +131,7 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Repo Hygiene & CI Gating | 2/2   | Complete    | 2026-04-18 |
 | 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
-| 2.1 Blog (INSERTED) | 5/6 | In progress (Wave 5 awaiting browser re-verify on refreshed CF preview) | - |
+| 2.1 Blog (INSERTED) | 6/7 | In progress (Wave 5 ready to re-run on refreshed CF preview after Waves 6+7 landed) | - |
 | 3. Content Depth & SEO | 0/TBD | Not started | - |
 | 4. Accessibility Pass | 0/TBD | Not started | - |
 
