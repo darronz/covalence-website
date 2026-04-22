@@ -9,12 +9,12 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — Wave 8 gap-closure landed; Wave 5 browser re-run is the only remaining plan
-Plan: 7/8 (Waves 1–4 + 6 + 7 + 8 landed; Wave 5 still pending the final browser check against the refreshed CF Pages preview on `gsd/phase-2.1-blog@2ab5ca2`)
-Status: Wave 8 gap-closure plan 02.1-08 executed cleanly. `src/components/Nav.astro` and `src/components/Footer.astro` each gained a 4-line frontmatter block (`import { getCollection } from 'astro:content'; const hasPosts = (await getCollection('posts')).length > 0`) and 3 total `{hasPosts && …}` wrappers (Nav desktop + drawer Blog anchors; Footer RSS anchor). With the posts collection empty (`.gitkeep` only), all three visible entry-points to `/posts/` now hide on every page that renders Nav or Footer (`/`, `/releases/`, `/posts/`, `/404`). Head-level `<link rel="alternate" type="application/rss+xml">` metadata preserved unconditional in both Base.astro and Starlight head-injection (Wave 4 invariant — count=1 on `/` and `/docs/getting-started/`). Wave 6/7 invariants also preserved (Expressive Code wrapper count on `/docs/getting-started/` still 4; `/posts/index.html` + `/posts/rss.xml` still generated). Clean `npm run build` exit 0; 11 pages built in ~2.1s. Atomic fix commit `2ab5ca2` pushed to `origin/gsd/phase-2.1-blog` (`0405b49..2ab5ca2` fast-forward). `main` untouched at `f3bffd3`.
-Last activity: 2026-04-22 — Plan 02.1-08 complete on `gsd/phase-2.1-blog@2ab5ca2`. Route: final re-run of 02.1-05 checkpoint in a browser against the refreshed CF Pages preview — with empty collection, Blog nav + RSS footer link should be absent on /, /releases/, /posts/; everything else unchanged from Wave 7.
+Phase: 2.1 of 4+ (Blog, INSERTED) — **COMPLETE** 2026-04-22; ready to merge `gsd/phase-2.1-blog` → `main`
+Plan: 8/8 (Waves 1–4 landed; Wave 5 checkpoint APPROVED 2026-04-22 after three cycles that drove Waves 6/7/8 gap-closure; Waves 6/7/8 all green; phase-level code review + verifier running)
+Status: **Phase 2.1 Blog complete.** Wave 5 browser checkpoint approved on `gsd/phase-2.1-blog@eea2179`. Journey: Cycle 1 blocked on Surface E → Wave 6 (H5 confirmed, standalone EC removed); Cycle 2 blocked on /docs/getting-started/ content → Wave 7 (drop broken Tabs JSX, linear H3 sub-sections); Cycle 3 approved-with-caveat on empty-blog UX → Wave 8 (hasPosts gates on Nav + Footer anchors); Cycle 4 APPROVED. All Wave 4 invariants (`<link rel="alternate">` on /posts/* and /docs/*) survived; Wave 6 invariant (EC on /docs/*) survived; Wave 7 invariant (linear docs content) survived. `main` remained untouched throughout (`f3bffd3`) — all phase work isolated on `gsd/phase-2.1-blog`. Phase-level code review (02.1-REVIEW.md) and goal verification (02.1-VERIFICATION.md) running in parallel to produce retrospective artifacts.
+Last activity: 2026-04-22 — Wave 5 APPROVED. Next: await review + verifier agents, commit their artifacts, open PR from `gsd/phase-2.1-blog` → `main` for merge (branch also carries plans/SUMMARYs/STATE/ROADMAP updates — a clean single-PR merge ships the phase end-to-end).
 
-Progress: [███████████] 88% (2 phases + 7 of 8 blog plans shipped)
+Progress: [████████████] 100% of Phase 2.1 (3 phases complete — 2 + 2.1 shipped; Phase 3 up next; Phase 4 after)
 
 ## Performance Metrics
 

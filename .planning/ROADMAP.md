@@ -12,7 +12,7 @@ This milestone takes the Covalence website from "recently split out of the app m
 
 - [x] **Phase 1: Repo Hygiene & CI Gating** - Make the repo self-explanatory and put `astro build` in front of every PR merge to `main`
 - [x] **Phase 2: Releases Page** - Ship `/releases` reading `releases.json` at build time (implements upstream DOC-09) — shipped outside GSD flow in `d2496eb` (PR #5)
-- [ ] **Phase 2.1: Blog** (INSERTED) - Ship `/posts/` content collection with Expressive-Code-styled code blocks, RSS, and a "Latest writing" band on the landing page
+- [x] **Phase 2.1: Blog** (INSERTED) - Ship `/posts/` content collection with Expressive-Code-styled code blocks, RSS, and a "Latest writing" band on the landing page _(complete 2026-04-22 on `gsd/phase-2.1-blog@eea2179` — ready to merge to `main`)_
 - [ ] **Phase 3: Content Depth & SEO** - Expand the "Under the hood" section and close SEO / social-sharing metadata gaps
 - [ ] **Phase 4: Accessibility Pass** - Custom components meet WCAG AA and pass an automated a11y scan
 
@@ -74,7 +74,7 @@ Plans:
 - [x] 02.1-02-PLAN.md — Components + prose CSS: PostList.astro, PostLayout.astro, src/styles/posts.css
 - [x] 02.1-03-PLAN.md — Routes: /posts/ index page, /posts/[...slug]/ dynamic route with per-post SEO, /posts/rss.xml feed endpoint
 - [x] 02.1-04-PLAN.md — Site integration: Nav Blog link (desktop + drawer), Footer RSS link, Base.astro <link rel="alternate"> + head-extra slot, Starlight head injection for /docs/* alternate rel, landing-page "Latest writing" band
-- [ ] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk + content rewrite before merge) — ready to re-run on refreshed preview now that Waves 6 + 7 have landed
+- [x] 02.1-05-PLAN.md — CF Pages preview-deploy verification checkpoint (manual; validates Expressive Code / Starlight collision risk + content rewrite + empty-state gating before merge) _(APPROVED 2026-04-22 after three cycles: Cycle 1 blocked → Wave 6 fixed → Cycle 2 blocked → Wave 7 fixed → Cycle 3 approved-with-caveat → Wave 8 fixed → Cycle 4 approved)_
 - [x] 02.1-06-PLAN.md — Gap closure: diagnose /docs/* code-block regression against 5 hypotheses (H1-H5), apply minimal astro.config.mjs fix, re-verify via npm run build + CF Pages preview rebuild _(H5 CONFIRMED — standalone EC silently replaced Starlight's bundled EC; remediation: remove standalone, Starlight's bundled EC now owns /docs/* and /posts/*; branch pushed `0c3cc0d..4d258b0`)_
 - [x] 02.1-07-PLAN.md — Gap closure (content): drop broken `<Tabs>`/`<TabItem>` JSX and the stray `import { Tabs, TabItem }` literal from `src/content/docs/docs/getting-started.md`; rewrite Connect-Your-AI-Client as five linear H3 sub-sections (Claude Desktop / Claude Code / Cursor / OpenCode / ChatGPT) with column-1 fenced code blocks — eliminates pre-existing indented-code-block rendering on that page and delivers Expressive Code syntax colouring for all four code blocks _(landed on `gsd/phase-2.1-blog@f37c81a`)_
 - [x] 02.1-08-PLAN.md — Gap closure (UX polish): hide Blog nav link (desktop + drawer) and Footer RSS link when `getCollection('posts').length === 0`; Nav.astro and Footer.astro gain frontmatter + `{hasPosts && ...}` wrappers. Invisible metadata (`<link rel="alternate">` head tags) stays unconditional _(landed on `gsd/phase-2.1-blog@2ab5ca2`)_
