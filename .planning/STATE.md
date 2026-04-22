@@ -1,3 +1,19 @@
+---
+gsd_state_version: 1.0
+milestone: v1.3.0
+milestone_name: milestone
+status: executing
+stopped_at: "Plan 02.1-08 complete (Wave 8 gap-closure: empty-state gating — Nav.astro + Footer.astro each gained a frontmatter block reading `const hasPosts = (await getCollection('posts')).length > 0`; three visible anchors wrapped in `{hasPosts && …}` expressions. With empty collection, Blog nav + Footer RSS link hide site-wide; head-level `<link rel="alternate">` metadata preserved. Fix commit `2ab5ca2` fast-forward pushed to `origin/gsd/phase-2.1-blog` — `0405b49..2ab5ca2`). Wave 5 browser-level checkpoint is now the only remaining Phase 2.1 plan — ready to re-run on the refreshed CF Pages preview that now includes the Wave 6 theme-selector fix + Wave 7 content fix + Wave 8 empty-state gating."
+last_updated: "2026-04-22T21:38:37.993Z"
+last_activity: 2026-04-22 -- Phase 03 planning complete
+progress:
+  total_phases: 5
+  completed_phases: 2
+  total_plans: 14
+  completed_plans: 11
+  percent: 79
+---
+
 # Project State
 
 ## Project Reference
@@ -11,14 +27,15 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 Phase: 2.1 of 4+ (Blog, INSERTED) — **MERGED** 2026-04-22 via PR #11 (merge commit `3dc00fb`); CF Pages deploying to covalence.app
 Plan: 8/8 (Waves 1–4 landed; Wave 5 checkpoint APPROVED 2026-04-22 after three cycles that drove Waves 6/7/8 gap-closure; Waves 6/7/8 all green; phase-level code review + verifier running)
-Status: **Phase 2.1 Blog complete.** Wave 5 browser checkpoint approved on `gsd/phase-2.1-blog@eea2179`. Journey: Cycle 1 blocked on Surface E → Wave 6 (H5 confirmed, standalone EC removed); Cycle 2 blocked on /docs/getting-started/ content → Wave 7 (drop broken Tabs JSX, linear H3 sub-sections); Cycle 3 approved-with-caveat on empty-blog UX → Wave 8 (hasPosts gates on Nav + Footer anchors); Cycle 4 APPROVED. All Wave 4 invariants (`<link rel="alternate">` on /posts/* and /docs/*) survived; Wave 6 invariant (EC on /docs/*) survived; Wave 7 invariant (linear docs content) survived. `main` remained untouched throughout (`f3bffd3`) — all phase work isolated on `gsd/phase-2.1-blog`. Phase-level code review (02.1-REVIEW.md) and goal verification (02.1-VERIFICATION.md) running in parallel to produce retrospective artifacts.
-Last activity: 2026-04-22 — Phase 3 context captured via `/gsd-discuss-phase 3` (commit `6f7a646`). 16 implementation decisions locked across four gray areas: CONT-01 approach (both teaser + deep /docs/under-the-hood page, prose + diagram + real numbers sourced from `../covalence/`), robots.txt shape (allow-all + /releases/*.dmg exclude + sitemap ref), SEO parity (mirror full canonical+OG+Twitter into starlight head config), and 02.1-REVIEW punts (IN-05 + IN-06 both deferred). Hard research dependency flagged: researcher MUST scout main Covalence app repo for retrieval-stack numbers. Local `main` 6 commits ahead of origin. Next: `/gsd-plan-phase 3` to produce PLAN.md(s), or push to origin first.
+Status: Ready to execute
+Last activity: 2026-04-22 -- Phase 03 planning complete
 
 Progress: [████████████░░░░] 60% overall (3 of 5 phases shipped: 1 + 2 + 2.1; Phase 3 context locked, planning next; Phase 4 after)
 
 ## Performance Metrics
 
 **Velocity:**
+
 - Total plans completed: 9
 - Average duration: ~4.4 min (Phase 2.1 Plans 01 + 02 + 03 + 04 + 06 + 07 + 08 measured)
 - Total execution time: ~31 min (Plans 02.1-01 + 02.1-02 + 02.1-03 + 02.1-04 + 02.1-06 + 02.1-07 + 02.1-08; Phase 1 / Phase 2 durations not captured)
@@ -34,6 +51,7 @@ Progress: [████████████░░░░] 60% overall (3 of 5
 | 4. Accessibility Pass | 0/TBD | — | — |
 
 **Recent Trend:**
+
 - Last 7 plans: 02.1-01 (~5 min, 1 deviation auto-fixed), 02.1-02 (~2 min, 0 deviations), 02.1-03 (~3 min, 0 deviations), 02.1-04 (~3 min, 1 Rule 2 deviation auto-fixed — Starlight head injection for /docs/* alternate rel), 02.1-06 (~10 min gap-closure, 0 deviations — H5 confirmed, Wave 1 decision reversed), 02.1-07 (~4 min gap-closure, 0 deviations — content-fix drops broken Tabs JSX, five linear H3 sub-sections replace them with column-1 fenced code blocks), 02.1-08 (~4 min gap-closure, 2 Rule 1 plan-level verification-pattern fixes auto-applied — `grep -oE 'href="/posts/rss.xml"'` conflates `<a>` with `<link>` metadata, so anchor-only assertions use `<a [^>]*href=...`; plan acceptance `grep -c ... == 0` was self-contradictory with Wave 4 invariant, resolved by refining pattern).
 - Trend: Plans consistently land in 2-5 min with at most two deviations. Plan 04's deviation was a plan-level gap (Base.astro does not reach Starlight /docs/* routes) that the task-level acceptance spec caught and Rule 2 handled automatically — exactly the intended safety net. Plan 06 was longer-than-average (~10 min) because Task 1's disciplined H1-H5 experiment-revert cycle + the throwaway-post test cost minutes but prevented a blanket revert of Wave 4 / Wave 1 work. Plan 07 back under 5 min — pure content rewrite with clear target shape specified in the plan's `<interfaces>` block. Plan 08 another ~4-min gap-closure — two files, one atomic commit, clean rebuild + 10-metric invariant matrix all green; the two deviations were verification-logic refinements (not source-code fixes).
 
