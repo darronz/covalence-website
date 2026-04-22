@@ -62,7 +62,7 @@ opencode mcp add covalence /Applications/Covalence.app/Contents/MacOS/cov-mcp
 
 ### ChatGPT
 
-ChatGPT does not currently support the MCP protocol. Watch for updates from OpenAI.
+ChatGPT supports MCP via [remote connectors](https://developers.openai.com/api/docs/mcp). Covalence currently ships as a local macOS binary, so it isn't yet reachable by ChatGPT's connector model. Remote/network transport is on the Covalence roadmap — ChatGPT support will land with that.
 
 ## Add the AI Instruction
 
