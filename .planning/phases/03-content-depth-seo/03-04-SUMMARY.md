@@ -3,11 +3,13 @@ plan_id: 03-04
 phase: 03-content-depth-seo
 plan: 04
 title: Phase 3 verification checkpoint — consolidated build + grep matrix + social-card debugger gate
-status: partial
+status: complete
 requirements: [CONT-01, SEO-01, SEO-02, SEO-03, SEO-04]
 started: "2026-04-23T07:20:00Z"
-updated: "2026-04-23T07:21:08Z"
-build_commit: 83bba68
+updated: "2026-04-23T11:50:00Z"
+build_commit: 0b6d046
+cf_preview_commit: c0d36fed
+pr_number: 12
 ---
 
 # 03-04 Summary — Phase 3 Verification Checkpoint (Task 1 of 2 complete)
@@ -37,18 +39,15 @@ build_commit: 83bba68
 
 Neither deviation reflects a source-code bug; both are artifact-shape issues in the verification pattern that land correct with the `grep -oE` idiom. Captured so future Phase 3-style verification plans use the same pattern.
 
-## Task 2 — Social-Card Debugger Human Gate (AWAITING)
+## Task 2 — Social-Card Debugger Human Gate (APPROVED 2026-04-23)
 
-Task 1's build-time grep matrix confirms all five Success Criteria pass against `dist/`. The only remaining acceptance gate is pasting the live CF Pages preview URL into a social-card debugger and eyeballing the rendered card for `/`, `/docs/`, and `/docs/under-the-hood/` — the one check no grep can substitute for.
+Task 1's build-time grep matrix confirmed all five Success Criteria pass against `dist/`. Task 2 was the one check no grep can substitute for: pasting the live CF Pages preview into a social-card debugger and eyeballing the rendered card for `/`, `/docs/`, and `/docs/under-the-hood/`.
 
-**Awaiting from user:** A CF Pages preview URL for the current branch (or confirmation that the preview has deployed with these commits) + a pass/fail per card from one of:
+**CF Pages deployment:** `c0d36fed.covalence-website-v2.pages.dev` at commit `0b6d046` — CI build ✓ and CF Pages ✓ both green (PR #12).
 
-- LinkedIn Post Inspector — https://www.linkedin.com/post-inspector/ (no login)
-- Twitter/X Card Validator — https://cards-dev.twitter.com/validator (login)
-- Meta Sharing Debugger — https://developers.facebook.com/tools/debug/ (Facebook login)
-- Generic OG inspector — https://www.opengraph.xyz/
+**Branch preview URL:** https://gsd-phase-3-content-depth-se.covalence-website-v2.pages.dev
 
-Expected: three populated cards (home / docs root / under-the-hood) with title + description + 1200×627 `og-image.png`. Host-mismatch warnings are informational per D-14 (Astro.site pins canonical/og:url to `https://covalence.app` regardless of preview host).
+**Result: APPROVED by user (2026-04-23T11:50Z).** All three target URLs (`/`, `/docs/`, `/docs/under-the-hood/`) render populated social cards with title + description + the 1200×627 `og-image.png` against the chosen debugger. Host-mismatch warnings (preview host vs. `https://covalence.app` canonical/og:url) are informational per Decision 02.1-03 and were disregarded.
 
 ## Key Files
 
@@ -58,7 +57,7 @@ Expected: three populated cards (home / docs root / under-the-hood) with title +
 
 ## Phase-Complete Signal
 
-Task 1: **GREEN** on all 5 Success Criteria at the grep-matrix level.
-Task 2: **AWAITING USER** — social-card debugger check against CF Pages preview.
+Task 1: **GREEN** on all 5 Success Criteria at the grep-matrix level (build commit `0b6d046`).
+Task 2: **APPROVED** — three populated social cards on the CF Pages preview (`c0d36fed.covalence-website-v2.pages.dev`).
 
-Once Task 2 returns "approved", Phase 3 is complete and the orchestrator can proceed to code-review → verifier → roadmap update → PROJECT.md evolve → next-phase routing.
+Phase 3 is **complete**. Orchestrator proceeding to code-review → verifier → roadmap/STATE update → PROJECT.md evolve → next-phase routing.

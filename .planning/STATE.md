@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
-status: executing
-stopped_at: "Phase 3 Wave 2 complete — 03-03 rewrote the Architecture.astro arch-stack column from a 5-bullet list into a 2-3 paragraph retrieval-stack teaser with inline `Full technical deep-dive` CTA → /docs/under-the-hood/. arch-privacy column byte-identical pre/post (invariant held). Commits `3cab56f` + `10dbb73` landed on main. Post-merge `npm run build` exits 0; home page emits `class=\"arch-teaser\"` and `href=\"/docs/under-the-hood/\"` exactly once; privacy column copy intact. One non-blocking verification-pattern deviation captured for Plan 03-04's sweep (scoped astro-class-hash suffix). Wave 3 (03-04 consolidated verification checkpoint — autonomous: false, human gate for social-card debugger) is next."
-last_updated: "2026-04-23T08:18:00.000Z"
-last_activity: 2026-04-23 -- Phase 3 Wave 2 landed
+status: phase_complete
+stopped_at: "Phase 3 (Content Depth & SEO) COMPLETE — all 4 plans landed on branch `gsd/phase-3-content-depth-seo` (PR #12). Task 1 grep matrix PASS on all 5 Success Criteria against a fresh `npm run build` at commit `0b6d046`. Task 2 social-card debugger gate APPROVED 2026-04-23 on CF Pages preview `c0d36fed.covalence-website-v2.pages.dev` — three populated cards (home, /docs/, /docs/under-the-hood/) with title + description + 1200×627 og-image.png. CI build ✓ and CF Pages ✓ both green. Two verification-pattern deviations captured (scoped astro-class-hash suffix in 03-03; grep-c vs grep-oE on minified sitemap in 03-04) — both artifact-shape issues, not source bugs. Ready to merge PR #12 to main; Phase 4 (Accessibility Pass) is next."
+last_updated: "2026-04-23T11:55:00.000Z"
+last_activity: 2026-04-23 -- Phase 3 complete, PR #12 open
 progress:
   total_phases: 5
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 14
-  completed_plans: 11
-  percent: 79
+  completed_plans: 15
+  percent: 100
 ---
 
 # Project State

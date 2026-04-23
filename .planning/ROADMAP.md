@@ -13,7 +13,7 @@ This milestone takes the Covalence website from "recently split out of the app m
 - [x] **Phase 1: Repo Hygiene & CI Gating** - Make the repo self-explanatory and put `astro build` in front of every PR merge to `main`
 - [x] **Phase 2: Releases Page** - Ship `/releases` reading `releases.json` at build time (implements upstream DOC-09) — shipped outside GSD flow in `d2496eb` (PR #5)
 - [x] **Phase 2.1: Blog** (INSERTED) - Ship `/posts/` content collection with Expressive-Code-styled code blocks, RSS, and a "Latest writing" band on the landing page _(complete 2026-04-22 on `gsd/phase-2.1-blog@eea2179` — ready to merge to `main`)_
-- [ ] **Phase 3: Content Depth & SEO** - Expand the "Under the hood" section and close SEO / social-sharing metadata gaps
+- [x] **Phase 3: Content Depth & SEO** - Expand the "Under the hood" section and close SEO / social-sharing metadata gaps _(complete 2026-04-23 on `gsd/phase-3-content-depth-seo@0b6d046` — PR #12, CF preview `c0d36fed`)_
 - [ ] **Phase 4: Accessibility Pass** - Custom components meet WCAG AA and pass an automated a11y scan
 
 ## Phase Details
@@ -104,7 +104,7 @@ Plans:
 - [x] 03-01-PLAN.md — SEO metadata baseline: public/robots.txt + astro.config.mjs Starlight head delta (og:image×3 + twitter:image) + new sidebar entry + Features.astro line 21 voice correction (SEO-01, SEO-03, SEO-04)
 - [x] 03-02-PLAN.md — Under the Hood docs page: src/content/docs/docs/under-the-hood.md with 5-topic retrieval-stack explainer + inline SVG diagram + concrete numbers sourced from ../covalence/ (CONT-01)
 - [x] 03-03-PLAN.md — Architecture.astro arch-stack rewrite: 2-3 paragraph teaser + "Full technical deep-dive" CTA to /docs/under-the-hood/; arch-privacy column byte-identical (CONT-01)
-- [ ] 03-04-PLAN.md — Phase 3 verification checkpoint: fresh npm run build + consolidated grep matrix across dist/ for all 5 Success Criteria + CF Pages preview social-card debugger human gate (all requirements)
+- [x] 03-04-PLAN.md — Phase 3 verification checkpoint: fresh npm run build + consolidated grep matrix across dist/ for all 5 Success Criteria + CF Pages preview social-card debugger human gate (all requirements) _(APPROVED 2026-04-23 on CF preview `c0d36fed.covalence-website-v2.pages.dev`; PR #12)_
 
 Notes:
 - Starlight already emits some of this for docs pages; gaps are concentrated on the marketing surfaces (`/`, `/releases`) and the missing `robots.txt`. See CONCERNS.md "Known Bugs" for specifics.
