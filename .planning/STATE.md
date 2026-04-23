@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
 status: executing
-stopped_at: "Phase 3 Wave 1 complete — 03-01 (SEO metadata baseline: public/robots.txt + astro.config.mjs head+sidebar + Features.astro voice fix) and 03-02 (Under the Hood docs page at /docs/under-the-hood/ with five retrieval-stack topics + inline SVG) both landed on main linearly (56e79ff..27b8594). Post-merge `npm run build` exits 0; robots.txt, og:image×3 + twitter:image on /docs/under-the-hood/, and sidebar entry all verified in dist/. Wave 2 (03-03 Architecture.astro arch-stack rewrite) is next."
-last_updated: "2026-04-23T08:10:00.000Z"
-last_activity: 2026-04-23 -- Phase 3 Wave 1 landed
+stopped_at: "Phase 3 Wave 2 complete — 03-03 rewrote the Architecture.astro arch-stack column from a 5-bullet list into a 2-3 paragraph retrieval-stack teaser with inline `Full technical deep-dive` CTA → /docs/under-the-hood/. arch-privacy column byte-identical pre/post (invariant held). Commits `3cab56f` + `10dbb73` landed on main. Post-merge `npm run build` exits 0; home page emits `class=\"arch-teaser\"` and `href=\"/docs/under-the-hood/\"` exactly once; privacy column copy intact. One non-blocking verification-pattern deviation captured for Plan 03-04's sweep (scoped astro-class-hash suffix). Wave 3 (03-04 consolidated verification checkpoint — autonomous: false, human gate for social-card debugger) is next."
+last_updated: "2026-04-23T08:18:00.000Z"
+last_activity: 2026-04-23 -- Phase 3 Wave 2 landed
 progress:
   total_phases: 5
   completed_phases: 2

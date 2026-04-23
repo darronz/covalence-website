@@ -103,7 +103,7 @@ Notes:
 Plans:
 - [x] 03-01-PLAN.md — SEO metadata baseline: public/robots.txt + astro.config.mjs Starlight head delta (og:image×3 + twitter:image) + new sidebar entry + Features.astro line 21 voice correction (SEO-01, SEO-03, SEO-04)
 - [x] 03-02-PLAN.md — Under the Hood docs page: src/content/docs/docs/under-the-hood.md with 5-topic retrieval-stack explainer + inline SVG diagram + concrete numbers sourced from ../covalence/ (CONT-01)
-- [ ] 03-03-PLAN.md — Architecture.astro arch-stack rewrite: 2-3 paragraph teaser + "Full technical deep-dive" CTA to /docs/under-the-hood/; arch-privacy column byte-identical (CONT-01)
+- [x] 03-03-PLAN.md — Architecture.astro arch-stack rewrite: 2-3 paragraph teaser + "Full technical deep-dive" CTA to /docs/under-the-hood/; arch-privacy column byte-identical (CONT-01)
 - [ ] 03-04-PLAN.md — Phase 3 verification checkpoint: fresh npm run build + consolidated grep matrix across dist/ for all 5 Success Criteria + CF Pages preview social-card debugger human gate (all requirements)
 
 Notes:
