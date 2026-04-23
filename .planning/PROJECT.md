@@ -22,6 +22,8 @@ When a new Covalence release is tagged in the app repo, this site rebuilds itsel
 - ✓ Release metadata ingested via `repository_dispatch` (type `new-release`) workflow that writes `src/data/latest-release.json` and appends `src/data/releases.json`, then commits to `main` — app repo Phase 12 (D-09…D-14)
 - ✓ Git history preserved from original `website/` subdirectory via `git filter-repo` (28 commits) — app repo Phase 12
 - ✓ Seeded `latest-release.json` / `releases.json` at v1.3.2 — commits `76d273e` / `3701d2e`
+- ✓ Expanded "Under the hood" technical section — `/docs/under-the-hood/` page with embedding model, asymmetric search, Matryoshka truncation, hybrid search, recency weighting + `Architecture.astro` home-page teaser (Phase 3, CONT-01)
+- ✓ SEO + sharing hygiene — `public/robots.txt`, `sitemap-index.xml` auto-emitted by `@astrojs/sitemap`, `<link rel="canonical">` on all 11 public pages, Starlight head delta for og:image×3 + twitter:image (Phase 3, SEO-01..04; social-card debugger APPROVED 2026-04-23 on CF preview `c0d36fed`)
 
 ### Active
 
@@ -30,8 +32,6 @@ When a new Covalence release is tagged in the app repo, this site rebuilds itsel
 - [ ] Standalone-repo hygiene — README, CONTRIBUTING expectations, license, issue/PR templates appropriate for a site repo (not a monorepo subfolder anymore)
 - [ ] Releases page (`/releases`) — lists all published Covalence releases with version, date, summary, download links (mirrors upstream DOC-09)
 - [ ] CI gating for PRs — at minimum `astro build` on PR, so broken builds cannot reach `main` and auto-deploy
-- [ ] Expanded "Under the hood" technical section — embedding model, asymmetric search, Matryoshka truncation, hybrid search, recency weighting (from app STATE.md todos)
-- [ ] SEO + sharing hygiene — canonical URLs, OG tags, `robots.txt`, `sitemap.xml` if not already present
 - [ ] Accessibility pass on custom Astro components (non-Starlight surfaces: Hero, HowItWorks, any custom sections)
 
 ### Out of Scope
@@ -98,4 +98,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-18 after initialization (standalone-repo GSD bootstrap)*
+*Last updated: 2026-04-23 after Phase 3 (Content Depth & SEO) — CONT-01, SEO-01..04 validated on PR #12 / CF preview `c0d36fed`*
