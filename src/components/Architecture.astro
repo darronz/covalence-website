@@ -3,14 +3,18 @@
     <h2 class="section-title">Under the hood</h2>
     <div class="arch-grid">
       <div class="arch-stack">
-        <h3>The stack</h3>
-        <ul>
-          <li><strong>Database:</strong> SQLite + sqlite-vec — single file, embedded, battle-tested</li>
-          <li><strong>Embeddings:</strong> CoreML on Apple Neural Engine — on-device, instant, free</li>
-          <li><strong>Search:</strong> Hybrid vector + FTS5 keyword, merged via Reciprocal Rank Fusion</li>
-          <li><strong>Protocol:</strong> MCP (stdio) — the standard for AI tool integration</li>
-          <li><strong>UI:</strong> Native SwiftUI — belongs on your Mac</li>
-        </ul>
+        <h3>How retrieval works</h3>
+        <p class="arch-teaser">
+          Every memory becomes a 256-dimension vector. Search runs on-device. Vector similarity meets keyword match via RRF. No cloud round-trips.
+        </p>
+        <p class="arch-teaser-detail">
+          Covalence embeds each memory with nomic-embed-text-v1.5 via MLTensor on Apple Silicon, truncates the output to 256 dimensions, and stores it in SQLite alongside an FTS5 full-text index.
+          Searches hit both indexes in parallel — vector similarity and BM25 keyword scoring — and merge the results with Reciprocal Rank Fusion at k=60.
+          A hyperbolic recency factor then nudges newer memories upward, weighted at 10% of the final score so recency never overrides genuine relevance.
+        </p>
+        <p class="arch-teaser-cta">
+          <a href="/docs/under-the-hood/">Full technical deep-dive →</a>
+        </p>
       </div>
       <div class="arch-privacy">
         <h3>Privacy by architecture</h3>
@@ -41,30 +45,35 @@
     margin-bottom: var(--space-md);
   }
 
-  .arch-stack ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
+  .arch-teaser {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
   }
 
-  .arch-stack li {
+  .arch-teaser-detail {
     color: var(--text-secondary);
     font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .arch-teaser-cta {
+    font-size: 0.9375rem;
     line-height: 1.5;
-    padding-left: var(--space-md);
-    position: relative;
   }
 
-  .arch-stack li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
+  .arch-teaser-cta a {
     color: var(--accent-subtle);
+    text-decoration: none;
+    font-weight: 600;
   }
 
-  .arch-stack li strong {
-    color: var(--text-primary);
+  .arch-teaser-cta a:hover,
+  .arch-teaser-cta a:focus-visible {
+    text-decoration: underline;
   }
 
   .privacy-statement {
