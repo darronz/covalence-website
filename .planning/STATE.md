@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
 status: executing
-stopped_at: "Plan 02.1-08 complete (Wave 8 gap-closure: empty-state gating — Nav.astro + Footer.astro each gained a frontmatter block reading `const hasPosts = (await getCollection('posts')).length > 0`; three visible anchors wrapped in `{hasPosts && …}` expressions. With empty collection, Blog nav + Footer RSS link hide site-wide; head-level `<link rel="alternate">` metadata preserved. Fix commit `2ab5ca2` fast-forward pushed to `origin/gsd/phase-2.1-blog` — `0405b49..2ab5ca2`). Wave 5 browser-level checkpoint is now the only remaining Phase 2.1 plan — ready to re-run on the refreshed CF Pages preview that now includes the Wave 6 theme-selector fix + Wave 7 content fix + Wave 8 empty-state gating."
-last_updated: "2026-04-22T21:38:37.993Z"
-last_activity: 2026-04-22 -- Phase 03 planning complete
+stopped_at: "Phase 3 Wave 1 complete — 03-01 (SEO metadata baseline: public/robots.txt + astro.config.mjs head+sidebar + Features.astro voice fix) and 03-02 (Under the Hood docs page at /docs/under-the-hood/ with five retrieval-stack topics + inline SVG) both landed on main linearly (56e79ff..27b8594). Post-merge `npm run build` exits 0; robots.txt, og:image×3 + twitter:image on /docs/under-the-hood/, and sidebar entry all verified in dist/. Wave 2 (03-03 Architecture.astro arch-stack rewrite) is next."
+last_updated: "2026-04-23T08:10:00.000Z"
+last_activity: 2026-04-23 -- Phase 3 Wave 1 landed
 progress:
   total_phases: 5
   completed_phases: 2
