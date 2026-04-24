@@ -96,7 +96,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-_(None — 2026-04-21-fix-chatgpt-mcp-support-docs closed 2026-04-22 via quick task 260422-wks-phase-2.1-cleanups, commit `229d4b7`)_
+- [2026-04-24 fix-keyboard-shortcuts-navigate-to-shortcuts-copy](./todos/pending/2026-04-24-fix-keyboard-shortcuts-navigate-to-shortcuts-copy.md) — `/docs/keyboard-shortcuts/#configuring-the-global-shortcut` step 2 reads "Navigate to **General**"; should be "Navigate to **Shortcuts**" (source: `src/content/docs/docs/keyboard-shortcuts.md:40`). One-line fix, candidate for `/gsd-quick`.
 
 ### Blockers/Concerns
 
