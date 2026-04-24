@@ -97,7 +97,6 @@ Recent decisions affecting current work:
 ### Pending Todos
 
 - [2026-04-24 marketing-copy-rewrite-pro-tier-readiness](./todos/pending/2026-04-24-marketing-copy-rewrite-pro-tier-readiness.md) — six-edit strategic copy rewrite of marketing-site surfaces (hero subhead + HowItWorks sub-copy + 3 Features tiles + Privacy paragraph + Footer tagline) to stop committing to "runs on your Mac" as a product-wide promise before Pro tier ships. Source: covalence memory 150 (2026-04-23). Phase-sized (not quick); MUST reconcile with Phase 3 Architecture.astro + Features.astro deltas before starting — todo body captures the reconciliation.
-- [2026-04-24 add-contact-channel-to-marketing-site](./todos/pending/2026-04-24-add-contact-channel-to-marketing-site.md) — `covalence.app` advertises zero way to reach the maintainer (Footer surfaces only Releases / Latest Release / RSS; no email, no Issues link, no Contact surface). Options A/B/C/D laid out (recommended: C — footer mailto + GitHub Issues link). Quick-task-sized for A/B/C; phase-sized if going to a full `/contact` route. Coordinate with the memory-150 rewrite since both touch `Footer.astro`.
 
 ### Blockers/Concerns
 
@@ -115,6 +114,7 @@ Recent decisions affecting current work:
 | 260419-wks | Fix broken homepage anchor links in primary nav | 2026-04-19 | 31f0452 | [260419-wks-fix-broken-homepage-anchor-links-in-prim](./quick/260419-wks-fix-broken-homepage-anchor-links-in-prim/) |
 | 260422-wks | Phase 2.1 cleanup follow-ups (WR-01 og_image guard, IN-02 dead dep removal, ChatGPT MCP claim fix) | 2026-04-22 | 00d02d1 · b17d172 · 229d4b7 | [260422-wks-phase-2.1-cleanups](./quick/260422-wks-phase-2.1-cleanups/) |
 | 260424-u9x | Fix /docs/keyboard-shortcuts/ pane name — General → Shortcuts | 2026-04-24 | 4475f7f | [260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-](./quick/260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-/) |
+| 260424-uk9 | Add Contact mailto + Report an issue links to Footer.astro | 2026-04-24 | 270f650 | [260424-uk9-add-contact-mailto-and-report-an-issue-l](./quick/260424-uk9-add-contact-mailto-and-report-an-issue-l/) |
 
 ## Deferred Items
 
