@@ -1,3 +1,19 @@
+---
+gsd_state_version: 1.0
+milestone: v1.3.0
+milestone_name: milestone
+status: phase_complete
+stopped_at: "Phase 3 (Content Depth & SEO) COMPLETE — all 4 plans landed on branch `gsd/phase-3-content-depth-seo` (PR #12). Task 1 grep matrix PASS on all 5 Success Criteria against a fresh `npm run build` at commit `0b6d046`. Task 2 social-card debugger gate APPROVED 2026-04-23 on CF Pages preview `c0d36fed.covalence-website-v2.pages.dev` — three populated cards (home, /docs/, /docs/under-the-hood/) with title + description + 1200×627 og-image.png. CI build ✓ and CF Pages ✓ both green. Two verification-pattern deviations captured (scoped astro-class-hash suffix in 03-03; grep-c vs grep-oE on minified sitemap in 03-04) — both artifact-shape issues, not source bugs. Ready to merge PR #12 to main; Phase 4 (Accessibility Pass) is next."
+last_updated: "2026-04-23T11:55:00.000Z"
+last_activity: 2026-04-23 -- Phase 3 complete, PR #12 open
+progress:
+  total_phases: 5
+  completed_phases: 3
+  total_plans: 14
+  completed_plans: 15
+  percent: 100
+---
+
 # Project State
 
 ## Project Reference
@@ -5,20 +21,21 @@
 See: .planning/PROJECT.md (updated 2026-04-18)
 
 **Core value:** When a new Covalence release is tagged in the app repo, this site rebuilds itself with the correct version, download, and release notes — with zero manual intervention — and visitors land on a page that explains what Covalence is clearly enough to decide whether to install it.
-**Current focus:** Phase 2.1 — Blog (Phase 2 Releases Page shipped outside GSD flow)
+**Current focus:** Phase 3 — Content Depth & SEO (Phase 2.1 Blog merged 2026-04-22)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — **COMPLETE** 2026-04-22; ready to merge `gsd/phase-2.1-blog` → `main`
+Phase: 2.1 of 4+ (Blog, INSERTED) — **MERGED** 2026-04-22 via PR #11 (merge commit `3dc00fb`); CF Pages deploying to covalence.app
 Plan: 8/8 (Waves 1–4 landed; Wave 5 checkpoint APPROVED 2026-04-22 after three cycles that drove Waves 6/7/8 gap-closure; Waves 6/7/8 all green; phase-level code review + verifier running)
-Status: **Phase 2.1 Blog complete.** Wave 5 browser checkpoint approved on `gsd/phase-2.1-blog@eea2179`. Journey: Cycle 1 blocked on Surface E → Wave 6 (H5 confirmed, standalone EC removed); Cycle 2 blocked on /docs/getting-started/ content → Wave 7 (drop broken Tabs JSX, linear H3 sub-sections); Cycle 3 approved-with-caveat on empty-blog UX → Wave 8 (hasPosts gates on Nav + Footer anchors); Cycle 4 APPROVED. All Wave 4 invariants (`<link rel="alternate">` on /posts/* and /docs/*) survived; Wave 6 invariant (EC on /docs/*) survived; Wave 7 invariant (linear docs content) survived. `main` remained untouched throughout (`f3bffd3`) — all phase work isolated on `gsd/phase-2.1-blog`. Phase-level code review (02.1-REVIEW.md) and goal verification (02.1-VERIFICATION.md) running in parallel to produce retrospective artifacts.
-Last activity: 2026-04-22 — Phase 2.1 SHIPPED via `/gsd-ship 2.1`. PR #11 opened: https://github.com/darronz/covalence-website/pull/11 — 44 files, 39 commits, mergeable. CF Pages will deploy to covalence.app on merge. Next: review + merge PR, then `/gsd-progress` for routing to Phase 3.
+Status: Ready to execute
+Last activity: 2026-04-22 -- Phase 03 planning complete
 
-Progress: [████████████] 100% of Phase 2.1 (3 phases complete — 2 + 2.1 shipped; Phase 3 up next; Phase 4 after)
+Progress: [████████████░░░░] 60% overall (3 of 5 phases shipped: 1 + 2 + 2.1; Phase 3 context locked, planning next; Phase 4 after)
 
 ## Performance Metrics
 
 **Velocity:**
+
 - Total plans completed: 9
 - Average duration: ~4.4 min (Phase 2.1 Plans 01 + 02 + 03 + 04 + 06 + 07 + 08 measured)
 - Total execution time: ~31 min (Plans 02.1-01 + 02.1-02 + 02.1-03 + 02.1-04 + 02.1-06 + 02.1-07 + 02.1-08; Phase 1 / Phase 2 durations not captured)
@@ -34,6 +51,7 @@ Progress: [████████████] 100% of Phase 2.1 (3 phases com
 | 4. Accessibility Pass | 0/TBD | — | — |
 
 **Recent Trend:**
+
 - Last 7 plans: 02.1-01 (~5 min, 1 deviation auto-fixed), 02.1-02 (~2 min, 0 deviations), 02.1-03 (~3 min, 0 deviations), 02.1-04 (~3 min, 1 Rule 2 deviation auto-fixed — Starlight head injection for /docs/* alternate rel), 02.1-06 (~10 min gap-closure, 0 deviations — H5 confirmed, Wave 1 decision reversed), 02.1-07 (~4 min gap-closure, 0 deviations — content-fix drops broken Tabs JSX, five linear H3 sub-sections replace them with column-1 fenced code blocks), 02.1-08 (~4 min gap-closure, 2 Rule 1 plan-level verification-pattern fixes auto-applied — `grep -oE 'href="/posts/rss.xml"'` conflates `<a>` with `<link>` metadata, so anchor-only assertions use `<a [^>]*href=...`; plan acceptance `grep -c ... == 0` was self-contradictory with Wave 4 invariant, resolved by refining pattern).
 - Trend: Plans consistently land in 2-5 min with at most two deviations. Plan 04's deviation was a plan-level gap (Base.astro does not reach Starlight /docs/* routes) that the task-level acceptance spec caught and Rule 2 handled automatically — exactly the intended safety net. Plan 06 was longer-than-average (~10 min) because Task 1's disciplined H1-H5 experiment-revert cycle + the throwaway-post test cost minutes but prevented a blanket revert of Wave 4 / Wave 1 work. Plan 07 back under 5 min — pure content rewrite with clear target shape specified in the plan's `<interfaces>` block. Plan 08 another ~4-min gap-closure — two files, one atomic commit, clean rebuild + 10-metric invariant matrix all green; the two deviations were verification-logic refinements (not source-code fixes).
 
@@ -78,7 +96,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [2026-04-21-fix-chatgpt-mcp-support-docs](./todos/pending/2026-04-21-fix-chatgpt-mcp-support-docs.md) — Fix incorrect ChatGPT MCP support claim in getting-started docs (`docs`)
+- [2026-04-24 marketing-copy-rewrite-pro-tier-readiness](./todos/pending/2026-04-24-marketing-copy-rewrite-pro-tier-readiness.md) — six-edit strategic copy rewrite of marketing-site surfaces (hero subhead + HowItWorks sub-copy + 3 Features tiles + Privacy paragraph + Footer tagline) to stop committing to "runs on your Mac" as a product-wide promise before Pro tier ships. Source: covalence memory 150 (2026-04-23). Phase-sized (not quick); MUST reconcile with Phase 3 Architecture.astro + Features.astro deltas before starting — todo body captures the reconciliation.
 
 ### Blockers/Concerns
 
@@ -94,6 +112,10 @@ Recent decisions affecting current work:
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260419-wks | Fix broken homepage anchor links in primary nav | 2026-04-19 | 31f0452 | [260419-wks-fix-broken-homepage-anchor-links-in-prim](./quick/260419-wks-fix-broken-homepage-anchor-links-in-prim/) |
+| 260422-wks | Phase 2.1 cleanup follow-ups (WR-01 og_image guard, IN-02 dead dep removal, ChatGPT MCP claim fix) | 2026-04-22 | 00d02d1 · b17d172 · 229d4b7 | [260422-wks-phase-2.1-cleanups](./quick/260422-wks-phase-2.1-cleanups/) |
+| 260424-u9x | Fix /docs/keyboard-shortcuts/ pane name — General → Shortcuts | 2026-04-24 | 4475f7f | [260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-](./quick/260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-/) |
+| 260424-uk9 | Add Contact mailto + Report an issue links to Footer.astro | 2026-04-24 | 270f650 | [260424-uk9-add-contact-mailto-and-report-an-issue-l](./quick/260424-uk9-add-contact-mailto-and-report-an-issue-l/) |
+| 260424-uqq | Replace default Astro favicon.ico with Covalence brand mark (32×32 PNG from favicon.svg) | 2026-04-24 | eb49d8e | [260424-uqq-replace-default-astro-favicon-ico-with-c](./quick/260424-uqq-replace-default-astro-favicon-ico-with-c/) |
 
 ## Deferred Items
 

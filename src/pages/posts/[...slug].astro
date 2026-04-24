@@ -23,7 +23,13 @@ const { Content } = await render(post);
 
 const canonicalURL = new URL(`/posts/${post.id}/`, Astro.site);
 const ogImageURL = post.data.og_image
-  ? new URL(post.data.og_image, Astro.site)
+  ? (() => {
+      const u = new URL(post.data.og_image, Astro.site);
+      if (u.origin !== new URL(Astro.site!).origin) {
+        throw new Error(`og_image must be same-origin: got ${u.origin} for ${post.id}`);
+      }
+      return u;
+    })()
   : new URL('/og-image.png', Astro.site);
 const publishedISO = post.data.pub_date.toISOString();
 const author = post.data.author ?? 'Darron Schall';

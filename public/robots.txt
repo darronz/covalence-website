@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /releases/*.dmg
+Sitemap: https://covalence.app/sitemap-index.xml
