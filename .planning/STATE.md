@@ -3,11 +3,11 @@ gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
 status: phase_complete
-stopped_at: "Phase 3 (Content Depth & SEO) COMPLETE — all 4 plans landed on branch `gsd/phase-3-content-depth-seo` (PR #12). Task 1 grep matrix PASS on all 5 Success Criteria against a fresh `npm run build` at commit `0b6d046`. Task 2 social-card debugger gate APPROVED 2026-04-23 on CF Pages preview `c0d36fed.covalence-website-v2.pages.dev` — three populated cards (home, /docs/, /docs/under-the-hood/) with title + description + 1200×627 og-image.png. CI build ✓ and CF Pages ✓ both green. Two verification-pattern deviations captured (scoped astro-class-hash suffix in 03-03; grep-c vs grep-oE on minified sitemap in 03-04) — both artifact-shape issues, not source bugs. Ready to merge PR #12 to main; Phase 4 (Accessibility Pass) is next."
-last_updated: "2026-04-23T11:55:00.000Z"
-last_activity: 2026-04-23 -- Phase 3 complete, PR #12 open
+stopped_at: "Phase 3 merged to main (PR #12 merge commit `8cd7e3d`, 2026-04-24T21:11Z); production CI green; CF Pages deploying to covalence.app. Roadmap restructured same day: the pending marketing-copy-rewrite todo (covalence memory 150) promoted to Phase 4 (Marketing Copy Rewrite — Pro-tier readiness, 5 new COPY-01..05 requirements); the original Phase 4 Accessibility Pass pushed to Phase 5 (A11Y-01..03 re-mapped). Rationale: running accessibility tests against copy about to be rewritten would force re-runs. Ready to discuss Phase 4."
+last_updated: "2026-04-24T21:30:00.000Z"
+last_activity: 2026-04-24 -- Phase 3 merged; roadmap restructured to put copy rewrite ahead of a11y
 progress:
-  total_phases: 5
+  total_phases: 6
   completed_phases: 3
   total_plans: 14
   completed_plans: 15
@@ -96,7 +96,7 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- [2026-04-24 marketing-copy-rewrite-pro-tier-readiness](./todos/pending/2026-04-24-marketing-copy-rewrite-pro-tier-readiness.md) — six-edit strategic copy rewrite of marketing-site surfaces (hero subhead + HowItWorks sub-copy + 3 Features tiles + Privacy paragraph + Footer tagline) to stop committing to "runs on your Mac" as a product-wide promise before Pro tier ships. Source: covalence memory 150 (2026-04-23). Phase-sized (not quick); MUST reconcile with Phase 3 Architecture.astro + Features.astro deltas before starting — todo body captures the reconciliation.
+_(None — marketing-copy-rewrite-pro-tier-readiness promoted to Phase 4 on 2026-04-24)_
 
 ### Blockers/Concerns
 

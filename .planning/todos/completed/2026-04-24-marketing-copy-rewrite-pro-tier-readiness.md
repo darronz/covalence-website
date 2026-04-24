@@ -1,5 +1,8 @@
 ---
 created: 2026-04-24T00:00:00Z
+resolved: 2026-04-24T21:30:00Z
+status: promoted-to-phase
+promoted_to: Phase 4 — Marketing Copy Rewrite (Pro-tier readiness)
 title: Marketing-site copy rewrite for Pro-tier readiness (hero + features + privacy + footer)
 area: ui
 files:

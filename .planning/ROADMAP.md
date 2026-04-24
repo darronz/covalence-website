@@ -14,7 +14,8 @@ This milestone takes the Covalence website from "recently split out of the app m
 - [x] **Phase 2: Releases Page** - Ship `/releases` reading `releases.json` at build time (implements upstream DOC-09) — shipped outside GSD flow in `d2496eb` (PR #5)
 - [x] **Phase 2.1: Blog** (INSERTED) - Ship `/posts/` content collection with Expressive-Code-styled code blocks, RSS, and a "Latest writing" band on the landing page _(complete 2026-04-22 on `gsd/phase-2.1-blog@eea2179` — ready to merge to `main`)_
 - [x] **Phase 3: Content Depth & SEO** - Expand the "Under the hood" section and close SEO / social-sharing metadata gaps _(complete 2026-04-23 on `gsd/phase-3-content-depth-seo@0b6d046` — PR #12, CF preview `c0d36fed`)_
-- [ ] **Phase 4: Accessibility Pass** - Custom components meet WCAG AA and pass an automated a11y scan
+- [ ] **Phase 4: Marketing Copy Rewrite (Pro-tier readiness)** - Reframe hero, features, privacy paragraph, and footer so every claim on the marketing surfaces survives the eventual Free/Pro tier split — "no third-party cloud, by architecture" becomes the load-bearing principle
+- [ ] **Phase 5: Accessibility Pass** - Custom components meet WCAG AA and pass an automated a11y scan
 
 ## Phase Details
 
@@ -115,9 +116,30 @@ Notes:
 - Head-tag mirror uses delta-only approach (4 tags: og:image + width + height + twitter:image) per RESEARCH.md §Head Tag Mirror option 2c — Starlight already auto-emits canonical, og:title/type/url/description, twitter:card, and description, so a full mirror is redundant.
 **UI hint**: yes
 
-### Phase 4: Accessibility Pass
+### Phase 4: Marketing Copy Rewrite (Pro-tier readiness)
+**Goal**: Every claim on the marketing-site surfaces survives the Free/Pro tier split — the load-bearing principle "no third-party cloud, by architecture" is said once in the hero, once in the privacy paragraph, and once in the relevant features tile. The site stops committing to "runs on your Mac" as a product-wide promise without pre-announcing Pro.
+**Depends on**: Phase 3 (rewrites the arch-stack teaser and Features tile already reshaped in 03-01 / 03-03)
+**Requirements**: COPY-01, COPY-02, COPY-03, COPY-04, COPY-05
+**Success Criteria** (what must be TRUE):
+  1. The home-page hero subhead reads "Your memory, on machines you own. Never anyone else's cloud." (no Mac-specific language) — COPY-01.
+  2. The `Architecture.astro` right column (formerly "Privacy by architecture") is headed "Your data, your infrastructure" and its first sentence names "no third-party cloud, by architecture" — COPY-02.
+  3. None of the six Features tiles mentions CoreML, Apple Neural Engine, millisecond inference, or any other Apple- or Mac-specific implementation detail in tile bodies — COPY-03.
+  4. The Footer tagline above the download CTA reads "Built for the machines you own" (or equivalent non-Mac-specific copy) — COPY-04.
+  5. The "Two copy-pastes" sub-copy under its heading reads no more than one sentence tightened for a power-user audience ("Add the MCP snippet. Paste the behavioural prompt. Done.") — COPY-05.
+**Plans**: TBD
+
+Notes:
+- Source spec: covalence memory 150 (2026-04-23 copywriter review). Six discrete edits captured in `.planning/todos/completed/2026-04-24-marketing-copy-rewrite-pro-tier-readiness.md` (promoted from todo to Phase 4 on 2026-04-24).
+- Phase 3 reconciliation: Plan 03-01 already voice-corrected `Features.astro:26` (CoreML → MLTensor); this phase supersedes it with the implementation-neutral "On-device embeddings" rewrite. Plan 03-03 already replaced the `arch-stack` bullet list with a prose teaser; review the teaser copy against this phase's "no Mac-specific promises" bar before declaring COPY-03 satisfied.
+- Do NOT add a pricing page, Pro waitlist, or "Pro coming soon" badge — read-true-today is the acceptance bar.
+- Do NOT remove the v1.3.5 download-required banner, nav, download button, version string, or release notes link.
+- No new assets. No template restructuring. Scoped to prose edits in existing components.
+- Unblocks the pending WR-01 code-review finding (`Features.astro:26` pre-existing "instant" voice word — will be subsumed by COPY-03's tile rewrite).
+**UI hint**: yes
+
+### Phase 5: Accessibility Pass
 **Goal**: The site's brand-owned components (the ones Starlight doesn't already handle) meet WCAG AA and don't silently degrade for keyboard or screen-reader users.
-**Depends on**: Phase 3 (content and metadata are in their v1 shape before we audit them)
+**Depends on**: Phase 4 (copy in its final v1 shape before we audit it — avoids re-running a11y tests against copy about to be rewritten)
 **Requirements**: A11Y-01, A11Y-02, A11Y-03
 **Success Criteria** (what must be TRUE):
   1. Running an automated a11y scan (axe-core, pa11y, or Lighthouse a11y) against the built `dist/` reports zero critical violations on the custom marketing surfaces (`/`, `/releases`, and any non-Starlight component rendered under those routes).
@@ -135,16 +157,18 @@ Notes:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4
+Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Repo Hygiene & CI Gating | 2/2   | Complete    | 2026-04-18 |
 | 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
-| 2.1 Blog (INSERTED) | 7/8 | In progress (Wave 5 final re-run ready on refreshed CF preview after Waves 6+7+8 landed) | - |
-| 3. Content Depth & SEO | 0/4 | Planned (4 plans across 3 waves) | - |
-| 4. Accessibility Pass | 0/TBD | Not started | - |
+| 2.1 Blog (INSERTED) | 8/8 | Complete | 2026-04-22 |
+| 3. Content Depth & SEO | 4/4 | Complete (PR #12, merge `8cd7e3d`) | 2026-04-24 |
+| 4. Marketing Copy Rewrite | 0/TBD | Not started | - |
+| 5. Accessibility Pass | 0/TBD | Not started | - |
 
 ---
 *Roadmap defined: 2026-04-18*
-*Granularity: coarse (4 phases for 17 requirements across 6 categories)*
+*Restructured: 2026-04-24 — Phase 4 Marketing Copy Rewrite inserted ahead of Accessibility Pass (now Phase 5). See PR for rationale.*
+*Granularity: coarse (5 phases for 22 requirements across 7 categories)*
