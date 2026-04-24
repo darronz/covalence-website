@@ -37,7 +37,7 @@ Standard macOS shortcuts apply throughout the app.
 ## Configuring the Global Shortcut
 
 1. Open Settings with `Cmd+,`
-2. Navigate to **General**
+2. Navigate to **Shortcuts**
 3. Click the shortcut field next to **Quick Capture**
 4. Press your preferred key combination
 
