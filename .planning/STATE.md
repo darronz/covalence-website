@@ -115,6 +115,7 @@ Recent decisions affecting current work:
 | 260422-wks | Phase 2.1 cleanup follow-ups (WR-01 og_image guard, IN-02 dead dep removal, ChatGPT MCP claim fix) | 2026-04-22 | 00d02d1 · b17d172 · 229d4b7 | [260422-wks-phase-2.1-cleanups](./quick/260422-wks-phase-2.1-cleanups/) |
 | 260424-u9x | Fix /docs/keyboard-shortcuts/ pane name — General → Shortcuts | 2026-04-24 | 4475f7f | [260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-](./quick/260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-/) |
 | 260424-uk9 | Add Contact mailto + Report an issue links to Footer.astro | 2026-04-24 | 270f650 | [260424-uk9-add-contact-mailto-and-report-an-issue-l](./quick/260424-uk9-add-contact-mailto-and-report-an-issue-l/) |
+| 260424-uqq | Replace default Astro favicon.ico with Covalence brand mark (32×32 PNG from favicon.svg) | 2026-04-24 | eb49d8e | [260424-uqq-replace-default-astro-favicon-ico-with-c](./quick/260424-uqq-replace-default-astro-favicon-ico-with-c/) |
 
 ## Deferred Items
 
