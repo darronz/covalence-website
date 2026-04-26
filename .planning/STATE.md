@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
-status: phase_complete
-stopped_at: "Phase 3 merged to main (PR #12 merge commit `8cd7e3d`, 2026-04-24T21:11Z); production CI green; CF Pages deploying to covalence.app. Roadmap restructured same day: the pending marketing-copy-rewrite todo (covalence memory 150) promoted to Phase 4 (Marketing Copy Rewrite — Pro-tier readiness, 5 new COPY-01..05 requirements); the original Phase 4 Accessibility Pass pushed to Phase 5 (A11Y-01..03 re-mapped). Rationale: running accessibility tests against copy about to be rewritten would force re-runs. Ready to discuss Phase 4."
-last_updated: "2026-04-24T21:30:00.000Z"
-last_activity: 2026-04-24 -- Phase 3 merged; roadmap restructured to put copy rewrite ahead of a11y
+status: complete
+stopped_at: "Phase 5 complete (3/3 plans). All phases complete. Milestone v1.3.0 finished."
+last_updated: "2026-04-26T08:56:12Z"
+last_activity: 2026-04-26 -- Plan 05-03 complete (consolidated a11y scan: zero axe-core violations)
 progress:
   total_phases: 6
-  completed_phases: 3
-  total_plans: 14
-  completed_plans: 15
+  completed_phases: 5
+  total_plans: 23
+  completed_plans: 23
   percent: 100
 ---
 
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — **MERGED** 2026-04-22 via PR #11 (merge commit `3dc00fb`); CF Pages deploying to covalence.app
-Plan: 8/8 (Waves 1–4 landed; Wave 5 checkpoint APPROVED 2026-04-22 after three cycles that drove Waves 6/7/8 gap-closure; Waves 6/7/8 all green; phase-level code review + verifier running)
-Status: Ready to execute
-Last activity: 2026-04-22 -- Phase 03 planning complete
+Phase: 5 of 5 (Accessibility Pass)
+Plan: 3/3 complete (all plans done)
+Status: Complete
+Last activity: 2026-04-26 -- Plan 05-03 complete (consolidated a11y scan: zero axe-core violations)
 
-Progress: [████████████░░░░] 60% overall (3 of 5 phases shipped: 1 + 2 + 2.1; Phase 3 context locked, planning next; Phase 4 after)
+Progress: [████████████████] 100% overall (5 of 5 phases complete; milestone v1.3.0 finished)
 
 ## Performance Metrics
 
@@ -89,6 +89,12 @@ Recent decisions affecting current work:
 - 02.1-08: Gate VISIBLE `<a>` anchors on `hasPosts`, leave INVISIBLE head-level `<link rel="alternate">` unconditional. Head-level feed metadata auto-lights-up for crawlers on first-post publish (RSS 2.0 explicitly allows empty channels), while visible CTAs follow the CONTEXT voice rule ("nothing ships until the first real post lands"). Two-tier feed exposure; clean split between "invisible, auto-useful-eventually metadata" (stays) and "visible, user-facing CTA" (gates).
 - 02.1-08: Per-component `const hasPosts = (await getCollection('posts')).length > 0` in frontmatter — the Nav/Footer-level equivalent of Plan 04's page-level `const showLatestWriting = true`. Each component computes its own flag once per build per page it renders on; no shared-state plumbing; extends naturally to other shared components needing content-aware gates.
 - 02.1-08: Verification patterns must distinguish `<a>` anchors from `<link>` metadata when both contain the same href. `grep -oE 'href="/posts/rss\.xml"'` conflates them (counts BOTH tag types); `grep -oE '<a [^>]*href="/posts/rss\.xml"'` counts only anchors. In minified HTML with feed-discovery metadata in `<head>`, this distinction is load-bearing for empty-state delta assertions. Captured in 02.1-08 SUMMARY as a Rule 1 plan-level deviation so Plan 05 verification scripts use the precise pattern.
+- 05-01: `:focus-visible` (not `:focus`) for all interactive element outlines — mouse clicks do not trigger outlines. The skip-link's own reveal uses `:focus` because it is only keyboard-reachable.
+- 05-01: Emoji aria-label values describe tile concepts (e.g. "data ownership"), not emoji characters (e.g. "lock") — per D-06.
+- 05-01: sr-only class added to global.css as site-wide utility. Skip-link pattern: sr-only + skip-link class, fixed positioning on :focus with z-index 200.
+- 05-02: All 6 brand color pairings already pass WCAG AA -- no CSS :root adjustments needed. Ratios: text-primary 16.29:1, accent 5.82:1, accent-subtle 7.40:1, button-text 5.48:1, text-secondary/bg-primary 5.92:1, text-secondary/bg-surface 5.59:1.
+- 05-02: @axe-core/cli installed as devDependency; ChromeDriver mismatch resolved via `npx browser-driver-manager install chrome` + `--chromedriver-path` flag.
+- 05-03: axe-core 4.11.3 scan confirms zero WCAG AA violations on / and /releases/ -- all three a11y requirements (A11Y-01, A11Y-02, A11Y-03) satisfied. No gap-closure needed.
 
 ### Roadmap Evolution
 
@@ -128,6 +134,6 @@ Items acknowledged and carried forward from initialization:
 
 ## Session Continuity
 
-Last session: 2026-04-22
-Stopped at: Plan 02.1-08 complete (Wave 8 gap-closure: empty-state gating — Nav.astro + Footer.astro each gained a frontmatter block reading `const hasPosts = (await getCollection('posts')).length > 0`; three visible anchors wrapped in `{hasPosts && …}` expressions. With empty collection, Blog nav + Footer RSS link hide site-wide; head-level `<link rel="alternate">` metadata preserved. Fix commit `2ab5ca2` fast-forward pushed to `origin/gsd/phase-2.1-blog` — `0405b49..2ab5ca2`). Wave 5 browser-level checkpoint is now the only remaining Phase 2.1 plan — ready to re-run on the refreshed CF Pages preview that now includes the Wave 6 theme-selector fix + Wave 7 content fix + Wave 8 empty-state gating.
-Resume file: `.planning/phases/2.1-blog/02.1-05-PLAN.md` (Wave 5 final re-run: browser-level verification of the CF Pages preview on `gsd/phase-2.1-blog@2ab5ca2` — with empty collection, confirm Blog nav + Footer RSS are ABSENT on `/`, `/releases/`, `/posts/`; confirm `/docs/getting-started/` still renders five H3 sub-sections with four Starlight-themed EC code blocks; confirm head-level `<link rel="alternate">` still advertises the feed; re-walk the 7-surface checklist)
+Last session: 2026-04-26
+Stopped at: Phase 5 complete (3/3 plans). All 5 phases complete. Milestone v1.3.0 finished.
+Resume file: None -- all plans complete

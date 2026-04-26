@@ -48,7 +48,31 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <slot name="head-extra" />
   </head>
   <body>
+    <a href="#main-content" class="sr-only skip-link">Skip to main content</a>
     <NoticeBanner />
     <slot />
   </body>
+
+  <style>
+    .skip-link:focus {
+      position: fixed;
+      top: var(--space-sm);
+      left: var(--space-sm);
+      z-index: 200;
+      width: auto;
+      height: auto;
+      padding: var(--space-sm) var(--space-md);
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+      background-color: var(--bg-surface);
+      color: var(--accent-subtle);
+      border: 2px solid var(--accent-subtle);
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  </style>
 </html>

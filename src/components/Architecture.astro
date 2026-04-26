@@ -5,7 +5,7 @@
       <div class="arch-stack">
         <h3>How retrieval works</h3>
         <p class="arch-teaser">
-          Every memory becomes a 256-dimension vector. Search runs on-device. Vector similarity meets keyword match via RRF. No cloud round-trips.
+          Every memory becomes a 256-dimension vector on hardware you control. Vector similarity meets keyword match via RRF. No third-party cloud, by architecture.
         </p>
         <p class="arch-teaser-detail">
           Covalence embeds each memory with nomic-embed-text-v1.5 via MLTensor on Apple Silicon, truncates the output to 256 dimensions, and stores it in SQLite alongside an FTS5 full-text index.
@@ -17,14 +17,14 @@
         </p>
       </div>
       <div class="arch-privacy">
-        <h3>Privacy by architecture</h3>
+        <h3>Your data, your infrastructure</h3>
         <p class="privacy-statement">
-          Your data never leaves your machine. No accounts. No telemetry. No cloud. Runs entirely on-device.
+          Covalence runs on machines you control. No accounts with us. No telemetry. No third-party cloud, by architecture.
         </p>
         <p class="privacy-detail">
-          Every component — the database, the embedding model, the search engine — runs locally.
-          There are no network calls, no API keys, no external dependencies.
-          Your memories are a single SQLite file on your Mac that you own, back up, and export whenever you want.
+          Every component — the database, the embedding model, the search engine — runs on your hardware.
+          No network calls to us, no API keys to buy, no external dependencies to trust.
+          Your memories are a SQLite file you own, back up, and export whenever you want.
         </p>
       </div>
     </div>

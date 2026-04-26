@@ -48,9 +48,9 @@ _Added 2026-04-24 when the pending "marketing copy rewrite for Pro-tier readines
 
 ### Accessibility
 
-- [ ] **A11Y-01**: Custom (non-Starlight) components pass an automated a11y scan with zero critical violations
-- [ ] **A11Y-02**: All interactive elements have accessible names and visible keyboard focus styles
-- [ ] **A11Y-03**: Brand elements (hero, CTAs) meet WCAG AA color contrast
+- [x] **A11Y-01**: Custom (non-Starlight) components pass an automated a11y scan with zero critical violations
+- [x] **A11Y-02**: All interactive elements have accessible names and visible keyboard focus styles
+- [x] **A11Y-03**: Brand elements (hero, CTAs) meet WCAG AA color contrast
 
 ## v2 Requirements
 
@@ -100,9 +100,9 @@ Deferred to a later milestone.
 | COPY-03 | Phase 4 | Pending |
 | COPY-04 | Phase 4 | Pending |
 | COPY-05 | Phase 4 | Pending |
-| A11Y-01 | Phase 5 | Pending |
-| A11Y-02 | Phase 5 | Pending |
-| A11Y-03 | Phase 5 | Pending |
+| A11Y-01 | Phase 5 | Validated (2026-04-26, axe-core 0 violations) |
+| A11Y-02 | Phase 5 | Validated (2026-04-26, focus-visible + aria-labels + skip-link) |
+| A11Y-03 | Phase 5 | Validated (2026-04-26, all pairings pass WCAG AA) |
 
 **Coverage:**
 - v1 requirements: 22 total
