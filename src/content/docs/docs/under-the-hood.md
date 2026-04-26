@@ -38,7 +38,7 @@ The trade-off, concretely: about 2% quality loss against the full 768-dim vector
 
 No schedule. No rebuild step. Just the first 256 floats and a normalisation.
 
-<svg role="img" aria-labelledby="rs-title rs-desc" width="700" height="260" viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto; margin: 1.5rem 0;">
+<svg role="img" aria-labelledby="rs-title rs-desc" width="760" height="260" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto; margin: 1.5rem 0;">
   <title id="rs-title">Covalence retrieval pipeline</title>
   <desc id="rs-desc">A query flows through the embedding encoder and Matryoshka truncation to 256 dimensions, then fans out to vector search and keyword search in parallel; their ranked lists merge via reciprocal rank fusion, recency weighting is applied, and the final ranked results are returned.</desc>
   <defs>
@@ -50,7 +50,7 @@ No schedule. No rebuild step. Just the first 256 floats and a normalisation.
     <!-- Row 1: Query -> Encoder -> Truncation -->
     <rect x="10"  y="20" width="90"  height="36" rx="4" />
     <rect x="150" y="20" width="160" height="36" rx="4" />
-    <rect x="360" y="20" width="230" height="36" rx="4" />
+    <rect x="360" y="20" width="290" height="36" rx="4" />
     <!-- Row 2: Vector search (left) and Keyword search (right) -->
     <rect x="60"  y="110" width="230" height="36" rx="4" />
     <rect x="410" y="110" width="230" height="36" rx="4" />
@@ -62,10 +62,10 @@ No schedule. No rebuild step. Just the first 256 floats and a normalisation.
     <line x1="100" y1="38" x2="150" y2="38" marker-end="url(#rs-arrow)" />
     <line x1="310" y1="38" x2="360" y2="38" marker-end="url(#rs-arrow)" />
     <!-- Truncation fans out to two branches -->
-    <line x1="475" y1="56" x2="475" y2="80" />
+    <line x1="505" y1="56" x2="505" y2="80" />
     <line x1="175" y1="80" x2="775" y2="80" stroke="none" />
-    <line x1="175" y1="80" x2="475" y2="80" />
-    <line x1="475" y1="80" x2="525" y2="80" />
+    <line x1="175" y1="80" x2="505" y2="80" />
+    <line x1="505" y1="80" x2="525" y2="80" />
     <line x1="175" y1="80" x2="175" y2="110" marker-end="url(#rs-arrow)" />
     <line x1="525" y1="80" x2="525" y2="110" marker-end="url(#rs-arrow)" />
     <!-- Two branches converge into RRF -->
@@ -79,7 +79,7 @@ No schedule. No rebuild step. Just the first 256 floats and a normalisation.
   <g fill="currentColor" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" text-anchor="middle">
     <text x="55"  y="43">Query</text>
     <text x="230" y="43">Embedding encoder</text>
-    <text x="475" y="43">Matryoshka truncation: 768 → 256</text>
+    <text x="505" y="43">Matryoshka truncation: 768 → 256</text>
     <text x="175" y="133">Vector search (vec0 KNN)</text>
     <text x="525" y="133">FTS5 keyword search (BM25)</text>
     <text x="350" y="200">RRF merge (k = 60)</text>
