@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
-status: phase_complete
-stopped_at: "Phase 3 merged to main (PR #12 merge commit `8cd7e3d`, 2026-04-24T21:11Z); production CI green; CF Pages deploying to covalence.app. Roadmap restructured same day: the pending marketing-copy-rewrite todo (covalence memory 150) promoted to Phase 4 (Marketing Copy Rewrite — Pro-tier readiness, 5 new COPY-01..05 requirements); the original Phase 4 Accessibility Pass pushed to Phase 5 (A11Y-01..03 re-mapped). Rationale: running accessibility tests against copy about to be rewritten would force re-runs. Ready to discuss Phase 4."
-last_updated: "2026-04-24T21:30:00.000Z"
-last_activity: 2026-04-24 -- Phase 3 merged; roadmap restructured to put copy rewrite ahead of a11y
+status: ready-to-plan
+stopped_at: "Phase 4 context gathered. CONTEXT.md locks 9 prose edits across 5 components organized as 6 plans (Wave 1: 5 component-scoped plans run in parallel via worktrees; Wave 2: 1 consolidated verification plan). Memory 150 target strings locked verbatim for D-03..D-11. Two deviations from memory 150: tile #3 'Always running' body rewritten ('Quick capture from anywhere. Global hotkey opens search from any window.' — closes Phase 3 WR-01) and arch-stack teaser rewritten to add a 4th repetition of the 'no third-party cloud' principle (now: hero subhead + arch-stack + arch-privacy + features tile #5). Per-plan + consolidated voice-invariant verification matrix; per-plan local greps + phase-level cross-cutting check on dist/index.html. Plan 04-04 will intentionally break Phase 3's byte-identical arch-privacy invariant — flag in commit message. Ready for /gsd-plan-phase 4."
+last_updated: "2026-04-26T00:00:00.000Z"
+last_activity: 2026-04-26 -- Phase 4 context captured; ready to plan
 progress:
   total_phases: 6
   completed_phases: 3
