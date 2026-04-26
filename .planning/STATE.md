@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
-status: ready-to-plan
-stopped_at: "Phase 4 context gathered. CONTEXT.md locks 9 prose edits across 5 components organized as 6 plans (Wave 1: 5 component-scoped plans run in parallel via worktrees; Wave 2: 1 consolidated verification plan). Memory 150 target strings locked verbatim for D-03..D-11. Two deviations from memory 150: tile #3 'Always running' body rewritten ('Quick capture from anywhere. Global hotkey opens search from any window.' — closes Phase 3 WR-01) and arch-stack teaser rewritten to add a 4th repetition of the 'no third-party cloud' principle (now: hero subhead + arch-stack + arch-privacy + features tile #5). Per-plan + consolidated voice-invariant verification matrix; per-plan local greps + phase-level cross-cutting check on dist/index.html. Plan 04-04 will intentionally break Phase 3's byte-identical arch-privacy invariant — flag in commit message. Ready for /gsd-plan-phase 4."
+status: ready-to-execute
+stopped_at: "Phase 4 planned. 6 plans in 2 waves (Wave 1: 5 parallel component plans — Hero, HowItWorks, Features, Architecture, Footer; Wave 2: consolidated verification + CF preview gate). All 5 requirements (COPY-01..05) covered. Plan checker passed all dimensions. Ready for /gsd-execute-phase 4."
 last_updated: "2026-04-26T00:00:00.000Z"
-last_activity: 2026-04-26 -- Phase 4 context captured; ready to plan
+last_activity: 2026-04-26 -- Phase 4 planning complete; 6 plans verified
 progress:
   total_phases: 6
   completed_phases: 3
