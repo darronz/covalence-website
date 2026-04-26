@@ -50,7 +50,7 @@ _Added 2026-04-24 when the pending "marketing copy rewrite for Pro-tier readines
 
 - [ ] **A11Y-01**: Custom (non-Starlight) components pass an automated a11y scan with zero critical violations
 - [ ] **A11Y-02**: All interactive elements have accessible names and visible keyboard focus styles
-- [ ] **A11Y-03**: Brand elements (hero, CTAs) meet WCAG AA color contrast
+- [x] **A11Y-03**: Brand elements (hero, CTAs) meet WCAG AA color contrast
 
 ## v2 Requirements
 

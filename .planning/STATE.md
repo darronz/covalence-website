@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
 status: executing
-stopped_at: "Plan 05-01 complete (3/3 tasks: sr-only + :focus-visible styles, skip-to-main link, emoji aria-labels + SVG audit). Ready for 05-02 (contrast audit)."
-last_updated: "2026-04-26T08:44:42Z"
-last_activity: 2026-04-26 -- Plan 05-01 complete (a11y CSS + HTML fixes)
+stopped_at: "Plan 05-02 complete (2/2 tasks: contrast verification + axe-core install). Ready for 05-03 (consolidated a11y scan)."
+last_updated: "2026-04-26T08:51:07Z"
+last_activity: 2026-04-26 -- Plan 05-02 complete (contrast audit + axe-core)
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 23
-  completed_plans: 21
-  percent: 83
+  completed_plans: 22
+  percent: 87
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 ## Current Position
 
 Phase: 5 of 5 (Accessibility Pass)
-Plan: 1/3 complete (05-01 done; 05-02 + 05-03 remaining)
+Plan: 2/3 complete (05-01 + 05-02 done; 05-03 remaining)
 Status: Executing
-Last activity: 2026-04-26 -- Plan 05-01 complete (a11y CSS + HTML fixes)
+Last activity: 2026-04-26 -- Plan 05-02 complete (contrast audit + axe-core)
 
-Progress: [█████████████░░░] 83% overall (4 of 5 phases complete; Phase 5 executing — plan 1/3 done)
+Progress: [██████████████░░] 87% overall (4 of 5 phases complete; Phase 5 executing — plan 2/3 done)
 
 ## Performance Metrics
 
@@ -92,6 +92,8 @@ Recent decisions affecting current work:
 - 05-01: `:focus-visible` (not `:focus`) for all interactive element outlines — mouse clicks do not trigger outlines. The skip-link's own reveal uses `:focus` because it is only keyboard-reachable.
 - 05-01: Emoji aria-label values describe tile concepts (e.g. "data ownership"), not emoji characters (e.g. "lock") — per D-06.
 - 05-01: sr-only class added to global.css as site-wide utility. Skip-link pattern: sr-only + skip-link class, fixed positioning on :focus with z-index 200.
+- 05-02: All 6 brand color pairings already pass WCAG AA -- no CSS :root adjustments needed. Ratios: text-primary 16.29:1, accent 5.82:1, accent-subtle 7.40:1, button-text 5.48:1, text-secondary/bg-primary 5.92:1, text-secondary/bg-surface 5.59:1.
+- 05-02: @axe-core/cli installed as devDependency; ChromeDriver mismatch resolved via `npx browser-driver-manager install chrome` + `--chromedriver-path` flag.
 
 ### Roadmap Evolution
 
@@ -132,5 +134,5 @@ Items acknowledged and carried forward from initialization:
 ## Session Continuity
 
 Last session: 2026-04-26
-Stopped at: Plan 05-01 complete (3 tasks: sr-only + :focus-visible styles in global.css, skip-to-main link in Base.astro + id="main-content" on both page main tags, role="img" + aria-label on all 6 Features emoji tiles + SVG audit across all custom components). Build passes. All plan-level verification checks green.
-Resume file: `.planning/phases/05-accessibility-pass/05-02-PLAN.md` (contrast audit: verify all color pairings via computed ratios + axe-core, fix any failing pairs in global.css :root)
+Stopped at: Plan 05-02 complete (2 tasks: all 6 brand color pairings verified WCAG AA, @axe-core/cli installed, zero violations on / and /releases/). Build passes. Ready for Plan 05-03 (consolidated a11y scan).
+Resume file: `.planning/phases/05-accessibility-pass/05-03-PLAN.md` (consolidated a11y scan: axe-core against dist/, keyboard tab-through verification, human checkpoint)
