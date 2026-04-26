@@ -181,7 +181,7 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4 → 5
 | 2.1 Blog (INSERTED) | 8/8 | Complete | 2026-04-22 |
 | 3. Content Depth & SEO | 4/4 | Complete (PR #12, merge `8cd7e3d`) | 2026-04-24 |
 | 4. Marketing Copy Rewrite | 6/6 | Complete | 2026-04-26 |
-| 5. Accessibility Pass | 0/3 | Planned | - |
+| 5. Accessibility Pass | 1/3 | Executing | - |
 
 ---
 *Roadmap defined: 2026-04-18*

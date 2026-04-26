@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
-status: ready-to-execute
-stopped_at: "Phase 5 planned. 3 plans in 2 waves (Wave 1: skip-link + focus styles + emoji labels || contrast audit; Wave 2: consolidated axe-core scan + human checkpoint). All 3 A11Y requirements covered. Plan checker passed (0 blockers). Ready for /gsd-execute-phase 5."
-last_updated: "2026-04-26T00:00:00.000Z"
-last_activity: 2026-04-26 -- Phase 5 planning complete; 3 plans verified
+status: executing
+stopped_at: "Plan 05-01 complete (3/3 tasks: sr-only + :focus-visible styles, skip-to-main link, emoji aria-labels + SVG audit). Ready for 05-02 (contrast audit)."
+last_updated: "2026-04-26T08:44:42Z"
+last_activity: 2026-04-26 -- Plan 05-01 complete (a11y CSS + HTML fixes)
 progress:
   total_phases: 6
   completed_phases: 4
-  total_plans: 20
-  completed_plans: 20
-  percent: 80
+  total_plans: 23
+  completed_plans: 21
+  percent: 83
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-04-18)
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — **MERGED** 2026-04-22 via PR #11 (merge commit `3dc00fb`); CF Pages deploying to covalence.app
-Plan: 8/8 (Waves 1–4 landed; Wave 5 checkpoint APPROVED 2026-04-22 after three cycles that drove Waves 6/7/8 gap-closure; Waves 6/7/8 all green; phase-level code review + verifier running)
-Status: Ready to execute
-Last activity: 2026-04-22 -- Phase 03 planning complete
+Phase: 5 of 5 (Accessibility Pass)
+Plan: 1/3 complete (05-01 done; 05-02 + 05-03 remaining)
+Status: Executing
+Last activity: 2026-04-26 -- Plan 05-01 complete (a11y CSS + HTML fixes)
 
-Progress: [████████████░░░░] 60% overall (3 of 5 phases shipped: 1 + 2 + 2.1; Phase 3 context locked, planning next; Phase 4 after)
+Progress: [█████████████░░░] 83% overall (4 of 5 phases complete; Phase 5 executing — plan 1/3 done)
 
 ## Performance Metrics
 
@@ -89,6 +89,9 @@ Recent decisions affecting current work:
 - 02.1-08: Gate VISIBLE `<a>` anchors on `hasPosts`, leave INVISIBLE head-level `<link rel="alternate">` unconditional. Head-level feed metadata auto-lights-up for crawlers on first-post publish (RSS 2.0 explicitly allows empty channels), while visible CTAs follow the CONTEXT voice rule ("nothing ships until the first real post lands"). Two-tier feed exposure; clean split between "invisible, auto-useful-eventually metadata" (stays) and "visible, user-facing CTA" (gates).
 - 02.1-08: Per-component `const hasPosts = (await getCollection('posts')).length > 0` in frontmatter — the Nav/Footer-level equivalent of Plan 04's page-level `const showLatestWriting = true`. Each component computes its own flag once per build per page it renders on; no shared-state plumbing; extends naturally to other shared components needing content-aware gates.
 - 02.1-08: Verification patterns must distinguish `<a>` anchors from `<link>` metadata when both contain the same href. `grep -oE 'href="/posts/rss\.xml"'` conflates them (counts BOTH tag types); `grep -oE '<a [^>]*href="/posts/rss\.xml"'` counts only anchors. In minified HTML with feed-discovery metadata in `<head>`, this distinction is load-bearing for empty-state delta assertions. Captured in 02.1-08 SUMMARY as a Rule 1 plan-level deviation so Plan 05 verification scripts use the precise pattern.
+- 05-01: `:focus-visible` (not `:focus`) for all interactive element outlines — mouse clicks do not trigger outlines. The skip-link's own reveal uses `:focus` because it is only keyboard-reachable.
+- 05-01: Emoji aria-label values describe tile concepts (e.g. "data ownership"), not emoji characters (e.g. "lock") — per D-06.
+- 05-01: sr-only class added to global.css as site-wide utility. Skip-link pattern: sr-only + skip-link class, fixed positioning on :focus with z-index 200.
 
 ### Roadmap Evolution
 
@@ -128,6 +131,6 @@ Items acknowledged and carried forward from initialization:
 
 ## Session Continuity
 
-Last session: 2026-04-22
-Stopped at: Plan 02.1-08 complete (Wave 8 gap-closure: empty-state gating — Nav.astro + Footer.astro each gained a frontmatter block reading `const hasPosts = (await getCollection('posts')).length > 0`; three visible anchors wrapped in `{hasPosts && …}` expressions. With empty collection, Blog nav + Footer RSS link hide site-wide; head-level `<link rel="alternate">` metadata preserved. Fix commit `2ab5ca2` fast-forward pushed to `origin/gsd/phase-2.1-blog` — `0405b49..2ab5ca2`). Wave 5 browser-level checkpoint is now the only remaining Phase 2.1 plan — ready to re-run on the refreshed CF Pages preview that now includes the Wave 6 theme-selector fix + Wave 7 content fix + Wave 8 empty-state gating.
-Resume file: `.planning/phases/2.1-blog/02.1-05-PLAN.md` (Wave 5 final re-run: browser-level verification of the CF Pages preview on `gsd/phase-2.1-blog@2ab5ca2` — with empty collection, confirm Blog nav + Footer RSS are ABSENT on `/`, `/releases/`, `/posts/`; confirm `/docs/getting-started/` still renders five H3 sub-sections with four Starlight-themed EC code blocks; confirm head-level `<link rel="alternate">` still advertises the feed; re-walk the 7-surface checklist)
+Last session: 2026-04-26
+Stopped at: Plan 05-01 complete (3 tasks: sr-only + :focus-visible styles in global.css, skip-to-main link in Base.astro + id="main-content" on both page main tags, role="img" + aria-label on all 6 Features emoji tiles + SVG audit across all custom components). Build passes. All plan-level verification checks green.
+Resume file: `.planning/phases/05-accessibility-pass/05-02-PLAN.md` (contrast audit: verify all color pairings via computed ratios + axe-core, fix any failing pairs in global.css :root)
