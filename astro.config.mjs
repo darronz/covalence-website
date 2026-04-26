@@ -38,6 +38,7 @@ export default defineConfig({
         { label: 'Getting Started', slug: 'docs/getting-started' },
         { label: 'Spaces', slug: 'docs/spaces' },
         { label: 'Core Memories', slug: 'docs/core-memories' },
+        { label: 'How Search Works', slug: 'docs/how-search-works' },
         { label: 'Under the Hood', slug: 'docs/under-the-hood' },
         { label: 'MCP Tools', slug: 'docs/mcp-tools' },
         { label: 'AI Instruction', slug: 'docs/ai-instruction' },
