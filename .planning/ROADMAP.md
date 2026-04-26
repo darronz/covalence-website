@@ -154,12 +154,19 @@ Notes:
   2. A keyboard-only user can tab through every interactive element on the landing page and the releases page and see a clearly visible focus indicator on each one.
   3. Every interactive element (links, buttons, the download CTA, nav items) has an accessible name reported by a screen reader or accessibility inspector — no unlabeled icon-only controls.
   4. The primary CTA and brand accent color pairings meet WCAG AA contrast ratios (>=4.5:1 for body text, >=3:1 for large text) verified by the same automated scan.
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — CSS + HTML fixes: skip-to-main link (Base.astro), focus-visible styles (global.css), emoji aria-labels (Features.astro), SVG/label audit (A11Y-01, A11Y-02)
+- [ ] 05-02-PLAN.md — Contrast audit: verify all color pairings via computed ratios + axe-core, fix any failing pairs in global.css :root (A11Y-03)
+- [ ] 05-03-PLAN.md — Consolidated a11y scan: axe-core against dist/, keyboard tab-through verification, human checkpoint (all requirements)
 
 Notes:
 - Scope is explicitly the non-Starlight surfaces — Starlight handles its own a11y for docs. See CONCERNS.md "Accessibility Gaps" for known starting points (emoji labeling in Features.astro, mobile nav, skip-to-main link, CTA contrast).
 - Full manual screen-reader pass is v2 (A11Y-v2-01), not in scope here.
 - Success is a clean automated scan + keyboard-tab verification, not a full human audit.
+- Plans 05-01 and 05-02 are Wave 1 (parallel intent, but share global.css — different sections: :root for 05-02, interactive selectors for 05-01). Plans 05-03 is Wave 2, depends on both Wave 1 plans.
+- @axe-core/cli installed as devDependency in Plan 05-02, consumed by Plan 05-03 for consolidated scan.
 **UI hint**: yes
 
 ## Progress
@@ -173,8 +180,8 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4 → 5
 | 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
 | 2.1 Blog (INSERTED) | 8/8 | Complete | 2026-04-22 |
 | 3. Content Depth & SEO | 4/4 | Complete (PR #12, merge `8cd7e3d`) | 2026-04-24 |
-| 4. Marketing Copy Rewrite | 0/6 | Planned | - |
-| 5. Accessibility Pass | 0/TBD | Not started | - |
+| 4. Marketing Copy Rewrite | 6/6 | Complete | 2026-04-26 |
+| 5. Accessibility Pass | 0/3 | Planned | - |
 
 ---
 *Roadmap defined: 2026-04-18*
