@@ -15,7 +15,7 @@ This milestone takes the Covalence website from "recently split out of the app m
 - [x] **Phase 2.1: Blog** (INSERTED) - Ship `/posts/` content collection with Expressive-Code-styled code blocks, RSS, and a "Latest writing" band on the landing page _(complete 2026-04-22 on `gsd/phase-2.1-blog@eea2179` — ready to merge to `main`)_
 - [x] **Phase 3: Content Depth & SEO** - Expand the "Under the hood" section and close SEO / social-sharing metadata gaps _(complete 2026-04-23 on `gsd/phase-3-content-depth-seo@0b6d046` — PR #12, CF preview `c0d36fed`)_
 - [x] **Phase 4: Marketing Copy Rewrite (Pro-tier readiness)** - Reframe hero, features, privacy paragraph, and footer so every claim on the marketing surfaces survives the eventual Free/Pro tier split — "no third-party cloud, by architecture" becomes the load-bearing principle _(complete 2026-04-26)_
-- [ ] **Phase 5: Accessibility Pass** - Custom components meet WCAG AA and pass an automated a11y scan
+- [x] **Phase 5: Accessibility Pass** - Custom components meet WCAG AA and pass an automated a11y scan _(complete 2026-04-26)_
 
 ## Phase Details
 
@@ -181,7 +181,7 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4 → 5
 | 2.1 Blog (INSERTED) | 8/8 | Complete | 2026-04-22 |
 | 3. Content Depth & SEO | 4/4 | Complete (PR #12, merge `8cd7e3d`) | 2026-04-24 |
 | 4. Marketing Copy Rewrite | 6/6 | Complete | 2026-04-26 |
-| 5. Accessibility Pass | 2/3 | Executing | - |
+| 5. Accessibility Pass | 3/3 | Complete | 2026-04-26 |
 
 ---
 *Roadmap defined: 2026-04-18*
