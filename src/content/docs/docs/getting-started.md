@@ -76,8 +76,15 @@ Ask your AI: **"What do you know about me?"**
 
 If Covalence is connected, it will use `memory_search` to look up relevant context and respond. On a fresh install the database is empty, so the AI will say it has no memories yet — that's expected.
 
+## File Memories
+
+Covalence can also auto-index files from watched folders on your Mac. File memories are searchable alongside your AI-stored memories but are read-only -- to update them, edit the original file and Covalence re-indexes it automatically.
+
+Configure watched folders in the Covalence app under **Settings > Files**.
+
 ## What's Next
 
 - **[Spaces](/docs/spaces/)** — Isolate memories by project using the `--space` flag
 - **[Core Memories](/docs/core-memories/)** — Pin important knowledge so your AI always checks it first
 - **[AI Instruction](/docs/ai-instruction/)** — Full instruction text and where to add it per client
+- **[Under the Hood](/docs/under-the-hood/)** — How Covalence finds the right memory, from embeddings to hybrid search

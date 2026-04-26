@@ -33,7 +33,7 @@ Semantic search across all stored memories.
 | `limit` | integer | No | Max results to return (default 5, max 20) |
 | `threshold` | float | No | Minimum similarity score 0.0–1.0 (default 0.3) |
 | `tags` | string[] | No | Filter results to memories with these tags |
-| `source` | string | No | Filter results by source type |
+| `source` | string | No | Filter by source: `mcp`, `file`, or `capture` |
 | `core` | boolean | No | `true` = Core only, `false` = regular only, omit for all |
 
 **Returns:** `[{ id, title, content, similarity, tags, source, created_at, age_days }]`
@@ -50,11 +50,13 @@ Browse recent memories without a search query.
 |-----------|------|----------|-------------|
 | `limit` | integer | No | Max results to return (default 10, max 50) |
 | `offset` | integer | No | Pagination offset (default 0) |
-| `source` | string | No | Filter by source type |
+| `source` | string | No | Filter by source: `mcp`, `file`, or `capture` |
 | `tags` | string[] | No | Filter by tags |
 | `core` | boolean | No | Filter by core status |
 
 **Returns:** `[{ id, title, source, tags, created_at }]`
+
+When browsing without filters, results appear in intent order: Core memories first (pinned), then MCP memories (AI-stored), then File memories (auto-indexed from watched folders).
 
 ---
 
