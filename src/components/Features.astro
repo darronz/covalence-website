@@ -2,31 +2,37 @@
 const features = [
   {
     icon: '🔍',
+    aria: 'search',
     title: 'Semantic search',
     description: 'Finds what you mean, not just what you typed. Hybrid vector + keyword search with recency weighting.',
   },
   {
     icon: '⭐',
+    aria: 'pinned memory',
     title: 'Core Memories',
     description: 'Pin your most important knowledge. Always surfaced first across every client.',
   },
   {
     icon: '🔗',
+    aria: 'connected clients',
     title: 'One memory, every client',
     description: 'Claude Desktop, Claude Code, Cursor, and any MCP-capable agent. Same memory, simultaneously, across all of them.',
   },
   {
     icon: '⚡',
+    aria: 'on-device processing',
     title: 'On-device embeddings',
     description: 'Embeddings computed on your hardware, not someone else\'s. No API keys, no per-call cost, no external dependencies.',
   },
   {
     icon: '📌',
+    aria: 'always available',
     title: 'Always running',
     description: 'Menu bar app with one-click capture. Quick capture from anywhere. Global hotkey opens search from any window.',
   },
   {
     icon: '🔒',
+    aria: 'data ownership',
     title: 'Your data, your infrastructure',
     description: 'A SQLite file on hardware you own. Export anytime as markdown or JSON. No accounts, no telemetry, no one else\'s cloud.',
   },
@@ -39,7 +45,7 @@ const features = [
     <div class="feature-grid">
       {features.map((feature) => (
         <div class="feature-card">
-          <h3><span class="feature-icon">{feature.icon}</span>{feature.title}</h3>
+          <h3><span class="feature-icon" role="img" aria-label={feature.aria}>{feature.icon}</span>{feature.title}</h3>
           <p>{feature.description}</p>
         </div>
       ))}
