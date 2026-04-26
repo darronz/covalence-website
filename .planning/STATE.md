@@ -122,7 +122,7 @@ _(None — marketing-copy-rewrite-pro-tier-readiness promoted to Phase 4 on 2026
 | 260424-u9x | Fix /docs/keyboard-shortcuts/ pane name — General → Shortcuts | 2026-04-24 | 4475f7f | [260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-](./quick/260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-/) |
 | 260424-uk9 | Add Contact mailto + Report an issue links to Footer.astro | 2026-04-24 | 270f650 | [260424-uk9-add-contact-mailto-and-report-an-issue-l](./quick/260424-uk9-add-contact-mailto-and-report-an-issue-l/) |
 | 260424-uqq | Replace default Astro favicon.ico with Covalence brand mark (32×32 PNG from favicon.svg) | 2026-04-24 | eb49d8e | [260424-uqq-replace-default-astro-favicon-ico-with-c](./quick/260424-uqq-replace-default-astro-favicon-ico-with-c/) |
-| 260426-im8 | Update docs pages to match new memory taxonomy naming | 2026-04-26 | pending | [260426-im8-update-docs-pages-to-match-new-memory-ta](./quick/260426-im8-update-docs-pages-to-match-new-memory-ta/) |
+| 260426-im8 | Update docs pages to match new memory taxonomy naming | 2026-04-26 | 53fbc9e | [260426-im8-update-docs-pages-to-match-new-memory-ta](./quick/260426-im8-update-docs-pages-to-match-new-memory-ta/) |
 
 ## Deferred Items
 
