@@ -40,11 +40,11 @@ Requirements for this milestone. Each maps to a roadmap phase.
 
 _Added 2026-04-24 when the pending "marketing copy rewrite for Pro-tier readiness" todo was promoted to Phase 4. Source spec: covalence memory 150._
 
-- [ ] **COPY-01**: Home-page hero subhead commits to "machines you own" / "never anyone else's cloud" (not Mac-specific)
-- [ ] **COPY-02**: The privacy-architecture paragraph is reframed as "Your data, your infrastructure" and leads with "no third-party cloud, by architecture"
-- [ ] **COPY-03**: Features tiles use implementation-neutral language (no CoreML, Apple Neural Engine, or Mac-specific promises in tile bodies)
-- [ ] **COPY-04**: Footer tagline reads correctly for any host shell the product ships (not Mac-only)
-- [ ] **COPY-05**: The "Two copy-pastes" sub-copy is tightened for a power-user audience (no MCP explainer sentence)
+- [x] **COPY-01**: Home-page hero subhead commits to "machines you own" / "never anyone else's cloud" (not Mac-specific)
+- [x] **COPY-02**: The privacy-architecture paragraph is reframed as "Your data, your infrastructure" and leads with "no third-party cloud, by architecture"
+- [x] **COPY-03**: Features tiles use implementation-neutral language (no CoreML, Apple Neural Engine, or Mac-specific promises in tile bodies)
+- [x] **COPY-04**: Footer tagline reads correctly for any host shell the product ships (not Mac-only)
+- [x] **COPY-05**: The "Two copy-pastes" sub-copy is tightened for a power-user audience (no MCP explainer sentence)
 
 ### Accessibility
 
@@ -95,11 +95,11 @@ Deferred to a later milestone.
 | SEO-02 | Phase 3 | Validated (2026-04-24, PR #12) |
 | SEO-03 | Phase 3 | Validated (2026-04-24, PR #12) |
 | SEO-04 | Phase 3 | Validated (2026-04-24, PR #12) |
-| COPY-01 | Phase 4 | Pending |
-| COPY-02 | Phase 4 | Pending |
-| COPY-03 | Phase 4 | Pending |
-| COPY-04 | Phase 4 | Pending |
-| COPY-05 | Phase 4 | Pending |
+| COPY-01 | Phase 4 | Validated (2026-04-26, Plan 04-06 grep matrix) |
+| COPY-02 | Phase 4 | Validated (2026-04-26, Plan 04-06 grep matrix) |
+| COPY-03 | Phase 4 | Validated (2026-04-26, Plan 04-06 grep matrix) |
+| COPY-04 | Phase 4 | Validated (2026-04-26, Plan 04-06 grep matrix) |
+| COPY-05 | Phase 4 | Validated (2026-04-26, Plan 04-06 grep matrix) |
 | A11Y-01 | Phase 5 | Pending |
 | A11Y-02 | Phase 5 | Pending |
 | A11Y-03 | Phase 5 | Pending |
@@ -111,4 +111,4 @@ Deferred to a later milestone.
 
 ---
 *Requirements defined: 2026-04-18*
-*Last updated: 2026-04-24 — Phase 3 requirements (CONT-01, SEO-01..04) marked Validated after PR #12 merge; Copy & Positioning section added (COPY-01..05 → Phase 4); Accessibility section re-mapped (A11Y-01..03 → Phase 5)*
+*Last updated: 2026-04-26 — Phase 4 requirements (COPY-01..05) marked Validated after Plan 04-06 consolidated verification pass*

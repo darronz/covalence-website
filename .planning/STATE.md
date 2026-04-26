@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.3.0
 milestone_name: milestone
-status: ready-to-execute
-stopped_at: "Phase 4 planned. 6 plans in 2 waves (Wave 1: 5 parallel component plans — Hero, HowItWorks, Features, Architecture, Footer; Wave 2: consolidated verification + CF preview gate). All 5 requirements (COPY-01..05) covered. Plan checker passed all dimensions. Ready for /gsd-execute-phase 4."
-last_updated: "2026-04-26T00:00:00.000Z"
-last_activity: 2026-04-26 -- Phase 4 planning complete; 6 plans verified
+status: phase-4-complete
+stopped_at: "Phase 4 complete. All 6 plans executed (5 Wave 1 component plans + 1 Wave 2 consolidated verification). All 5 requirements (COPY-01..05) verified via grep matrix. Ready for Phase 5 (Accessibility Pass)."
+last_updated: "2026-04-26T08:14:53Z"
+last_activity: 2026-04-26 -- Phase 4 execution complete; 6/6 plans verified
 progress:
   total_phases: 6
-  completed_phases: 3
-  total_plans: 14
-  completed_plans: 15
-  percent: 100
+  completed_phases: 4
+  total_plans: 20
+  completed_plans: 21
+  percent: 80
 ---
 
 # Project State
@@ -21,24 +21,24 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-18)
 
 **Core value:** When a new Covalence release is tagged in the app repo, this site rebuilds itself with the correct version, download, and release notes — with zero manual intervention — and visitors land on a page that explains what Covalence is clearly enough to decide whether to install it.
-**Current focus:** Phase 3 — Content Depth & SEO (Phase 2.1 Blog merged 2026-04-22)
+**Current focus:** Phase 4 complete — Marketing Copy Rewrite (Pro-tier readiness). Phase 5 (Accessibility Pass) next.
 
 ## Current Position
 
-Phase: 2.1 of 4+ (Blog, INSERTED) — **MERGED** 2026-04-22 via PR #11 (merge commit `3dc00fb`); CF Pages deploying to covalence.app
-Plan: 8/8 (Waves 1–4 landed; Wave 5 checkpoint APPROVED 2026-04-22 after three cycles that drove Waves 6/7/8 gap-closure; Waves 6/7/8 all green; phase-level code review + verifier running)
-Status: Ready to execute
-Last activity: 2026-04-22 -- Phase 03 planning complete
+Phase: 4 of 5 — **COMPLETE** 2026-04-26; all 5 COPY requirements verified
+Plan: 6/6 (Wave 1: 5 parallel component plans landed; Wave 2: consolidated verification + auto-approved CF preview gate)
+Status: Phase 4 complete
+Last activity: 2026-04-26 -- Phase 4 Plan 06 consolidated verification pass
 
-Progress: [████████████░░░░] 60% overall (3 of 5 phases shipped: 1 + 2 + 2.1; Phase 3 context locked, planning next; Phase 4 after)
+Progress: [█████████████░░░] 80% overall (4 of 5 phases shipped: 1 + 2 + 2.1 + 3 + 4; Phase 5 Accessibility Pass next)
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 9
-- Average duration: ~4.4 min (Phase 2.1 Plans 01 + 02 + 03 + 04 + 06 + 07 + 08 measured)
-- Total execution time: ~31 min (Plans 02.1-01 + 02.1-02 + 02.1-03 + 02.1-04 + 02.1-06 + 02.1-07 + 02.1-08; Phase 1 / Phase 2 durations not captured)
+- Total plans completed: 15
+- Average duration: ~3.3 min (Phase 2.1 + Phase 4 measured)
+- Total execution time: ~38 min (Phase 2.1 ~31 min + Phase 4 ~7 min; Phase 1/2/3 durations not captured)
 
 **By Phase:**
 
@@ -47,8 +47,9 @@ Progress: [████████████░░░░] 60% overall (3 of 5
 | 1. Repo Hygiene & CI Gating | 2/2 | — | — |
 | 2. Releases Page | shipped outside GSD | — | — |
 | 2.1 Blog (INSERTED) | 7/8 | ~31 min | ~4.4 min |
-| 3. Content Depth & SEO | 0/TBD | — | — |
-| 4. Accessibility Pass | 0/TBD | — | — |
+| 3. Content Depth & SEO | 4/4 | — | — |
+| 4. Marketing Copy Rewrite | 6/6 | ~7 min | ~1.2 min |
+| 5. Accessibility Pass | 0/TBD | — | — |
 
 **Recent Trend:**
 
@@ -89,6 +90,8 @@ Recent decisions affecting current work:
 - 02.1-08: Gate VISIBLE `<a>` anchors on `hasPosts`, leave INVISIBLE head-level `<link rel="alternate">` unconditional. Head-level feed metadata auto-lights-up for crawlers on first-post publish (RSS 2.0 explicitly allows empty channels), while visible CTAs follow the CONTEXT voice rule ("nothing ships until the first real post lands"). Two-tier feed exposure; clean split between "invisible, auto-useful-eventually metadata" (stays) and "visible, user-facing CTA" (gates).
 - 02.1-08: Per-component `const hasPosts = (await getCollection('posts')).length > 0` in frontmatter — the Nav/Footer-level equivalent of Plan 04's page-level `const showLatestWriting = true`. Each component computes its own flag once per build per page it renders on; no shared-state plumbing; extends naturally to other shared components needing content-aware gates.
 - 02.1-08: Verification patterns must distinguish `<a>` anchors from `<link>` metadata when both contain the same href. `grep -oE 'href="/posts/rss\.xml"'` conflates them (counts BOTH tag types); `grep -oE '<a [^>]*href="/posts/rss\.xml"'` counts only anchors. In minified HTML with feed-discovery metadata in `<head>`, this distinction is load-bearing for empty-state delta assertions. Captured in 02.1-08 SUMMARY as a Rule 1 plan-level deviation so Plan 05 verification scripts use the precise pattern.
+- 04-04: Intentionally broke Phase 3 Plan 03-03 byte-identical arch-privacy invariant per D-10/COPY-02 — heading changed from "Privacy by architecture" to "Your data, your infrastructure" and body reframed with "no third-party cloud, by architecture". Not a regression.
+- 04-06: All 5 Phase 4 Success Criteria (COPY-01..05) verified via consolidated grep matrix against fresh dist/index.html. 12 positive-control strings present, 9 negative-control strings absent, D-13 voice sweep clean, 4-fold "no third-party cloud" repetition audit confirmed.
 
 ### Roadmap Evolution
 
@@ -128,6 +131,6 @@ Items acknowledged and carried forward from initialization:
 
 ## Session Continuity
 
-Last session: 2026-04-22
-Stopped at: Plan 02.1-08 complete (Wave 8 gap-closure: empty-state gating — Nav.astro + Footer.astro each gained a frontmatter block reading `const hasPosts = (await getCollection('posts')).length > 0`; three visible anchors wrapped in `{hasPosts && …}` expressions. With empty collection, Blog nav + Footer RSS link hide site-wide; head-level `<link rel="alternate">` metadata preserved. Fix commit `2ab5ca2` fast-forward pushed to `origin/gsd/phase-2.1-blog` — `0405b49..2ab5ca2`). Wave 5 browser-level checkpoint is now the only remaining Phase 2.1 plan — ready to re-run on the refreshed CF Pages preview that now includes the Wave 6 theme-selector fix + Wave 7 content fix + Wave 8 empty-state gating.
-Resume file: `.planning/phases/2.1-blog/02.1-05-PLAN.md` (Wave 5 final re-run: browser-level verification of the CF Pages preview on `gsd/phase-2.1-blog@2ab5ca2` — with empty collection, confirm Blog nav + Footer RSS are ABSENT on `/`, `/releases/`, `/posts/`; confirm `/docs/getting-started/` still renders five H3 sub-sections with four Starlight-themed EC code blocks; confirm head-level `<link rel="alternate">` still advertises the feed; re-walk the 7-surface checklist)
+Last session: 2026-04-26
+Stopped at: Phase 4 complete. Plan 04-06 consolidated verification passed all 5 Success Criteria (COPY-01..05) + D-13 voice sweep + D-14 positive/negative controls + four-repetition audit. CF preview checkpoint auto-approved per --auto mode.
+Resume file: None — Phase 4 complete. Next: Phase 5 (Accessibility Pass) planning.

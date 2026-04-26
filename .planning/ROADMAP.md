@@ -129,12 +129,12 @@ Notes:
 **Plans**: 6 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Hero.astro subhead rewrite: "Your memory, on machines you own. Never anyone else's cloud." (COPY-01)
-- [ ] 04-02-PLAN.md — HowItWorks.astro sub-copy tightening: "Add the MCP snippet. Paste the behavioural prompt. Done." (COPY-05)
-- [ ] 04-03-PLAN.md — Features.astro four-tile rewrite: tiles #1, #2, #3, #5 implementation-neutral language (COPY-03)
-- [ ] 04-04-PLAN.md — Architecture.astro arch-stack teaser + arch-privacy column rewrite (COPY-02)
-- [ ] 04-05-PLAN.md — Footer.astro tagline rewrite: "Built for the machines you own" (COPY-04)
-- [ ] 04-06-PLAN.md — Consolidated verification: grep matrix + CF preview eyeball check (all requirements)
+- [x] 04-01-PLAN.md — Hero.astro subhead rewrite: "Your memory, on machines you own. Never anyone else's cloud." (COPY-01)
+- [x] 04-02-PLAN.md — HowItWorks.astro sub-copy tightening: "Add the MCP snippet. Paste the behavioural prompt. Done." (COPY-05)
+- [x] 04-03-PLAN.md — Features.astro four-tile rewrite: tiles #1, #2, #3, #5 implementation-neutral language (COPY-03)
+- [x] 04-04-PLAN.md — Architecture.astro arch-stack teaser + arch-privacy column rewrite (COPY-02)
+- [x] 04-05-PLAN.md — Footer.astro tagline rewrite: "Built for the machines you own" (COPY-04)
+- [x] 04-06-PLAN.md — Consolidated verification: grep matrix + CF preview eyeball check (all requirements)
 
 Notes:
 - Source spec: covalence memory 150 (2026-04-23 copywriter review). Six discrete edits captured in `.planning/todos/completed/2026-04-24-marketing-copy-rewrite-pro-tier-readiness.md` (promoted from todo to Phase 4 on 2026-04-24).
@@ -173,7 +173,7 @@ Phases execute in numeric order: 1 → 2 → 2.1 → 3 → 4 → 5
 | 2. Releases Page | shipped outside GSD | Complete | 2026-04-19 |
 | 2.1 Blog (INSERTED) | 8/8 | Complete | 2026-04-22 |
 | 3. Content Depth & SEO | 4/4 | Complete (PR #12, merge `8cd7e3d`) | 2026-04-24 |
-| 4. Marketing Copy Rewrite | 0/6 | Planned | - |
+| 4. Marketing Copy Rewrite | 6/6 | Complete | 2026-04-26 |
 | 5. Accessibility Pass | 0/TBD | Not started | - |
 
 ---
