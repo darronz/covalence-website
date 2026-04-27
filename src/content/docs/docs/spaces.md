@@ -47,6 +47,6 @@ The MCP server name (`"covalence-myproject"`) can be anything — it's just a la
 
 ## Limitations
 
-- Memories cannot be moved between spaces.
+- You can change the space a memory is assigned to in v1.4.0 and later.
 - `memory_search` and `memory_list` only return results from the current space.
 - `memory_status` counts memories in the current space only.

@@ -5,7 +5,7 @@ milestone_name: milestone
 status: complete
 stopped_at: "Phase 5 complete (3/3 plans). All phases complete. Milestone v1.3.0 finished."
 last_updated: "2026-04-26T08:56:12Z"
-last_activity: 2026-04-26 -- Plan 05-03 complete (consolidated a11y scan: zero axe-core violations)
+last_activity: 2026-04-26 -- Quick task 260426-npr: create /docs/how-search-works page
 progress:
   total_phases: 6
   completed_phases: 5
@@ -122,6 +122,8 @@ _(None — marketing-copy-rewrite-pro-tier-readiness promoted to Phase 4 on 2026
 | 260424-u9x | Fix /docs/keyboard-shortcuts/ pane name — General → Shortcuts | 2026-04-24 | 4475f7f | [260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-](./quick/260424-u9x-fix-keyboard-shortcuts-docs-navigate-to-/) |
 | 260424-uk9 | Add Contact mailto + Report an issue links to Footer.astro | 2026-04-24 | 270f650 | [260424-uk9-add-contact-mailto-and-report-an-issue-l](./quick/260424-uk9-add-contact-mailto-and-report-an-issue-l/) |
 | 260424-uqq | Replace default Astro favicon.ico with Covalence brand mark (32×32 PNG from favicon.svg) | 2026-04-24 | eb49d8e | [260424-uqq-replace-default-astro-favicon-ico-with-c](./quick/260424-uqq-replace-default-astro-favicon-ico-with-c/) |
+| 260426-im8 | Update docs pages to match new memory taxonomy naming | 2026-04-26 | 53fbc9e | [260426-im8-update-docs-pages-to-match-new-memory-ta](./quick/260426-im8-update-docs-pages-to-match-new-memory-ta/) |
+| 260426-npr | Create /docs/how-search-works page — 5-signal ranking system | 2026-04-26 | e250fab | [260426-npr-create-docs-how-search-works-page-explai](./quick/260426-npr-create-docs-how-search-works-page-explai/) |
 
 ## Deferred Items
 

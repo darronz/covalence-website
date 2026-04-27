@@ -16,6 +16,7 @@ Covalence gives any AI client persistent, semantic, long-term memory. It runs lo
 - **[Getting Started](/docs/getting-started/)** — Connect Claude Desktop, Claude Code, or Cursor in under a minute
 - **[Spaces](/docs/spaces/)** — Isolate memories by project using the `--space` flag
 - **[Core Memories](/docs/core-memories/)** — Pin important knowledge so your AI always checks it first
+- **[How Search Works](/docs/how-search-works/)** — The 5-signal ranking system behind Covalence's search
 - **[MCP Tools](/docs/mcp-tools/)** — Reference for all 9 memory tools
 - **[AI Instruction](/docs/ai-instruction/)** — Configure your AI client's memory behavior
 - **[Keyboard Shortcuts](/docs/keyboard-shortcuts/)** — Quick capture and navigation shortcuts

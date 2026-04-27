@@ -5,6 +5,19 @@ description: Pin important knowledge so your AI always checks it first.
 
 Core Memories are a curated subset of your memories marked as permanently important. They appear pinned at the top of the memory list in the Covalence app and are intended for knowledge your AI should always have immediate access to.
 
+## How Memories Are Organised
+
+Covalence organises memories along two independent axes:
+
+**Category** determines how a memory was created:
+
+- **Memory** -- an intentional entry stored via MCP or quick capture. You or your AI decided this was worth remembering.
+- **File** -- auto-indexed content from a watched folder. Covalence reads the file and keeps a searchable copy. The file is the source of truth; edit the file and Covalence re-indexes it.
+
+**Source** tracks where the memory came from: `mcp` (stored by an AI client), `file` (indexed from a watched folder), or `capture` (saved via the quick capture panel).
+
+**Core** is a flag, not a category. Any memory -- whether it came from MCP, a file, or quick capture -- can be promoted to Core. Promoting a memory pins it to the top of the browse list and signals that your AI should always have it available.
+
 ## Creating Core Memories
 
 **Via MCP (tell your AI):**
@@ -54,4 +67,4 @@ Core Memories appear with a pin icon at the top of the unified memory list. They
 
 ## Important: User-Controlled Only
 
-Core Memories are created exclusively on explicit user request. The AI instruction specifies that the AI must never autonomously decide what should be a Core Memory — the user decides, always.
+Core Memories are created exclusively on explicit user request. The AI instruction specifies that the AI must never autonomously decide what should be a Core Memory — the user decides, always. This applies to both Memory and File categories -- the AI never auto-promotes a File memory to Core either.
