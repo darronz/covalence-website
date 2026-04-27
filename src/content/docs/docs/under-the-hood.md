@@ -1,6 +1,6 @@
 ---
 title: Under the Hood
-description: How Covalence finds the right memory — embedding model, asymmetric encoding, Matryoshka truncation, hybrid search, and recency weighting, with the concrete numbers that ship in v1.3.
+description: How Covalence finds the right memory — embedding model, asymmetric encoding, Matryoshka truncation, hybrid search, and recency weighting, with the concrete numbers that ship in v1.4.
 ---
 
 Covalence turns text into vectors, stores them in SQLite, and combines vector similarity with keyword search to surface the memory your AI needs. Every step runs on your Mac. This page explains what's in the pipeline, and the numbers we picked.
