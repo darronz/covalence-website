@@ -1,0 +1,7 @@
+[[r2_buckets]]
+binding = "RELEASES_BUCKET"
+bucket_name = "covalence-releases"
+jurisdiction = "eu"
+
+[analytics_engine_datasets]
+RELEASE_ANALYTICS = { dataset = "covalence_downloads" }
