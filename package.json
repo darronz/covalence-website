@@ -19,7 +19,9 @@
   },
   "devDependencies": {
     "@axe-core/cli": "^4.11.2",
+    "@cloudflare/workers-types": "^4.20260426.1",
     "@fontsource/inter": "^5.2.8",
-    "@fontsource/jetbrains-mono": "^5.2.8"
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "typescript": "^5.9.3"
   }
 }
