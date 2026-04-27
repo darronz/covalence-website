@@ -4,7 +4,6 @@ pages_build_output_dir = "dist"
 [[r2_buckets]]
 binding = "RELEASES_BUCKET"
 bucket_name = "covalence-releases"
-jurisdiction = "eu"
 
 [[analytics_engine_datasets]]
 binding = "RELEASE_ANALYTICS"
