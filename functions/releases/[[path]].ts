@@ -7,7 +7,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     : pathSegments || '';
 
   if (!key) {
-    return new Response('Not Found', { status: 404 });
+    return context.next();
   }
 
   try {
