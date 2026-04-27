@@ -19,7 +19,7 @@ Store a new memory. Use when the conversation produces important decisions, conc
 | `metadata` | object | No | Key-value metadata as a JSON object |
 | `core` | boolean | No | If `true`, stores as a Core Memory (default `false`) |
 
-**Returns:** `{ id, title, indexed }`
+**Returns:** `{ id, title, indexed, core }`
 
 ---
 
@@ -36,7 +36,7 @@ Semantic search across all stored memories.
 | `source` | string | No | Filter by source: `mcp`, `file`, or `capture` |
 | `core` | boolean | No | `true` = Core only, `false` = regular only, omit for all |
 
-**Returns:** `[{ id, title, content, similarity, tags, source, created_at, age_days }]`
+**Returns:** `[{ id, title, content, similarity, tier, tags, source, core, created_at, age_days }]`
 
 The `age_days` field enables staleness checking — the AI can flag old memories on time-sensitive topics.
 
@@ -54,7 +54,7 @@ Browse recent memories without a search query.
 | `tags` | string[] | No | Filter by tags |
 | `core` | boolean | No | Filter by core status |
 
-**Returns:** `[{ id, title, source, tags, created_at }]`
+**Returns:** `[{ id, title, source, core, tags, created_at }]`
 
 When browsing without filters, results appear in intent order: Core memories first (pinned), then MCP memories (AI-stored), then File memories (auto-indexed from watched folders).
 
@@ -68,7 +68,7 @@ Get the full content of a specific memory by ID.
 |-----------|------|----------|-------------|
 | `id` | integer | Yes | The memory ID to retrieve |
 
-**Returns:** `{ id, title, content, tags, metadata, source, created_at, updated_at }`
+**Returns:** `{ id, title, content, tags, metadata, source, core, created_at, updated_at }`
 
 ---
 
@@ -79,6 +79,8 @@ Delete a memory permanently.
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `id` | integer | Yes | The memory ID to delete |
+
+**Returns:** `{ deleted, id }`
 
 ---
 
@@ -94,6 +96,8 @@ Update the content, title, tags, or metadata of an existing memory. Re-embeds th
 | `tags` | string[] | No | New tags (replaces existing tags) |
 | `metadata` | object | No | New metadata (replaces existing metadata) |
 
+**Returns:** `{ id, title, indexed }`
+
 ---
 
 ## memory_promote
@@ -103,6 +107,8 @@ Promote a regular memory to a Core Memory. This is an in-place flag change — n
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `id` | integer | Yes | The memory ID to promote |
+
+**Returns:** `{ id, title, core: true }`
 
 ---
 
@@ -114,6 +120,8 @@ Demote a Core Memory back to a regular memory. In-place flag change.
 |-----------|------|----------|-------------|
 | `id` | integer | Yes | The memory ID to demote |
 
+**Returns:** `{ id, title, core: false }`
+
 ---
 
 ## memory_status
@@ -122,4 +130,4 @@ Get system stats for the current space.
 
 No parameters.
 
-**Returns:** `{ total_memories, embedding_model, index_status, last_indexed }`
+**Returns:** `{ total_memories, core_memories, embedding_model, index_status, last_indexed }`
