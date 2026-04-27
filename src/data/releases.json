@@ -1,6 +1,19 @@
 [
   {
     "delta_urls": [
+      "https://covalence.app/releases/Covalence10-8.delta",
+      "https://covalence.app/releases/Covalence10-9.delta"
+    ],
+    "download_size_bytes": 277566114,
+    "download_url": "https://covalence.app/releases/Covalence-1.4.0.dmg",
+    "notes_markdown": "# v1.4.0 — File Sync, AI Instruction Rewrite & Space Switcher\n\nTwo milestones ship in this release: **Anchor Memories** (v1.4) and **AI Instruction & Search Quality** (v1.5).\n\n## File Sync (Anchor Memories)\n\nCovalence can now watch folders on disk and auto-index their contents as searchable memories.\n\n- **Watched folders** — add any directory from Settings → Files. Covalence indexes markdown, text, and config files using FSEvents for live updates.\n- **Smart defaults** — ships with sensible ignore patterns (`.git/`, `node_modules/`, `.env*`, etc.) and a 1 MB file size cap. Customize with a freeform gitignore-style editor.\n- **Source-tier ranking** — search results now rank Core memories first, then MCP/App, then File memories. The `fileTierWeight` constant (0.20) can be tuned via the benchmark tool.\n- **YAML frontmatter** — parsed from markdown files and stored as structured metadata.\n- **Space assignment** — each watched folder is bound to a space. Move folders between spaces from the context menu.\n- **Keep or delete** — when removing a watched folder, choose whether to keep its memories as orphans or delete them.\n\n## AI Instruction Rewrite\n\nThe behavioral instruction that tells AI clients how to use Covalence has been completely rewritten.\n\n- **Two-axis taxonomy** — memories are now categorized by source (MCP, App, File) and intent (Core flag). The instruction guides AI clients on when to use `source: \"file\"` filters.\n- **MCP server-level instructions** — Covalence now delivers its behavioral guidance automatically at MCP connect time via `Server.init(instructions:)`. Compliant clients (Claude Code, Claude Desktop) pick it up without any manual configuration.\n- **Windsurf support** — added as the 4th onboarding tab with the correct MCP config path.\n\n## Space Switcher\n\n- **Filter by space** — a compact picker in the main window header lets you scope the browse list and search results to a single space. \"All Spaces\" is the default. Selection persists across restarts.\n\n## Retrieval Quality Benchmark\n\n- **cov-benchmark** — a new CLI tool that runs 10 queries across multiple categories against the live database and scores retrieval quality. Useful for tuning ranking parameters. Current score: 30/30.\n\n## Upgrading\n\nSparkle auto-update will install v1.4.0 automatically.",
+    "released_at": "2026-04-27T11:26:20Z",
+    "sha256": "c7416ba48469a182d333f98fbf5afb69ce1a2a8b3b5f0f52fc5d96ea681bac87",
+    "tag": "v1.4.0",
+    "version": "1.4.0"
+  },
+  {
+    "delta_urls": [
       "https://covalence.app/releases/Covalence9-8.delta"
     ],
     "download_size_bytes": 274020439,
