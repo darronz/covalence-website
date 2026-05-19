@@ -8,3 +8,7 @@ bucket_name = "covalence-releases"
 [[analytics_engine_datasets]]
 binding = "RELEASE_ANALYTICS"
 dataset = "covalence_downloads"
+
+[observability.logs]
+enabled = true
+invocation_logs = true
