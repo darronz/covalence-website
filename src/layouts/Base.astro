@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import NoticeBanner from '../components/NoticeBanner.astro';
 
 interface Props {
   title: string;
@@ -49,7 +48,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <a href="#main-content" class="sr-only skip-link">Skip to main content</a>
-    <NoticeBanner />
     <slot />
   </body>
 
